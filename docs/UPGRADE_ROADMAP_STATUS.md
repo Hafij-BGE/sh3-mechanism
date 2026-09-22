@@ -1,6 +1,6 @@
 # Upgrade roadmap — what is in this pipeline and what is not
 
-Status of every item in `SH3_all_possible_upgrades_from_base_notebook.md`, checked against the data
+Status of every item in `SH3_all_possible_upgrades_from_base_notebook.md` (kept on the laptop, not in the repository), checked against the data
 and hardware available (Colab T4, the downloaded datasets, COSMIC).
 
 ## In this pipeline

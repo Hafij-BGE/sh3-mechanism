@@ -28,3 +28,6 @@ drive_upload/
 
 # ── per-variant follow-up table (COSMIC variants with tumour sites) ──────────
 results/F1_experimental_candidates/experimental_candidates.csv
+
+# ── kept on the laptop only ──────────────────────────────────────────────────
+SH3_all_possible_upgrades_from_base_notebook.md
