@@ -1,0 +1,31 @@
+quantity,this_run,recorded,status
+original.GB1.rho,-0.09037497037497037,-0.09037497037497037,identical
+original.GB1.esm,0.0421307492905556,0.0421307492905556,identical
+original.GB1.n,1000.0,1000.0,identical
+original.GB1.lo,-0.15060594051930584,,
+original.GB1.hi,-0.027658816818903347,,
+corrected.GB1.rho,-0.1507912267912268,,new (corrected procedure)
+corrected.GB1.esm,0.0421307492905556,,new (corrected procedure)
+corrected.GB1.n,1000.0,,new (corrected procedure)
+corrected.GB1.lo,-0.21586181108721395,,new (corrected procedure)
+corrected.GB1.hi,-0.08627780814715481,,new (corrected procedure)
+original.GRB2-SH3.rho,0.09683667878087518,0.09683667878087518,identical
+original.GRB2-SH3.esm,-0.1261237460942462,-0.1261237460942462,identical
+original.GRB2-SH3.n,619.0,619.0,identical
+original.GRB2-SH3.lo,0.017089632332964812,,
+original.GRB2-SH3.hi,0.17599916466119145,,
+corrected.GRB2-SH3.rho,-0.04214095150589411,,new (corrected procedure)
+corrected.GRB2-SH3.esm,-0.1261237460942462,,new (corrected procedure)
+corrected.GRB2-SH3.n,619.0,,new (corrected procedure)
+corrected.GRB2-SH3.lo,-0.11949460961730597,,new (corrected procedure)
+corrected.GRB2-SH3.hi,0.035798761097633386,,new (corrected procedure)
+original.PSD95-PDZ3.rho,0.1118287749260892,0.1118287749260892,identical
+original.PSD95-PDZ3.esm,-0.4379805927244899,-0.4379805927244899,identical
+original.PSD95-PDZ3.n,1221.0,1221.0,identical
+original.PSD95-PDZ3.lo,0.056938985624240705,,
+original.PSD95-PDZ3.hi,0.1708353402210117,,
+corrected.PSD95-PDZ3.rho,0.1315160155411289,,new (corrected procedure)
+corrected.PSD95-PDZ3.esm,-0.4379805927244899,,new (corrected procedure)
+corrected.PSD95-PDZ3.n,1221.0,,new (corrected procedure)
+corrected.PSD95-PDZ3.lo,0.07597069612829906,,new (corrected procedure)
+corrected.PSD95-PDZ3.hi,0.18807935513612414,,new (corrected procedure)

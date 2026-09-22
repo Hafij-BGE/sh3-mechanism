@@ -1,0 +1,188 @@
+quantity,this_run,recorded,status,program
+cmc_rows,5802907,5802907,identical,A0
+missense_rows_in_sh3_genes,91842,91842,identical,A0
+mapped_canonical,5923,5923,identical,A0
+mapped_isoform,1034,1034,identical,A0
+unmapped,490,490,identical,A0
+variants,6884,6884,identical,A0
+columns,44,44,identical,A0
+domains,310,310,identical,A0
+genes,235,235,identical,A0
+gsm_rows,62765128,62765128,identical,A0
+gsm_samples,53598,53598,identical,A0
+with_sample_records,6657,6657,identical,A0
+nonhyper_variants,2165,2165,identical,A0
+recurrent_nonhyper,84,84,identical,A0
+hypermutated_only,4492,4492,identical,A0
+recurrent_any,501,501,identical,A0
+likely_germline,78,78,identical,A0
+significance_tier_1_3,0,0,identical,A0
+dnds_flagged,0,0,identical,A0
+master_md5,cef897f4dd25f9cd56f2c40bb7ec0b08,cef897f4dd25f9cd56f2c40bb7ec0b08,identical,A0
+ddpca_singles,3688.0,3688.0,identical,A1
+ddpca_both_energies,3368.0,3368.0,identical,A1
+reliable_binding,2840.0,2840.0,identical,A1
+reliable_folding,3109.0,3109.0,identical,A1
+reliable_binding_GRB2-SH3,619.0,619.0,identical,A1
+reliable_binding_PSD95-PDZ3,1221.0,1221.0,identical,A1
+reliable_binding_GB1,1000.0,1000.0,identical,A1
+calibration_fold_r,0.829056935425266,0.829,within tolerance,A1
+calibration_fold_n,15.0,15.0,identical,A1
+calibration_bind_r,0.6122524026222314,0.612,within tolerance,A1
+calibration_bind_n,12.0,12.0,identical,A1
+chi_offset,310.0,310.0,identical,A1
+megascale_singles,389068.0,389068.0,identical,A1
+megascale_domains,412.0,412.0,identical,A1
+megascale_sh3_structures,26.0,26.0,identical,A1
+megascale_sh3_genes,15.0,15.0,identical,A1
+foldx_overlap,1024.0,1024.0,identical,A1
+foldx_vs_mochi_r,0.4944380583959704,0.494,within tolerance,A1
+sep_surface_not_interface_fold,0.8678893446922302,0.868,within tolerance,A1
+sep_surface_not_interface_bind,-0.0356791578233242,-0.036,within tolerance,A1
+sep_surface_interface_fold,0.568724125623703,0.569,within tolerance,A1
+sep_surface_interface_bind,0.6454968452453613,0.645,within tolerance,A1
+sep_buried_not_interface_fold,3.565534830093384,3.566,within tolerance,A1
+sep_buried_not_interface_bind,0.1414427757263183,0.141,within tolerance,A1
+sep_buried_interface_fold,1.2794172763824463,1.279,within tolerance,A1
+sep_buried_interface_bind,2.900125741958618,2.9,within tolerance,A1
+variants_total,399640.0,399640.0,identical,A2
+variants_megascale,389068.0,389068.0,identical,A2
+variants_ddpca,3688.0,3688.0,identical,A2
+variants_atlas,6884.0,6884.0,identical,A2
+esm_domains,725.0,725.0,identical,A2
+esm_rho_ddpca_fold,-0.4037677089901184,-0.404,within tolerance,A2
+esm_rho_ddpca_bind,-0.2592309210202745,-0.259,within tolerance,A2
+esm_rho_megascale_fold,-0.3881306316418498,-0.388,within tolerance,A2
+structure_rows,18756.0,18756.0,identical,A2
+structure_domains,302.0,302.0,identical,A2
+atlas_structure_coverage,0.9681871005229518,0.968,within tolerance,A2
+atlas_refmap_coverage,0.8946833236490412,0.895,within tolerance,A2
+atlas_groups,310.0,310.0,identical,A2
+xsep_surface_not_interface_fold,0.7245924472808838,0.725,within tolerance,A2
+xsep_surface_not_interface_bind,0.1150489822030067,0.115,within tolerance,A2
+xsep_surface_interface_fold,0.4494057893753052,0.449,within tolerance,A2
+xsep_surface_interface_bind,0.6784747838973999,0.678,within tolerance,A2
+xsep_buried_not_interface_fold,2.0873883962631226,2.087,within tolerance,A2
+xsep_buried_not_interface_bind,0.543288916349411,0.543,within tolerance,A2
+xsep_buried_interface_fold,0.9782630801200868,0.978,within tolerance,A2
+xsep_buried_interface_bind,1.4455920457839966,1.446,within tolerance,A2
+domains,15,15,identical,B1
+per_domain_median_rho,0.8391701341203324,0.8391701341203324,identical,B1
+per_domain_min_rho,0.7541643437450473,0.7541643437450473,identical,B1
+per_domain_max_rho,0.933798308475559,0.933798308475559,identical,B1
+all_ci_exclude_zero,True,True,identical,B1
+esm_per_domain_median_rho,-0.6166176878770433,-0.6166176878770433,identical,B1
+domains_won,15,15,identical,B1
+heldout_variants,27590,27590,identical,B1
+pooled_rho,0.8428341371511485,0.8428332985329702,within tolerance,B1
+pooled_rmse,0.6716669151960662,0.6716643571853638,within tolerance,B1
+positions,56.0,56.0,identical,B2
+rho_damage_vs_burial,0.7116506334195684,0.7116506334195684,identical,B2
+rho_damage_vs_interface,0.0369788106630211,0.0369788106630211,identical,B2
+original.GB1.rho,-0.0903749703749703,-0.0903749703749703,identical,C1
+original.GB1.esm,0.0421307492905556,0.0421307492905556,identical,C1
+original.GB1.n,1000.0,1000.0,identical,C1
+original.GRB2-SH3.rho,0.0968366787808751,0.0968366787808751,identical,C1
+original.GRB2-SH3.esm,-0.1261237460942462,-0.1261237460942462,identical,C1
+original.GRB2-SH3.n,619.0,619.0,identical,C1
+original.PSD95-PDZ3.rho,0.1118287749260892,0.1118287749260892,identical,C1
+original.PSD95-PDZ3.esm,-0.4379805927244899,-0.4379805927244899,identical,C1
+original.PSD95-PDZ3.n,1221.0,1221.0,identical,C1
+GB1.esm,0.0421307492905556,0.0421307492905556,identical,C2
+GRB2-SH3.esm,-0.1261237460942462,-0.1261237460942462,identical,C2
+PSD95-PDZ3.esm,-0.4379805927244899,-0.4379805927244899,identical,C2
+original.GB1.single_fit_rho,-0.08462025087411164,-0.0846202508741116,identical,C2
+original.GB1.n,1000,1000.0,identical,C2
+original.GB1.positions,55,55.0,identical,C2
+original.GB1.repeats_median,0.00933884133884134,0.0093388413388413,identical,C2
+original.GB1.repeats_lo,-0.11823637023637024,-0.1182363702363702,identical,C2
+original.GB1.repeats_hi,0.1966039966039966,0.1966039966039966,identical,C2
+original.GRB2-SH3.single_fit_rho,0.12434758586912913,0.1243475858691291,identical,C2
+original.GRB2-SH3.n,619,619.0,identical,C2
+original.GRB2-SH3.positions,56,56.0,identical,C2
+original.GRB2-SH3.repeats_median,-0.030234757271434334,-0.0302347572714343,identical,C2
+original.GRB2-SH3.repeats_lo,-0.10863318234000367,-0.1086331823400036,identical,C2
+original.GRB2-SH3.repeats_hi,0.12434758586912913,0.1243475858691291,identical,C2
+original.PSD95-PDZ3.single_fit_rho,0.3911291472505285,0.3911291472505285,identical,C2
+original.PSD95-PDZ3.n,1221,1221.0,identical,C2
+original.PSD95-PDZ3.positions,84,84.0,identical,C2
+original.PSD95-PDZ3.repeats_median,0.3969932390406754,0.3969932390406754,identical,C2
+original.PSD95-PDZ3.repeats_lo,0.363112269413527,0.363112269413527,identical,C2
+original.PSD95-PDZ3.repeats_hi,0.4120185793712129,0.4120185793712129,identical,C2
+original.matched_median_rho,-0.02295522768657405,-0.022955227686574,identical,C3
+original.matched_ci_lo,-0.1945914718029696,-0.1945914718029696,identical,C3
+original.matched_ci_hi,0.17544464567331497,0.175444645673315,identical,C3
+original.matched_draws,20,20.0,identical,C3
+original.diag_k5_ep40_median,0.07950970305347699,0.079509703053477,identical,C3
+original.diag_k5_ep60_median,0.08158817115915125,0.0815881711591512,identical,C3
+original.diag_k7_ep40_median,0.3867042487202934,0.3867042487202934,identical,C3
+original.diag_k7_ep60_median,0.38728326039103855,0.3872832603910385,identical,C3
+original.lc_GRB2-SH3_25pos_median,-0.0022748068701717496,-0.0022748068701717,identical,C3
+original.lc_GRB2-SH3_35pos_median,-0.06521615919896714,-0.0652161591989672,identical,C3
+original.lc_GRB2-SH3_45pos_median,0.0255358621434485,0.0255358621434485,identical,C3
+original.lc_GRB2-SH3_56pos_median,-0.0009976134182863002,-0.0009976134182862,identical,C3
+original.lc_PSD95-PDZ3_25pos_median,-0.06295882397059925,-0.0629588239705992,identical,C3
+original.lc_PSD95-PDZ3_35pos_median,-0.10945012962204935,-0.1094501296220493,identical,C3
+original.lc_PSD95-PDZ3_45pos_median,0.0037193908775634997,0.0037193908775635,identical,C3
+original.lc_PSD95-PDZ3_56pos_median,-0.0319782723415063,-0.0319782723415063,identical,C3
+original.lc_PSD95-PDZ3_70pos_median,0.07793231384891794,0.077932313848918,identical,C3
+original.lc_PSD95-PDZ3_84pos_median,0.38728326039103855,0.3872832603910385,identical,C3
+original.sweep_A_folds_median,0.35595341366181976,0.3559534136618197,identical,C3
+original.sweep_A_folds_runs,42,42.0,identical,C3
+original.sweep_B_thin_median,0.3570813960594219,0.3570813960594219,identical,C3
+original.sweep_B_thin_runs,36,36.0,identical,C3
+original.sweep_C_fewpos_median,0.0758558404584435,0.0758558404584435,identical,C3
+original.sweep_C_fewpos_runs,36,36.0,identical,C3
+original.sweep_max_gap,0.37709277716881484,0.3770927771688149,identical,C3
+original.sweep_runs,114,114.0,identical,C3
+position_sweep_60_median,-0.01407326220281845,-0.0140732622028184,identical,C3
+position_sweep_62_median,-0.0038759592234565996,-0.0038759592234566,identical,C3
+position_sweep_64_median,-0.00800397908243815,-0.0080039790824381,identical,C3
+position_sweep_66_median,-0.07005856641861595,-0.070058566418616,identical,C3
+position_sweep_68_median,0.012575040603047849,0.0125750406030478,identical,C3
+position_sweep_70_median,-0.026209937518036498,-0.0262099375180365,identical,C3
+position_sweep_72_median,0.0025269642525272,0.0025269642525272,identical,C3
+position_sweep_74_median,0.0058150202350578,0.0058150202350577,identical,C3
+position_sweep_76_median,0.11281732148355869,0.1128173214835587,identical,C3
+position_sweep_78_median,0.1160829397913217,0.1160829397913217,identical,C3
+position_sweep_80_median,0.2077479365317633,0.2077479365317633,identical,C3
+position_sweep_82_median,0.32959861139665336,0.3295986113966533,identical,C3
+position_sweep_84_median,0.32243668246458623,0.3224366824645862,identical,C3
+position_sweep_runs,130,130.0,identical,C3
+crossing_positions,76,76.0,identical,C3
+grb2_positions,56,56.0,identical,C3
+conformal_q90,6.807301044464111,6.807301044464111,identical,B3
+conformal_coverage,0.8992388546574845,0.8992388546574845,identical,B3
+sd_vs_error_rho,0.3038740737470343,0.3038740737470343,identical,B3
+n_tolerated,6283,6283.0,identical,B3
+n_destabilising,297,297.0,identical,B3
+n_rewiring,191,191.0,identical,B3
+n_both,113,113.0,identical,B3
+axis_rank_correlation,0.6745673917806877,0.6745677339636241,within tolerance,B3
+primary_assays,3.0,3.0,identical,B4
+primary_model_median_abs_rho,0.3614974125424033,0.3614974125424033,identical,B4
+primary_esm_median_abs_rho,0.4059334914906223,0.4059334914906223,identical,B4
+primary_model_wins,2.0,2.0,identical,B4
+sanity_assays,10.0,10.0,identical,B4
+sanity_model_median_abs_rho,0.9396605523698176,0.9396605523698176,identical,B4
+sanity_esm_median_abs_rho,0.5803138006745721,0.5803138006745721,identical,B4
+sanity_model_wins,10.0,10.0,identical,B4
+secondary_assays,15.0,15.0,identical,B4
+secondary_model_median_abs_rho,0.3996743927441746,0.3996743927441746,identical,B4
+secondary_esm_median_abs_rho,0.4907354473325677,0.4907354473325677,identical,B4
+secondary_model_wins,6.0,6.0,identical,B4
+variants,6884,6884.0,identical,B5
+nonhyper,2165,2165.0,identical,B5
+frac_destab_all,0.05955839628123184,0.0595583962812318,identical,B5
+frac_destab_nonhyper,0.0558891454965358,0.0558891454965358,identical,B5
+genes_tested_all,170,170.0,identical,B5
+genes_sig_all,1,1.0,identical,B5
+genes_tested_nonhyper,17,17.0,identical,B5
+genes_sig_nonhyper,0,0.0,identical,B5
+sites_tested,22,22.0,identical,B5
+sites_sig,0,0.0,identical,B5
+positions_mapped,56,56.0,identical,B5
+positional_uniform_p,0.0001999600079984003,0.0001999600079984,identical,B5
+rho_variants_vs_damage,-0.008853338959042353,-0.0088533389590423,identical,B5
+rho_damage_vs_burial,0.7116506334195684,0.7116506334195684,identical,B5
+rho_variants_vs_burial,-0.17784351785116279,-0.1778435178511627,identical,B5

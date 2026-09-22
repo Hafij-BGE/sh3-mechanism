@@ -25,3 +25,6 @@ __pycache__/
 ~$*
 .~lock.*#
 drive_upload/
+
+# ── per-variant follow-up table (COSMIC variants with tumour sites) ──────────
+results/F1_experimental_candidates/experimental_candidates.csv

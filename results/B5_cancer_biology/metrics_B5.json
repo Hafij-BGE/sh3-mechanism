@@ -1,0 +1,41 @@
+{
+ "meta": {
+  "program": "B5",
+  "title": "Cancer biology",
+  "started": "2026-09-22T15:15:22",
+  "minutes": 0.7,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "torch": "2.11.0+cpu",
+   "gpu": "none"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "identical": 15,
+   "": 1
+  }
+ },
+ "metrics": {
+  "variants": 6884,
+  "nonhyper": 2165,
+  "frac_destab_all": 0.05955839628123184,
+  "frac_destab_nonhyper": 0.0558891454965358,
+  "genes_tested_all": 170,
+  "genes_sig_all": 1,
+  "genes_tested_nonhyper": 17,
+  "genes_sig_nonhyper": 0,
+  "sites_tested": 22,
+  "sites_sig": 0,
+  "positions_mapped": 56,
+  "positional_uniform_p": 0.0001999600079984003,
+  "rho_variants_vs_damage": -0.008853338959042353,
+  "rho_damage_vs_burial": 0.7116506334195684,
+  "rho_variants_vs_burial": -0.17784351785116279,
+  "binding_claims_made": false
+ }
+}

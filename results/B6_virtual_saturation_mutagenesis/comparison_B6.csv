@@ -1,0 +1,11 @@
+quantity,this_run,recorded,status
+virtual_variants,366168.0,,
+domains,310.0,,
+max_diff_vs_observed,9.5367431640625e-07,,
+frac_destabilising_all_possible,0.12098544930195976,,
+frac_destabilising_reachable,0.09231538256464943,,
+frac_destabilising_observed,0.05955839628123184,,
+frac_destabilising_observed_reachable,0.05928623452294246,,
+matched_null_median,0.09176984705025491,,
+p_observed_depleted,0.000999000999000999,,
+rho_family_damage_vs_burial,0.7753142002220683,,

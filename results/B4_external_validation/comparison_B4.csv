@@ -1,0 +1,15 @@
+quantity,this_run,recorded,status
+primary_assays,3.0,3.0,identical
+primary_model_median_abs_rho,0.3614974125424033,0.3614974125424033,identical
+primary_esm_median_abs_rho,0.40593349149062236,0.40593349149062236,identical
+primary_model_wins,2.0,2.0,identical
+sanity_assays,10.0,10.0,identical
+sanity_model_median_abs_rho,0.9396605523698176,0.9396605523698176,identical
+sanity_esm_median_abs_rho,0.5803138006745721,0.5803138006745721,identical
+sanity_model_wins,10.0,10.0,identical
+secondary_assays,15.0,15.0,identical
+secondary_model_median_abs_rho,0.3996743927441746,0.3996743927441746,identical
+secondary_esm_median_abs_rho,0.4907354473325677,0.4907354473325677,identical
+secondary_model_wins,6.0,6.0,identical
+primary_drop_ratio_head_vs_esm,2.2672451459141154,,
+secondary_drop_ratio_head_vs_esm,3.4913244272998063,,

@@ -1,0 +1,33 @@
+{
+ "meta": {
+  "program": "B2",
+  "title": "Structural check of the folding predictor",
+  "started": "2026-09-22T13:15:25",
+  "minutes": 0.2,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "torch": "2.11.0+cpu",
+   "gpu": "none"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "": 5,
+   "identical": 3
+  }
+ },
+ "metrics": {
+  "positions": 56,
+  "rho_damage_vs_burial": 0.7116506334195684,
+  "rho_damage_vs_interface": 0.036978810663021194,
+  "rho_damage_vs_burial_all_positions": 0.7116506334195684,
+  "burial_to_interface_ratio": 19.24482212001531,
+  "median_pred_buried_variants": 1.1610866785049438,
+  "median_pred_no_structure_variants": 0.659246563911438,
+  "median_pred_surface_variants": 0.3777695894241333
+ }
+}

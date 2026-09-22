@@ -1,0 +1,9 @@
+check,passed
+variant_id unique,True
+wild-type residue matches domain sequence,True
+mutant sequence differs at one residue,True
+position inside the domain,True
+protein position = domain start + offset,True
+domain length = sequence length,True
+wild-type differs from mutant,True
+standard amino acids only,True

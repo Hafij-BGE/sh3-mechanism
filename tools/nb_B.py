@@ -144,7 +144,18 @@ print(ERR_SUB.round(3).to_string(index=False)); print(ERR_EFF.round(3).to_string
 import re
 fx = pd.read_csv(R.res('A1', 'baseline_foldx.csv')); ev = pd.read_csv(R.res('A1', 'baseline_eve.csv'))
 D2 = D_[D_.folding_reliable.eq(True) & D_.ddG_fold.notna()].copy(); D2['id'] = D2.wt_aa + D2.pos.astype(int).astype(str) + D2.mut_aa
-D2 = D2.merge(fx.rename(columns={'domain': 'domain_key'}), on=['domain_key', 'id'], how='left')
+fx = fx.join(fx.id.astype(str).str.extract(r'^([A-Z])(\d+)([A-Z])$').rename(columns={0: 'f_wt', 1: 'f_pos', 2: 'f_mut'})).dropna(subset=['f_pos'])
+fx['f_pos'] = fx.f_pos.astype(int); fparts = []
+for dom, g_ in fx.groupby('domain'):         # FoldX numbers residues as in the PDB file (GB1 +1, PDZ3 +310): derive the offset
+    wt_at = dict(zip(D2[D2.domain_key == dom].pos.astype(int), D2[D2.domain_key == dom].wt_aa))
+    off = max(range(-400, 401), key=lambda o: sum(wt_at.get(p - o) == w for p, w in zip(g_.f_pos, g_.f_wt)))
+    fparts.append(g_.assign(domain_key=dom, pos=g_.f_pos - off, mut_aa=g_.f_mut, foldx_offset=off))
+fx = pd.concat(fparts)[['domain_key', 'pos', 'mut_aa', 'foldx_ddg', 'foldx_offset']]
+D2 = D2.merge(fx, on=['domain_key', 'pos', 'mut_aa'], how='left')
+_f = D2.dropna(subset=['foldx_ddg'])
+FOLDX_R = dict(foldx_overlap_aligned=len(_f), foldx_vs_mochi_r_aligned=float(_f.ddG_fold.corr(_f.foldx_ddg)),
+               **{f'foldx_vs_mochi_r_aligned_{d}': float(g.ddG_fold.corr(g.foldx_ddg)) for d, g in _f.groupby('domain_key')})
+print(FOLDX_R)
 ev = ev.join(ev.id.astype(str).str.extract(r'^([A-Z])(\d+)([A-Z])$').rename(columns={0: 'e_wt', 1: 'e_pos', 2: 'e_mut'})).dropna(subset=['e_pos'])
 ev['e_pos'] = ev.e_pos.astype(int); parts = []
 for dom, g_ in ev.groupby('domain'):         # EVE numbers residues on the full protein: derive the offset
@@ -158,6 +169,7 @@ for dom, g_ in D2.groupby('domain_key'):
     c = g_.dropna(subset=['foldx_ddg', 'prediction_EVE_evol_indices'])
     BASE.append(dict(domain=dom, common_variants=len(c), head=C.spearman(c.ddG_fold, c.pred), esm_zero_shot=C.spearman(c.ddG_fold, -c.esm_score),
                      foldx=C.spearman(c.ddG_fold, c.foldx_ddg), eve=C.spearman(c.ddG_fold, c.prediction_EVE_evol_indices),
+                     foldx_offset=int(g_.foldx_offset.dropna().iloc[0]) if g_.foldx_offset.notna().any() else None,
                      eve_offset=int(g_.eve_offset.dropna().iloc[0]) if g_.eve_offset.notna().any() else None))
 BASE = pd.DataFrame(BASE); print(BASE.round(3).to_string(index=False))
 """),
@@ -181,13 +193,14 @@ R.section('Cross-assay check on ddPCA folding energies (reliable fits)', 'A diff
 for _, r in AB.iterrows(): R.metric('ablation: ' + r.model, r.per_domain_median_rho)
 for _, r in BASE.iterrows():
     for c in ('head', 'esm_zero_shot', 'foldx', 'eve'): R.metric(f'baseline_{r.domain}_{c}', r[c])
+for k, v in FOLDX_R.items(): R.metric(k, v)
 R.section('Feature ablation and simpler models (K1, K2)', 'Per-domain median ρ on the 15 held-out SH3 domains. Single-seed rows '
           'should be compared with the single-seed full model, not the ensemble.', AB, '{:.3f}')
 R.section('Error by substitution type (J4)', 'bias = mean(predicted − measured); negative means under-predicted damage.', ERR_SUB, '{:.3f}')
 R.section('Error by measured effect size (J4)', '', ERR_EFF, '{:.3f}')
 R.section('Against conventional predictors on the ddPCA domains (J6)', 'Spearman ρ with measured ΔΔG_fold on variants all four '
-          'methods score. FoldX needs a structure; EVE needs a deep alignment; the head needs neither. EVE residue numbering '
-          'is converted to construct numbering by the derived offset.', BASE, '{:.3f}')
+          'methods score. FoldX needs a structure; EVE needs a deep alignment; the head needs neither. FoldX (PDB numbering) and EVE '
+          'residue numbers are converted to construct numbering by offsets derived from the wild-type residues.', BASE, '{:.3f}')
 R.finish([f"Per-domain median ρ {PD.rho.median():.3f} (range {PD.rho.min():.3f}–{PD.rho.max():.3f}, IQR {q1:.3f}–{q3:.3f}) "
           f"over {len(PD)} held-out SH3 domains; every 95% CI excludes zero: {bool((PD.lo > 0).all())}.",
           f"Beats zero-shot ESM-2 (median |ρ| {PD.esm.abs().median():.3f}) on {WINS}/{len(PD)} domains; "

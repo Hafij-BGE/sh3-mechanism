@@ -1,0 +1,17 @@
+quantity,this_run,recorded,status
+variants,6884,6884.0,identical
+nonhyper,2165,2165.0,identical
+frac_destab_all,0.05955839628123184,0.05955839628123184,identical
+frac_destab_nonhyper,0.0558891454965358,0.0558891454965358,identical
+genes_tested_all,170,170.0,identical
+genes_sig_all,1,1.0,identical
+genes_tested_nonhyper,17,17.0,identical
+genes_sig_nonhyper,0,0.0,identical
+sites_tested,22,22.0,identical
+sites_sig,0,0.0,identical
+positions_mapped,56,56.0,identical
+positional_uniform_p,0.0001999600079984003,0.0001999600079984003,identical
+rho_variants_vs_damage,-0.008853338959042353,-0.008853338959042353,identical
+rho_damage_vs_burial,0.7116506334195684,0.7116506334195684,identical
+rho_variants_vs_burial,-0.17784351785116279,-0.17784351785116279,identical
+binding_claims_made,False,,

@@ -1,0 +1,24 @@
+quantity,this_run,recorded,status
+variants_total,399640.0,399640.0,identical
+variants_megascale,389068.0,389068.0,identical
+variants_ddpca,3688.0,3688.0,identical
+variants_atlas,6884.0,6884.0,identical
+dropped_by_residue_check,0.0,,
+esm_domains,725.0,725.0,identical
+esm_rho_ddpca_fold,-0.4037677089901184,-0.404,within tolerance
+esm_rho_ddpca_bind,-0.25923092102027456,-0.259,within tolerance
+esm_rho_megascale_fold,-0.38813063164184985,-0.388,within tolerance
+structure_rows,18756.0,18756.0,identical
+structure_domains,302.0,302.0,identical
+alphafold_proteins_missing,9.0,,
+atlas_structure_coverage,0.9681871005229518,0.968,within tolerance
+atlas_refmap_coverage,0.8946833236490412,0.895,within tolerance
+atlas_groups,310.0,310.0,identical
+xsep_surface_not_interface_fold,0.7245924472808838,0.725,within tolerance
+xsep_surface_not_interface_bind,0.1150489822030067,0.115,within tolerance
+xsep_surface_interface_fold,0.4494057893753052,0.449,within tolerance
+xsep_surface_interface_bind,0.6784747838973999,0.678,within tolerance
+xsep_buried_not_interface_fold,2.0873883962631226,2.087,within tolerance
+xsep_buried_not_interface_bind,0.543288916349411,0.543,within tolerance
+xsep_buried_interface_fold,0.9782630801200868,0.978,within tolerance
+xsep_buried_interface_bind,1.4455920457839966,1.446,within tolerance

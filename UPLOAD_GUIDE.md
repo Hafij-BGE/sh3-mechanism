@@ -39,10 +39,11 @@ Paths on the left are on your laptop, relative to `~/Documents/thesis/`.
 | 14 | `sh3 updated/reference/checksums.md5` | `reference/` | small |
 | 15 | `sh3 updated/reference/data_manifest.json` | `reference/` | small |
 | 16 | `sh3 updated/src/sh3_common.py`, `sh3_atlas.py`, `run_tests.py` | `code/` | small |
-| 17 | `sh3 updated/notebooks/*.ipynb` (all 14) | `code/` | small |
+| 17 | `sh3 updated/notebooks/*.ipynb` (all 16) | `code/` | small |
 
-**Shortcut for items 13–17:** drag the two folders in `sh3 updated/drive_upload/` (`code/` and `reference/`)
-into `MyDrive/sh3_repro/`.
+**Items 13–17 in short:** everything in `notebooks/` and `src/` goes into `MyDrive/sh3_repro/code/` (one folder;
+the notebooks import `sh3_common.py` from there), and everything in `reference/` goes into
+`MyDrive/sh3_repro/reference/`.
 
 **About 8.1 GB in total.** The two big COSMIC files are the slow part; start them first.
 
@@ -79,9 +80,25 @@ Runtime → Change runtime type → **T4 GPU**. Every notebook ends by writing
 | 12 | `B5_cancer_biology` | CPU | ~3 min |
 | 13 | `B6_virtual_saturation_mutagenesis` | CPU | ~5 min |
 | 14 | `D1_figures_and_verification` | CPU | 1 min |
+| 15 | `F1_experimental_candidates` *(optional follow-up)* | CPU | seconds |
+| 16 | `F2_candidate_figures` *(optional, after F1)* | CPU | seconds |
 
-About **3.5 hours** in total. If Colab disconnects, run the same notebook again: with
-`RESUME = True` it skips the steps already saved.
+About **2.5 hours** in total (measured on the 2026-09-22 run; C3 alone took 53 min). If Colab
+disconnects, run the same notebook again: with `RESUME = True` it skips the steps already saved.
+
+**Troubleshooting**
+- **`OSError: Transport endpoint is not connected`.** The Drive mount dropped. Restart the session
+  (Runtime → Restart session) and run all the cells again. If it repeats, run
+  `from google.colab import drive; drive.flush_and_unmount(); drive.mount('/content/drive', force_remount=True)`.
+- **A long cell prints nothing (C3 sweeps, about 15 min).** It writes its file only at the end. Leave it
+  running.
+- **"… not found. Run X first".** A notebook was run out of order. Run the named program, then this one.
+- **An MD5 message in the first cell.** An input file is incomplete or wrong. Upload it again.
+
+**After changing code on the laptop:** run `python3 tools/make_notebooks.py` to regenerate `notebooks/`.
+Then upload the changed files, replacing the old ones, before re-running:
+- from `notebooks/` or `src/` into `sh3_repro/code/`;
+- from `reference/` into `sh3_repro/reference/`.
 
 ## 4. Bring the results back
 

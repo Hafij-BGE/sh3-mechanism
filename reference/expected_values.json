@@ -417,8 +417,8 @@
  },
  "B3.axis_rank_correlation": {
   "value": 0.6745677339636241,
-  "tol": 1e-09,
-  "source": "stage3b_metrics.json (not a valid test)"
+  "tol": 1e-06,
+  "source": "stage3b_metrics.json (not a valid test); tol 1e-6: ties in the ESM score are ordered by an unstable argsort, which can differ by platform (3e-7 seen on Colab CPU)"
  },
  "B3.n_tolerated": {
   "value": 6283,

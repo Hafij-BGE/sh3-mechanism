@@ -1,0 +1,11 @@
+quantity,this_run,recorded,status
+n_per_panel,10,,
+specificity_axis_validated,False,,
+panel_s_destabilising,10,,
+panel_s_control,10,,
+panel_s_control_same_domain,10,,
+panel_r_rewiring_only,0,,
+four_group_design_available,False,,
+total_candidates,20,,
+total_tier1,8,,
+median_atlas_fold_halfwidth,1.1150444746017456,,

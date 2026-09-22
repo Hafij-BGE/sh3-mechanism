@@ -71,7 +71,8 @@ for held in B.domain_key.unique():
     p = np.mean([C.predict(m, proj(XB[te])) for m in ms if m is not None], 0)
     lo, hi = C.boot_ci(y, p, 1000)
     rows.append(dict(mode='corrected', held_out=held, n=int(te.sum()), rho=C.spearman(y, p), lo=lo, hi=hi, esm=esm))
-LD = pd.DataFrame(rows); LD['beats_esm'] = LD.rho.abs() > LD.esm.abs(); LD.to_csv(R.out('lodo_results.csv'), index=False)
+LD = pd.DataFrame(rows); LD['beats_esm'] = LD.rho > -LD.esm   # signed: the head should correlate positively, ESM negatively
+LD.to_csv(R.out('lodo_results.csv'), index=False)
 print(LD.round(3).to_string(index=False))
 """),
 code(r"""
@@ -134,7 +135,7 @@ SUM = RP.groupby(['mode', 'domain']).agg(n=('n', 'first'), positions=('n_pos', '
 SUM = SUM.merge(RP[RP.seed == 0][['mode', 'domain', 'rho']].rename(columns={'rho': 'single_fit_rho'}), on=['mode', 'domain'])
 SUM = SUM.merge(CI, on=['mode', 'domain']).rename(columns={'lo': 'single_fit_ci_lo', 'hi': 'single_fit_ci_hi'})
 SUM['spread'] = SUM.repeats_hi - SUM.repeats_lo; SUM['crosses_zero'] = (SUM.repeats_lo < 0) & (SUM.repeats_hi > 0)
-SUM['beats_esm'] = SUM.repeats_median.abs() > SUM.esm.abs()
+SUM['beats_esm'] = SUM.repeats_median > -SUM.esm   # signed: a wrong-direction correlation is not a win
 SUM.to_csv(R.out('within_domain_summary.csv'), index=False); print(SUM.round(3).to_string(index=False))
 """),
 code(r"""
@@ -222,7 +223,8 @@ def lc_runs():
                     if r: yield r
 LC = cached('learning_curve.csv', lambda: list(lc_runs()))
 DGS = DG.groupby(['mode', 'n_splits', 'epochs']).rho.median().rename('median_rho').reset_index()
-LCS = LC.groupby(['mode', 'domain', 'n_pos', 'n']).rho.agg(['median', 'min', 'max', 'size']).reset_index()
+LCS = LC.groupby(['mode', 'domain', 'n_pos']).agg(n=('n', 'max'), median=('rho', 'median'), min=('rho', 'min'),
+                                                  max=('rho', 'max'), size=('rho', 'size')).reset_index()   # one row per budget, even if a draw had fewer rows
 print(DGS.round(3).to_string(index=False)); print(LCS.round(3).to_string(index=False))
 """),
 md("## 4. Three sweeps: fold count (A), thinned rows at all positions (B), fewer positions (C)"),

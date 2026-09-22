@@ -1,0 +1,9 @@
+{
+ "head_beats_esm": false,
+ "grb2_median_rho": {
+  "corrected": -0.020228518867251515,
+  "original": -0.030234757271434334
+ },
+ "grb2_esm_rho": -0.1261237460942462,
+ "predictor_of_record": "esm_zero_shot"
+}

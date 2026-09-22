@@ -8,7 +8,7 @@ positions, or SH3 biology? Could more mutagenesis of GRB2-SH3 ever fix it?
 |---|---|---|
 | 1. Matched budget | PSD95 cut to GRB2's 56 positions / 619 rows, 20 draws | Collapses to median −0.023; its interval covers GRB2's −0.030 |
 | 2. Diagnostic grid | Full PSD95 at 7 vs 5 folds, 60 vs 40 epochs | 5 folds give ~0.08, 7 give ~0.39: fragile near the edge |
-| 3. Learning curve | Six budgets for both domains | PSD95 rises; GRB2 stays flat |
+| 3. Learning curve | Six budgets for both domains, one row per budget over all draws | PSD95 flat to 70 positions, then jumps at 84; GRB2 stays flat |
 | 4. Three sweeps | A: fold count; B: rows thinned, all 84 positions kept; C: positions removed at the same rows | B holds (+0.357), C collapses (+0.076): **positions matter** |
 | 5. Position sweep | 60–84 positions, 10 shuffled subsets each | Flat to 74; first significant rise at **76**, solid by 82 |
 

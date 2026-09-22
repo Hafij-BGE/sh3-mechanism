@@ -1,0 +1,10 @@
+quantity,this_run,recorded,status
+picks,10.0,,
+controls,10.0,,
+positions_covered,6.0,,
+aligned_positions,56.0,,
+max_picks_at_one_position,4.0,,
+most_used_position,5.0,,
+min_pick_percentile,99.65136548518304,,
+picks_buried,8.0,,
+picks_to_proline,4.0,,

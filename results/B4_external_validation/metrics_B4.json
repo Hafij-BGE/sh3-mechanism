@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "program": "B4",
+  "title": "External validation (ProteinGym)",
+  "started": "2026-09-22T13:22:04",
+  "minutes": 11.4,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "Bio": "1.88",
+   "torch": "2.11.0+cu128",
+   "gpu": "Tesla T4"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "identical": 12,
+   "": 2
+  }
+ },
+ "metrics": {
+  "primary_assays": 3,
+  "primary_model_median_abs_rho": 0.3614974125424033,
+  "primary_esm_median_abs_rho": 0.40593349149062236,
+  "primary_model_wins": 2,
+  "sanity_assays": 10,
+  "sanity_model_median_abs_rho": 0.9396605523698176,
+  "sanity_esm_median_abs_rho": 0.5803138006745721,
+  "sanity_model_wins": 10,
+  "secondary_assays": 15,
+  "secondary_model_median_abs_rho": 0.3996743927441746,
+  "secondary_esm_median_abs_rho": 0.4907354473325677,
+  "secondary_model_wins": 6,
+  "primary_drop_ratio_head_vs_esm": 2.2672451459141154,
+  "secondary_drop_ratio_head_vs_esm": 3.4913244272998063
+ }
+}

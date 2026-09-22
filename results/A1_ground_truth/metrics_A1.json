@@ -1,0 +1,54 @@
+{
+ "meta": {
+  "program": "A1",
+  "title": "Ground truth",
+  "started": "2026-09-22T12:08:38",
+  "minutes": 1.4,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "Bio": "1.88",
+   "torch": "2.11.0+cpu",
+   "gpu": "none"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "identical": 15,
+   "within tolerance": 11,
+   "": 1
+  }
+ },
+ "metrics": {
+  "ddpca_singles": 3688,
+  "ddpca_both_energies": 3368,
+  "reliable_binding": 2840,
+  "reliable_folding": 3109,
+  "reliable_binding_GRB2-SH3": 619,
+  "reliable_binding_PSD95-PDZ3": 1221,
+  "reliable_binding_GB1": 1000,
+  "calibration_fold_r": 0.829056935425266,
+  "calibration_fold_n": 15,
+  "calibration_bind_r": 0.6122524026222314,
+  "calibration_bind_n": 12,
+  "chi_offset": 310,
+  "megascale_singles": 389068,
+  "megascale_domains": 412,
+  "megascale_sh3_structures": 26,
+  "megascale_sh3_genes": 15,
+  "megascale_sh3_variants": 27590,
+  "foldx_overlap": 1024,
+  "foldx_vs_mochi_r": 0.49443805839597044,
+  "sep_surface_not_interface_fold": 0.8678893446922302,
+  "sep_surface_not_interface_bind": -0.0356791578233242,
+  "sep_surface_interface_fold": 0.568724125623703,
+  "sep_surface_interface_bind": 0.6454968452453613,
+  "sep_buried_not_interface_fold": 3.565534830093384,
+  "sep_buried_not_interface_bind": 0.1414427757263183,
+  "sep_buried_interface_fold": 1.2794172763824463,
+  "sep_buried_interface_bind": 2.900125741958618
+ }
+}

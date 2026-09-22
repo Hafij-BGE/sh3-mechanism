@@ -16,8 +16,9 @@ and hardware available (Colab T4, the downloaded datasets, COSMIC).
 | L3/L4 virtual saturation mutagenesis, G4 family hotspot map | B6 |
 | F1–F3 specificity model and rewiring score | C4, with a pre-specified validation rule |
 | E1 position-coverage experiment | C3 |
-| T1 modules, T4 unit tests, T5 run records | 14 notebooks, `src/run_tests.py`, metrics JSON and environment per program |
+| T1 modules, T4 unit tests, T5 run records | 15 notebooks, `src/run_tests.py`, metrics JSON and environment per program |
 | Tier 1 item 1, binding terminology | B3 and its doc: the binding column is an ESM-2 proxy, not a prediction |
+| N1–N3 experimental validation *design* | F1: ranked, assay-tagged candidate panels from frozen outputs. The experiments themselves are future work; the rewiring and four-group panels are built only if C4 validates. |
 
 ## Feasible next, needs extra data or compute
 | Item | What it needs |
@@ -36,4 +37,4 @@ and hardware available (Colab T4, the downloaded datasets, COSMIC).
 | E2/E3 multi-domain binding | Only 3 ddPCA domains exist, 1 of them an SH3 (C1 shows pooling fails) |
 | F4 contrastive peptide ranking | The phage-display peptides are all binders (signal floor 3.00, no negatives) |
 | E5, O1–O3 epistasis | No double-mutant SH3 binding data |
-| N1–N3 validation, P1–P3 other families, U5–U7 | Need new experiments or separate projects |
+| N1–N3 validation *experiments*, P1–P3 other families, U5–U7 | Need new experiments or separate projects (F1 plans the N1–N3 panels) |

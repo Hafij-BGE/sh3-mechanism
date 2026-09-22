@@ -1,0 +1,9 @@
+quantity,this_run,recorded,status
+positions,56.0,56.0,identical
+rho_damage_vs_burial,0.7116506334195684,0.7116506334195684,identical
+rho_damage_vs_interface,0.036978810663021194,0.03697881066302119,identical
+rho_damage_vs_burial_all_positions,0.7116506334195684,,
+burial_to_interface_ratio,19.24482212001531,,
+median_pred_buried_variants,1.1610866785049438,,
+median_pred_no_structure_variants,0.659246563911438,,
+median_pred_surface_variants,0.3777695894241333,,

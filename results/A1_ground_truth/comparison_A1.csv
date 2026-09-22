@@ -1,0 +1,28 @@
+quantity,this_run,recorded,status
+ddpca_singles,3688.0,3688.0,identical
+ddpca_both_energies,3368.0,3368.0,identical
+reliable_binding,2840.0,2840.0,identical
+reliable_folding,3109.0,3109.0,identical
+reliable_binding_GRB2-SH3,619.0,619.0,identical
+reliable_binding_PSD95-PDZ3,1221.0,1221.0,identical
+reliable_binding_GB1,1000.0,1000.0,identical
+calibration_fold_r,0.829056935425266,0.829,within tolerance
+calibration_fold_n,15.0,15.0,identical
+calibration_bind_r,0.6122524026222314,0.612,within tolerance
+calibration_bind_n,12.0,12.0,identical
+chi_offset,310.0,310.0,identical
+megascale_singles,389068.0,389068.0,identical
+megascale_domains,412.0,412.0,identical
+megascale_sh3_structures,26.0,26.0,identical
+megascale_sh3_genes,15.0,15.0,identical
+megascale_sh3_variants,27590.0,,
+foldx_overlap,1024.0,1024.0,identical
+foldx_vs_mochi_r,0.49443805839597044,0.494,within tolerance
+sep_surface_not_interface_fold,0.8678893446922302,0.868,within tolerance
+sep_surface_not_interface_bind,-0.0356791578233242,-0.036,within tolerance
+sep_surface_interface_fold,0.568724125623703,0.569,within tolerance
+sep_surface_interface_bind,0.6454968452453613,0.645,within tolerance
+sep_buried_not_interface_fold,3.565534830093384,3.566,within tolerance
+sep_buried_not_interface_bind,0.1414427757263183,0.141,within tolerance
+sep_buried_interface_fold,1.2794172763824463,1.279,within tolerance
+sep_buried_interface_bind,2.900125741958618,2.9,within tolerance

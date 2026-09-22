@@ -27,7 +27,7 @@ supervision adds to what the zero-shot ESM-2 score already knows.
 | Feature ablation (K1) | Embedding only, embedding + ESM scalars, and scalars only: what does each group contribute? |
 | Ridge regression (K2) | Does a linear model on the same features do as well? If so, the MLP is not the point. |
 | Error breakdown (J4) | Which substitution types and effect sizes does it get wrong? |
-| FoldX and EVE (J6) | How does it compare with a structure-based and an alignment-based predictor on the ddPCA domains? EVE numbering is converted to construct numbering by a derived offset. |
+| FoldX and EVE (J6) | How does it compare with a structure-based and an alignment-based predictor on the ddPCA domains? EVE and FoldX numbering are converted to construct numbering by offsets derived from the wild-type residues. FoldX uses PDB numbering: GB1 +1, PDZ3 +310. The first run joined it by raw number; fixed on 2026-09-22 (FoldX vs measured r 0.494 → 0.418). |
 
 ## Outputs
 `models.pt`, `folding_per_domain_ci.csv`, `heldout_predictions.parquet`,

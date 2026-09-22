@@ -1,0 +1,56 @@
+{
+ "meta": {
+  "program": "C1",
+  "title": "Binding across domains (leave-one-domain-out)",
+  "started": "2026-09-22T13:44:01",
+  "minutes": 1.1,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "torch": "2.11.0+cu128",
+   "gpu": "Tesla T4"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "new (corrected procedure)": 15,
+   "identical": 9,
+   "": 6
+  }
+ },
+ "metrics": {
+  "original.GB1.rho": -0.09037497037497037,
+  "original.GB1.esm": 0.0421307492905556,
+  "original.GB1.n": 1000,
+  "original.GB1.lo": -0.15060594051930584,
+  "original.GB1.hi": -0.027658816818903347,
+  "corrected.GB1.rho": -0.1507912267912268,
+  "corrected.GB1.esm": 0.0421307492905556,
+  "corrected.GB1.n": 1000,
+  "corrected.GB1.lo": -0.21586181108721395,
+  "corrected.GB1.hi": -0.08627780814715481,
+  "original.GRB2-SH3.rho": 0.09683667878087518,
+  "original.GRB2-SH3.esm": -0.1261237460942462,
+  "original.GRB2-SH3.n": 619,
+  "original.GRB2-SH3.lo": 0.017089632332964812,
+  "original.GRB2-SH3.hi": 0.17599916466119145,
+  "corrected.GRB2-SH3.rho": -0.04214095150589411,
+  "corrected.GRB2-SH3.esm": -0.1261237460942462,
+  "corrected.GRB2-SH3.n": 619,
+  "corrected.GRB2-SH3.lo": -0.11949460961730597,
+  "corrected.GRB2-SH3.hi": 0.035798761097633386,
+  "original.PSD95-PDZ3.rho": 0.1118287749260892,
+  "original.PSD95-PDZ3.esm": -0.4379805927244899,
+  "original.PSD95-PDZ3.n": 1221,
+  "original.PSD95-PDZ3.lo": 0.056938985624240705,
+  "original.PSD95-PDZ3.hi": 0.1708353402210117,
+  "corrected.PSD95-PDZ3.rho": 0.1315160155411289,
+  "corrected.PSD95-PDZ3.esm": -0.4379805927244899,
+  "corrected.PSD95-PDZ3.n": 1221,
+  "corrected.PSD95-PDZ3.lo": 0.07597069612829906,
+  "corrected.PSD95-PDZ3.hi": 0.18807935513612414
+ }
+}

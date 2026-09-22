@@ -1,0 +1,27 @@
+{
+ "windows": {
+  "canonical": 325,
+  "isoform": 518
+ },
+ "cmc": {
+  "rows": 5802907,
+  "missense_sh3_gene": 91842,
+  "in_window_residue_mismatch": 490,
+  "mapped_canonical": 5923,
+  "mapped_isoform": 1034
+ },
+ "tumour": {
+  "gsm_rows": 62765128,
+  "gsm_short_rows": 0,
+  "gsm_samples": 53598,
+  "atlas_hits": 16335,
+  "burden_median": 172,
+  "burden_p95": 6075,
+  "burden_p99": 16293,
+  "hypermutated_samples": 9725,
+  "hypermutated_fraction": 0.1814433374379641
+ },
+ "variants": 6884,
+ "columns": 44,
+ "minutes": 12.6
+}

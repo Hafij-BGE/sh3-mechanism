@@ -23,7 +23,8 @@ therefore used **the same partition**; only the inner split and the seeds varied
 
 ## Decision file
 `binding_decision.json` records whether the trained head beats zero-shot ESM-2 on GRB2-SH3 in either
-mode. B3 reads it.
+mode. B3 reads it. The comparison is **signed**: the head's ρ must exceed −ρ(ESM). A wrong-direction
+correlation never counts as a win (fixed on 2026-09-22; C1 uses the same rule).
 
 ## Expected result (original)
 | Domain | Positions | Single fit | Six repeats: median [range] | ESM |

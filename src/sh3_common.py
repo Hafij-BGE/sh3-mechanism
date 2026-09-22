@@ -28,7 +28,9 @@ PROGRAM_DIRS = {'A0': 'A0_cancer_atlas', 'A1': 'A1_ground_truth', 'A2': 'A2_feat
                 'B4': 'B4_external_validation', 'B5': 'B5_cancer_biology', 'B6': 'B6_virtual_saturation_mutagenesis',
                 'C1': 'C1_binding_cross_domain', 'C2': 'C2_binding_within_domain',
                 'C3': 'C3_binding_data_sufficiency', 'C4': 'C4_specificity_axis',
-                'D1': 'D1_figures_and_verification'}
+                'D1': 'D1_figures_and_verification',
+                'F1': 'F1_experimental_candidates',
+                'F2': 'F2_candidate_figures'}   # F1, F2 run after D1; not part of the reproduction check
 
 
 # ═══════════════════════════════════════════════════════════════ run bookkeeping

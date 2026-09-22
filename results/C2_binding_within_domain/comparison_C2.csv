@@ -1,0 +1,47 @@
+quantity,this_run,recorded,status
+corrected.GB1.single_fit_rho,0.04308384708384709,,new (corrected procedure)
+corrected.GB1.n,1000,,new (corrected procedure)
+corrected.GB1.positions,55,,new (corrected procedure)
+corrected.GB1.repeats_median,0.05316212316212317,,new (corrected procedure)
+corrected.GB1.repeats_lo,0.030266154266154265,,new (corrected procedure)
+corrected.GB1.repeats_hi,0.2117127557127557,,new (corrected procedure)
+corrected.GB1.spread,0.18144660144660144,,new (corrected procedure)
+GB1.esm,0.0421307492905556,0.0421307492905556,identical
+corrected.GRB2-SH3.single_fit_rho,0.022219951054077806,,new (corrected procedure)
+corrected.GRB2-SH3.n,619,,new (corrected procedure)
+corrected.GRB2-SH3.positions,56,,new (corrected procedure)
+corrected.GRB2-SH3.repeats_median,-0.020228518867251515,,new (corrected procedure)
+corrected.GRB2-SH3.repeats_lo,-0.06836982352854867,,new (corrected procedure)
+corrected.GRB2-SH3.repeats_hi,0.022219951054077806,,new (corrected procedure)
+corrected.GRB2-SH3.spread,0.09058977458262649,,new (corrected procedure)
+GRB2-SH3.esm,-0.1261237460942462,-0.1261237460942462,identical
+corrected.PSD95-PDZ3.single_fit_rho,0.3240573508449337,,new (corrected procedure)
+corrected.PSD95-PDZ3.n,1221,,new (corrected procedure)
+corrected.PSD95-PDZ3.positions,84,,new (corrected procedure)
+corrected.PSD95-PDZ3.repeats_median,0.37324460718252145,,new (corrected procedure)
+corrected.PSD95-PDZ3.repeats_lo,0.3240573508449337,,new (corrected procedure)
+corrected.PSD95-PDZ3.repeats_hi,0.41826495321437773,,new (corrected procedure)
+corrected.PSD95-PDZ3.spread,0.09420760236944403,,new (corrected procedure)
+PSD95-PDZ3.esm,-0.4379805927244899,-0.4379805927244899,identical
+original.GB1.single_fit_rho,-0.08462025087411164,-0.08462025087411164,identical
+original.GB1.n,1000,1000.0,identical
+original.GB1.positions,55,55.0,identical
+original.GB1.repeats_median,0.00933884133884134,0.00933884133884134,identical
+original.GB1.repeats_lo,-0.11823637023637024,-0.11823637023637024,identical
+original.GB1.repeats_hi,0.1966039966039966,0.1966039966039966,identical
+original.GB1.spread,0.31484036684036687,,
+original.GRB2-SH3.single_fit_rho,0.12434758586912913,0.12434758586912913,identical
+original.GRB2-SH3.n,619,619.0,identical
+original.GRB2-SH3.positions,56,56.0,identical
+original.GRB2-SH3.repeats_median,-0.030234757271434334,-0.030234757271434334,identical
+original.GRB2-SH3.repeats_lo,-0.10863318234000367,-0.10863318234000367,identical
+original.GRB2-SH3.repeats_hi,0.12434758586912913,0.12434758586912913,identical
+original.GRB2-SH3.spread,0.2329807682091328,,
+original.PSD95-PDZ3.single_fit_rho,0.3911291472505285,0.3911291472505285,identical
+original.PSD95-PDZ3.n,1221,1221.0,identical
+original.PSD95-PDZ3.positions,84,84.0,identical
+original.PSD95-PDZ3.repeats_median,0.3969932390406754,0.3969932390406754,identical
+original.PSD95-PDZ3.repeats_lo,0.363112269413527,0.363112269413527,identical
+original.PSD95-PDZ3.repeats_hi,0.4120185793712129,0.4120185793712129,identical
+original.PSD95-PDZ3.spread,0.04890630995768591,,
+head_beats_esm_on_grb2,False,,

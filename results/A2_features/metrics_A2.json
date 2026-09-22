@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "program": "A2",
+  "title": "Features",
+  "started": "2026-09-22T12:17:36",
+  "minutes": 20.9,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "Bio": "1.88",
+   "torch": "2.11.0+cu128",
+   "gpu": "Tesla T4"
+  },
+  "verdict": "REPRODUCED",
+  "status_counts": {
+   "within tolerance": 13,
+   "identical": 8,
+   "": 2
+  }
+ },
+ "metrics": {
+  "variants_total": 399640,
+  "variants_megascale": 389068,
+  "variants_ddpca": 3688,
+  "variants_atlas": 6884,
+  "dropped_by_residue_check": 0,
+  "esm_domains": 725,
+  "esm_rho_ddpca_fold": -0.4037677089901184,
+  "esm_rho_ddpca_bind": -0.25923092102027456,
+  "esm_rho_megascale_fold": -0.38813063164184985,
+  "structure_rows": 18756,
+  "structure_domains": 302,
+  "alphafold_proteins_missing": 9,
+  "atlas_structure_coverage": 0.9681871005229518,
+  "atlas_refmap_coverage": 0.8946833236490412,
+  "atlas_groups": 310,
+  "xsep_surface_not_interface_fold": 0.7245924472808838,
+  "xsep_surface_not_interface_bind": 0.1150489822030067,
+  "xsep_surface_interface_fold": 0.4494057893753052,
+  "xsep_surface_interface_bind": 0.6784747838973999,
+  "xsep_buried_not_interface_fold": 2.0873883962631226,
+  "xsep_buried_not_interface_bind": 0.543288916349411,
+  "xsep_buried_interface_fold": 0.9782630801200868,
+  "xsep_buried_interface_bind": 1.4455920457839966
+ }
+}

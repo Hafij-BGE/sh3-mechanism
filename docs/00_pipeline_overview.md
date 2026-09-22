@@ -4,7 +4,7 @@
 or leave the fold intact and change binding? The pipeline builds the evidence in four parts.
 
 ```
-RAW DATA ──► A. Initial data processing ──► B. Main task: loss of fold ──► D. Figures + verification
+RAW DATA ──► A. Initial data processing ──► B. Main task: loss of fold ──► D. Figures + verification ──► F. Follow-up
                                          └─► C. Why binding cannot be predicted ─┘
 ```
 
@@ -24,9 +24,12 @@ RAW DATA ──► A. Initial data processing ──► B. Main task: loss of fo
 | | C3 | Positions, not rows: about 80 positions needed, an SH3 has 56–60 |
 | | C4 | An ESM-independent specificity axis from experimental PWMs *(roadmap extension)* |
 | **D** | D1 | Figures, reproduction report, one-page summary |
+| **F** Follow-up | F1 | Experimental validation candidates from frozen outputs *(roadmap N1–N3; optional)* |
+| | F2 | Figures for the F1 panel: pick-vs-control intervals, atlas context, position on the fold |
 
-**Run order:** A0 → A1 → A2 → B1 → B2 → C1 → C2 → C3 → B3 → C4 → B4 → B5 → B6 → D1.
-B3 comes after Part C because the choice of binding axis depends on C2.
+**Run order:** A0 → A1 → A2 → B1 → B2 → C1 → C2 → C3 → B3 → C4 → B4 → B5 → B6 → D1 → (F1 → F2).
+B3 comes after Part C because the choice of binding axis depends on C2. B4 needs only B1 and can run any
+time after it. F1 and F2 read results only and change nothing upstream.
 
 ## Rules that hold everywhere
 
@@ -52,3 +55,24 @@ B3 comes after Part C because the choice of binding axis depends on C2.
 
 Stage 0 has already been verified locally: the rebuilt atlas is **byte-identical** to
 `SH3_cancer_master_v3.tsv` (MD5 `cef897f4…`), and so is the rejected-rows file.
+
+## Found during the full Colab run (2026-09-22) and fixed
+
+| Finding | Where | Fix |
+|---|---|---|
+| FoldX files use PDB numbering (GB1 +1, PDZ3 +310) but were joined by raw residue number | A1, B1 | B1 derives each offset from the wild-type residues; FoldX vs measured r 0.494 → 0.418 |
+| "Beats ESM" compared absolute values, so wrong-direction correlations counted as wins | C1, C2 | signed comparison; C1 1/3 → 0/3; C2's binding decision made safe |
+| Learning-curve table split one budget into two rows | C3 | grouped by positions only; the value now matches the record |
+| Tolerance 10⁻⁹ on a quantity that depends on tie ordering | B3 | tolerance 10⁻⁶, reason recorded in `expected_values.json` |
+
+## Where to read what
+
+| You want | Read |
+|---|---|
+| How a program works and why | `docs/<ID>_*.md` |
+| The numbers of a run | `results/<ID>_*/RESULTS_<ID>.md` (written by the notebook) |
+| What the numbers mean | `results/<ID>_*/ANALYSIS_<ID>.md` (interpretation, limitations, next step) |
+| The whole run on one page | `results/RESULTS_SUMMARY.md` and `results/D1_figures_and_verification/ANALYSIS_D1.md` |
+| How to upload and run | `UPLOAD_GUIDE.md` |
+| How to put it on GitHub | `GITHUB_GUIDE.md` |
+| Which roadmap items are in | `docs/UPGRADE_ROADMAP_STATUS.md` |

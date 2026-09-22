@@ -26,7 +26,9 @@ that they mean what we think (sign and scale).
    structures of 15 genes.
 4. **The premise in measured data.** GRB2-SH3 variants are grouped by burial (RSA < 0.25) and by
    interface (< 5 Å from the peptide in 2VWF). No model is involved.
-5. **Baselines.** FoldX, EVE and MSA conservation are extracted for B1.
+5. **Baselines.** FoldX, EVE and MSA conservation are extracted for B1. FoldX IDs are in PDB numbering. A1's own
+   `foldx_vs_mochi_r` (0.494) joins them by raw residue number and is kept only to match the record. The aligned value
+   (0.418) is computed in B1 (`foldx_vs_mochi_r_aligned`).
 
 ## Outputs
 `ddpca_ground_truth.parquet`, `megascale_singles.parquet`, `megascale_sh3_matches.csv`,

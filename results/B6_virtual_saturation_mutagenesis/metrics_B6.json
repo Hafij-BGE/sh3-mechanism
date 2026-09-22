@@ -1,0 +1,35 @@
+{
+ "meta": {
+  "program": "B6",
+  "title": "Virtual saturation mutagenesis",
+  "started": "2026-09-22T15:18:54",
+  "minutes": 1.9,
+  "environment": {
+   "python": "3.13.15",
+   "numpy": "2.1.3",
+   "pandas": "2.2.3",
+   "scipy": "1.16.3",
+   "sklearn": "1.6.1",
+   "transformers": "5.16.1",
+   "Bio": "1.88",
+   "torch": "2.11.0+cpu",
+   "gpu": "none"
+  },
+  "verdict": "no recorded values to compare",
+  "status_counts": {
+   "": 10
+  }
+ },
+ "metrics": {
+  "virtual_variants": 366168,
+  "domains": 310,
+  "max_diff_vs_observed": 9.5367431640625e-07,
+  "frac_destabilising_all_possible": 0.12098544930195976,
+  "frac_destabilising_reachable": 0.09231538256464943,
+  "frac_destabilising_observed": 0.05955839628123184,
+  "frac_destabilising_observed_reachable": 0.05928623452294246,
+  "matched_null_median": 0.09176984705025491,
+  "p_observed_depleted": 0.000999000999000999,
+  "rho_family_damage_vs_burial": 0.7753142002220683
+ }
+}

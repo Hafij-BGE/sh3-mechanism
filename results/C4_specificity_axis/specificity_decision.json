@@ -1,0 +1,13 @@
+{
+ "validated": false,
+ "median_centred_r": 0.2884351199911039,
+ "ci": [
+  0.21787147270325652,
+  0.33709832953579966
+ ],
+ "wins_vs_mean": 55,
+ "wins_vs_nearest": 85,
+ "domains": 115,
+ "sign_test_p": 1.0,
+ "rule": "CI of median centred r above 0 AND sign test vs average profile p < 0.05"
+}

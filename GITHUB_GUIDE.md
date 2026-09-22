@@ -1,5 +1,8 @@
 # GitHub guide (private repository)
 
+**This project:** GitHub user `hafijbd`, private repository `sh3-mechanism`
+(`git@github.com:hafijbd/sh3-mechanism.git`). The SSH key was set up and tested on 2026-09-22.
+
 The repository is this folder, `~/Documents/thesis/sh3 updated/`. It holds code, notebooks,
 explanations and small result files. **Data never goes in**: `.gitignore` blocks COSMIC files,
 raw archives, per-variant tables (`*.parquet`), embeddings and model weights. GitHub rejects
@@ -14,7 +17,7 @@ locally for this folder only, so nothing else on your computer changes.
 hafijurrahman.hr10@gmail.com.
 
 **2. Create an empty private repository.** Click **+ → New repository**, name it
-`sh3-mechanism-thesis`, choose **Private**, and **do not** add a README, .gitignore or licence.
+`sh3-mechanism`, choose **Private**, and **do not** add a README, .gitignore or licence.
 
 **3. Create an SSH key on the laptop** (press Enter at every question):
 
@@ -35,10 +38,13 @@ and save. Check that it works (answer `yes` the first time):
 ssh -T git@github.com
 ```
 
-**5. Connect this folder and push.** Replace `<your-username>` with your GitHub user name:
+**5. Connect this folder and push.** Replace `<your-username>` with your GitHub **user name**, the one
+shown in the address of your profile page (`github.com/<your-username>`). Write it **without** the angle
+brackets. A user name can contain only letters, digits and single hyphens. It is not your display name, so
+`Md_Hafijur_Rahman` (with underscores) cannot be one. Check it at github.com → your avatar → *Your profile*.
 
 ```bash
-cd "$HOME/Documents/thesis/sh3 updated" && git remote add origin git@github.com:<your-username>/sh3-mechanism-thesis.git
+cd "$HOME/Documents/thesis/sh3 updated" && git remote add origin git@github.com:hafijbd/sh3-mechanism.git
 ```
 
 ```bash
@@ -53,7 +59,8 @@ After a Colab run, download `MyDrive/sh3_repro/results/` into `sh3 updated/resul
 cd "$HOME/Documents/thesis/sh3 updated" && git add -A && git status
 ```
 
-Check that the list shows no `.tsv`, `.parquet`, `.npz`, `.pt` or `.zip` file, then:
+Check that the list shows no `.tsv`, `.parquet`, `.npz`, `.pt` or `.zip` file, and no
+`experimental_candidates.csv`. All of these are blocked by `.gitignore`. Then:
 
 ```bash
 cd "$HOME/Documents/thesis/sh3 updated" && git commit -m "Results of the Colab run" && git push
@@ -71,3 +78,10 @@ authorise Colab once.
 The notebooks are generated from `tools/nb_*.py`. Either edit those files and run
 `python3 tools/make_notebooks.py`, or edit the notebook directly in Colab. If you edit in Colab,
 download the edited notebook back into `notebooks/` before you commit, or the two will drift apart.
+
+## What the repository contains after a full run
+
+- `results/<ID>_*/RESULTS_<ID>.md`: written by the notebook; the numbers of that run.
+- `results/<ID>_*/ANALYSIS_<ID>.md`: the interpretation (what the numbers mean, limitations, next step).
+- `metrics_<ID>.json`, `comparison_<ID>.csv` and small CSV tables and figures.
+- Not included: anything per-variant or COSMIC-derived (the atlas, predictions, the F1 candidate list).
