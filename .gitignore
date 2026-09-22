@@ -1,0 +1,26 @@
+# ── never commit data ────────────────────────────────────────────────────────
+# COSMIC's licence forbids redistribution; raw archives are large and live on Drive.
+*.tsv
+*.tsv.gz
+*.gz
+*.zip
+*.xlsx
+*.xls
+*.doc
+*.docx
+
+# ── large or per-variant result files (stay on Drive) ────────────────────────
+# parquet tables include per-variant COSMIC-derived rows; npz/pt are embeddings and model weights.
+*.parquet
+*.npz
+*.pt
+*.cif
+results/**/cache/
+
+# ── local clutter ────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+~$*
+.~lock.*#

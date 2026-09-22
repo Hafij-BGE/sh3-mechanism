@@ -1,0 +1,13 @@
+fb25c81e212adbabb2c500d1bfb9a8c4  input/cosmic/cmc_export.tsv
+948320798d0cd8c13e012bda7ac0703b  input/cosmic/Cosmic_GenomeScreensMutant_v104_GRCh38.tsv.gz
+db4ceeebe4f1d4bf716f3b89847088f5  input/cosmic/Cosmic_Classification_v104_GRCh38.tsv
+35f86a42f92b7ca18ccf00709dc27816  input/uniprot/sh3_domains_human.tsv
+53f3a9d05ce36f3de5314fc497b7eb01  input/uniprot/sh3_proteins_seq.tsv
+6dc4c9810d4d5f4e2345c9622ac9de88  input/uniprot/isoforms_all.json
+f7e8c553efee734cf161ee6f2b0a09cf  input/datasets/Processed_K50_dG_datasets.zip
+c2a00a45dcb9d1df723d41ca043a1ff1  input/datasets/Data.zip
+ca1a4d46941ef33cc972245347118c7d  input/datasets/DMS_ProteinGym_substitutions.zip
+c434631737013fceb56efc98056151e0  input/datasets/DMS_substitutions.csv
+183e0945e339caa9f7e465f379af8fbe  input/datasets/SH3_PWM.zip
+2421e9d396c25f0f24787fd4e93da2be  input/datasets/HumanSH3TableS2.xlsx
+cef897f4dd25f9cd56f2c40bb7ec0b08  reference/SH3_cancer_master_v3.tsv

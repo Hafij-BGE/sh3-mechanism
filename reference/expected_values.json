@@ -1,0 +1,938 @@
+{
+ "_about": "Recorded values from the original stage-by-stage run (2026-09-20) and its logs. tol = allowed absolute difference; 0 = must be identical. Keys marked \"original\" were produced with the unshuffled GroupKFold procedure; the CORRECTED procedure has no recorded value.",
+ "A0.master_md5": {
+  "value": "cef897f4dd25f9cd56f2c40bb7ec0b08",
+  "tol": 0.0,
+  "source": "MD5 of SH3_cancer_master_v3.tsv"
+ },
+ "A0.cmc_rows": {
+  "value": 5802907,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.missense_rows_in_sh3_genes": {
+  "value": 91842,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.mapped_canonical": {
+  "value": 5923,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.mapped_isoform": {
+  "value": 1034,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.unmapped": {
+  "value": 490,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.variants": {
+  "value": 6884,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.columns": {
+  "value": 44,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.domains": {
+  "value": 310,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.genes": {
+  "value": 235,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.gsm_rows": {
+  "value": 62765128,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.gsm_samples": {
+  "value": 53598,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.with_sample_records": {
+  "value": 6657,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.nonhyper_variants": {
+  "value": 2165,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.recurrent_nonhyper": {
+  "value": 84,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.hypermutated_only": {
+  "value": 4492,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.recurrent_any": {
+  "value": 501,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.likely_germline": {
+  "value": 78,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.significance_tier_1_3": {
+  "value": 0,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A0.dnds_flagged": {
+  "value": 0,
+  "tol": 0.0,
+  "source": "Stage 0 build log (phase1_domain_atlas/README.md) and SH3_cancer_master_v3.tsv"
+ },
+ "A1.ddpca_singles": {
+  "value": 3688,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.ddpca_both_energies": {
+  "value": 3368,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.reliable_binding": {
+  "value": 2840,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.reliable_folding": {
+  "value": 3109,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.reliable_binding_GB1": {
+  "value": 1000,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.reliable_binding_GRB2-SH3": {
+  "value": 619,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.reliable_binding_PSD95-PDZ3": {
+  "value": 1221,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.calibration_fold_n": {
+  "value": 15,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.calibration_bind_n": {
+  "value": 12,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.chi_offset": {
+  "value": 310,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.megascale_singles": {
+  "value": 389068,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.megascale_domains": {
+  "value": 412,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.megascale_sh3_structures": {
+  "value": 26,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.megascale_sh3_genes": {
+  "value": 15,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.foldx_overlap": {
+  "value": 1024,
+  "tol": 0.0,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.calibration_fold_r": {
+  "value": 0.829,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.calibration_bind_r": {
+  "value": 0.612,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.foldx_vs_mochi_r": {
+  "value": 0.494,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_buried_not_interface_fold": {
+  "value": 3.566,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_buried_not_interface_bind": {
+  "value": 0.141,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_buried_interface_fold": {
+  "value": 1.279,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_buried_interface_bind": {
+  "value": 2.9,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_surface_interface_fold": {
+  "value": 0.569,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_surface_interface_bind": {
+  "value": 0.645,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_surface_not_interface_fold": {
+  "value": 0.868,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A1.sep_surface_not_interface_bind": {
+  "value": -0.036,
+  "tol": 0.0005,
+  "source": "Stage1_v2_ground_truth.ipynb recorded output; binding calibration from the fresh run"
+ },
+ "A2.variants_total": {
+  "value": 399640,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.variants_megascale": {
+  "value": 389068,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.variants_ddpca": {
+  "value": 3688,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.variants_atlas": {
+  "value": 6884,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.esm_domains": {
+  "value": 725,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.structure_rows": {
+  "value": 18756,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.structure_domains": {
+  "value": 302,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.atlas_groups": {
+  "value": 310,
+  "tol": 0.0,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.esm_rho_ddpca_fold": {
+  "value": -0.404,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.esm_rho_ddpca_bind": {
+  "value": -0.259,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.esm_rho_megascale_fold": {
+  "value": -0.388,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.atlas_structure_coverage": {
+  "value": 0.968,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.atlas_refmap_coverage": {
+  "value": 0.895,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_buried_not_interface_fold": {
+  "value": 2.087,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_buried_not_interface_bind": {
+  "value": 0.543,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_buried_interface_fold": {
+  "value": 0.978,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_buried_interface_bind": {
+  "value": 1.446,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_surface_interface_fold": {
+  "value": 0.449,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_surface_interface_bind": {
+  "value": 0.678,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_surface_not_interface_fold": {
+  "value": 0.725,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "A2.xsep_surface_not_interface_bind": {
+  "value": 0.115,
+  "tol": 0.0005,
+  "source": "Stage2_features.ipynb recorded output"
+ },
+ "B1.domains": {
+  "value": 15,
+  "tol": 0.0,
+  "source": "stage4_metrics.json"
+ },
+ "B1.per_domain_median_rho": {
+  "value": 0.8391701341203324,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B1.per_domain_min_rho": {
+  "value": 0.7541643437450473,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B1.per_domain_max_rho": {
+  "value": 0.933798308475559,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B1.all_ci_exclude_zero": {
+  "value": true,
+  "tol": 0.0,
+  "source": "stage4_metrics.json"
+ },
+ "B1.esm_per_domain_median_rho": {
+  "value": -0.6166176878770433,
+  "tol": 1e-09,
+  "source": "folding_per_domain_ci.csv"
+ },
+ "B1.domains_won": {
+  "value": 15,
+  "tol": 0.0,
+  "source": "folding_per_domain_ci.csv"
+ },
+ "B1.heldout_variants": {
+  "value": 27590,
+  "tol": 0.0,
+  "source": "stage3_metrics.json"
+ },
+ "B1.pooled_rho": {
+  "value": 0.8428332985329702,
+  "tol": 0.003,
+  "source": "stage3_metrics.json (Stage 3 scaler; B1 pools the clip-20 predictions, so approximate)"
+ },
+ "B1.pooled_rmse": {
+  "value": 0.6716643571853638,
+  "tol": 0.01,
+  "source": "stage3_metrics.json (approximate, as above)"
+ },
+ "B2.rho_damage_vs_burial": {
+  "value": 0.7116506334195684,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B2.rho_damage_vs_interface": {
+  "value": 0.03697881066302119,
+  "tol": 1e-09,
+  "source": "stage3b/position_structure_check.csv"
+ },
+ "B2.positions": {
+  "value": 56,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B3.conformal_q90": {
+  "value": 6.807301044464111,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.conformal_coverage": {
+  "value": 0.8992388546574845,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.sd_vs_error_rho": {
+  "value": 0.3038740737470343,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.axis_rank_correlation": {
+  "value": 0.6745677339636241,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json (not a valid test)"
+ },
+ "B3.n_tolerated": {
+  "value": 6283,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.n_destabilising": {
+  "value": 297,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.n_rewiring": {
+  "value": 191,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "B3.n_both": {
+  "value": 113,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "B4.primary_assays": {
+  "value": 3,
+  "tol": 0.0,
+  "source": "stage4_metrics.json"
+ },
+ "B4.primary_model_median_abs_rho": {
+  "value": 0.3614974125424033,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.primary_esm_median_abs_rho": {
+  "value": 0.40593349149062236,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.primary_model_wins": {
+  "value": 2,
+  "tol": 0.0,
+  "source": "proteingym_results.csv"
+ },
+ "B4.secondary_assays": {
+  "value": 15,
+  "tol": 0.0,
+  "source": "stage4_metrics.json"
+ },
+ "B4.secondary_model_median_abs_rho": {
+  "value": 0.3996743927441746,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.secondary_esm_median_abs_rho": {
+  "value": 0.4907354473325677,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.secondary_model_wins": {
+  "value": 6,
+  "tol": 0.0,
+  "source": "proteingym_results.csv"
+ },
+ "B4.sanity_assays": {
+  "value": 10,
+  "tol": 0.0,
+  "source": "stage4_metrics.json"
+ },
+ "B4.sanity_model_median_abs_rho": {
+  "value": 0.9396605523698176,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.sanity_esm_median_abs_rho": {
+  "value": 0.5803138006745721,
+  "tol": 1e-09,
+  "source": "stage4_metrics.json"
+ },
+ "B4.sanity_model_wins": {
+  "value": 10,
+  "tol": 0.0,
+  "source": "proteingym_results.csv"
+ },
+ "B5.variants": {
+  "value": 6884,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.nonhyper": {
+  "value": 2165,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.genes_tested_all": {
+  "value": 170,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.genes_sig_all": {
+  "value": 1,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.genes_tested_nonhyper": {
+  "value": 17,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.genes_sig_nonhyper": {
+  "value": 0,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.sites_tested": {
+  "value": 22,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.sites_sig": {
+  "value": 0,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.positions_mapped": {
+  "value": 56,
+  "tol": 0.0,
+  "source": "stage5_metrics.json"
+ },
+ "B5.frac_destab_all": {
+  "value": 0.05955839628123184,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B5.frac_destab_nonhyper": {
+  "value": 0.0558891454965358,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B5.positional_uniform_p": {
+  "value": 0.0001999600079984003,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B5.rho_variants_vs_damage": {
+  "value": -0.008853338959042353,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B5.rho_damage_vs_burial": {
+  "value": 0.7116506334195684,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "B5.rho_variants_vs_burial": {
+  "value": -0.17784351785116279,
+  "tol": 1e-09,
+  "source": "stage5_metrics.json"
+ },
+ "C1.original.GB1.rho": {
+  "value": -0.09037497037497037,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.GB1.esm": {
+  "value": 0.0421307492905556,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.GB1.n": {
+  "value": 1000,
+  "tol": 0.0,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.GRB2-SH3.rho": {
+  "value": 0.09683667878087518,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.GRB2-SH3.esm": {
+  "value": -0.1261237460942462,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.GRB2-SH3.n": {
+  "value": 619,
+  "tol": 0.0,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.PSD95-PDZ3.rho": {
+  "value": 0.1118287749260892,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.PSD95-PDZ3.esm": {
+  "value": -0.4379805927244899,
+  "tol": 1e-09,
+  "source": "stage3_metrics.json"
+ },
+ "C1.original.PSD95-PDZ3.n": {
+  "value": 1221,
+  "tol": 0.0,
+  "source": "stage3_metrics.json"
+ },
+ "C2.original.GB1.single_fit_rho": {
+  "value": -0.08462025087411164,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GB1.n": {
+  "value": 1000,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GB1.positions": {
+  "value": 55,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.GB1.esm": {
+  "value": 0.0421307492905556,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GRB2-SH3.single_fit_rho": {
+  "value": 0.12434758586912913,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GRB2-SH3.n": {
+  "value": 619,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GRB2-SH3.positions": {
+  "value": 56,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.GRB2-SH3.esm": {
+  "value": -0.1261237460942462,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.single_fit_rho": {
+  "value": 0.3911291472505285,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.n": {
+  "value": 1221,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.positions": {
+  "value": 84,
+  "tol": 0.0,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.PSD95-PDZ3.esm": {
+  "value": -0.4379805927244899,
+  "tol": 1e-09,
+  "source": "stage3b_metrics.json"
+ },
+ "C2.original.GB1.repeats_median": {
+  "value": 0.00933884133884134,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.GB1.repeats_lo": {
+  "value": -0.11823637023637024,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.GB1.repeats_hi": {
+  "value": 0.1966039966039966,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.GRB2-SH3.repeats_median": {
+  "value": -0.030234757271434334,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.GRB2-SH3.repeats_lo": {
+  "value": -0.10863318234000367,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.GRB2-SH3.repeats_hi": {
+  "value": 0.12434758586912913,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.repeats_median": {
+  "value": 0.3969932390406754,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.repeats_lo": {
+  "value": 0.363112269413527,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C2.original.PSD95-PDZ3.repeats_hi": {
+  "value": 0.4120185793712129,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C3.original.matched_median_rho": {
+  "value": -0.022955227686574077,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C3.original.matched_ci_lo": {
+  "value": -0.19459147180296965,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C3.original.matched_ci_hi": {
+  "value": 0.175444645673315,
+  "tol": 1e-09,
+  "source": "stage3c_metrics.json"
+ },
+ "C3.original.matched_draws": {
+  "value": 20,
+  "tol": 0.0,
+  "source": "stage3c_metrics.json"
+ },
+ "C3.original.diag_k7_ep60_median": {
+  "value": 0.38728326039103855,
+  "tol": 1e-09,
+  "source": "diagnostic_grid.csv"
+ },
+ "C3.original.diag_k7_ep40_median": {
+  "value": 0.3867042487202934,
+  "tol": 1e-09,
+  "source": "diagnostic_grid.csv"
+ },
+ "C3.original.diag_k5_ep60_median": {
+  "value": 0.08158817115915129,
+  "tol": 1e-09,
+  "source": "diagnostic_grid.csv"
+ },
+ "C3.original.diag_k5_ep40_median": {
+  "value": 0.07950970305347704,
+  "tol": 1e-09,
+  "source": "diagnostic_grid.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_25pos_median": {
+  "value": -0.06295882397059928,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_35pos_median": {
+  "value": -0.10945012962204939,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_45pos_median": {
+  "value": 0.003719390877563511,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_56pos_median": {
+  "value": -0.03197827234150634,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_70pos_median": {
+  "value": 0.07793231384891802,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_PSD95-PDZ3_84pos_median": {
+  "value": 0.38728326039103855,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_GRB2-SH3_25pos_median": {
+  "value": -0.0022748068701717566,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_GRB2-SH3_35pos_median": {
+  "value": -0.06521615919896721,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_GRB2-SH3_45pos_median": {
+  "value": 0.025535862143448575,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.lc_GRB2-SH3_56pos_median": {
+  "value": -0.0009976134182862655,
+  "tol": 1e-09,
+  "source": "learning_curve.csv"
+ },
+ "C3.original.sweep_A_folds_median": {
+  "value": 0.35595341366181976,
+  "tol": 1e-09,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_A_folds_runs": {
+  "value": 42,
+  "tol": 0.0,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_B_thin_median": {
+  "value": 0.3570813960594219,
+  "tol": 1e-09,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_B_thin_runs": {
+  "value": 36,
+  "tol": 0.0,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_C_fewpos_median": {
+  "value": 0.07585584045844358,
+  "tol": 1e-09,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_C_fewpos_runs": {
+  "value": 36,
+  "tol": 0.0,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_max_gap": {
+  "value": 0.3770927771688149,
+  "tol": 1e-09,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.original.sweep_runs": {
+  "value": 114,
+  "tol": 0.0,
+  "source": "stage3d_metrics.json"
+ },
+ "C3.position_sweep_60_median": {
+  "value": -0.014073262202818482,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_62_median": {
+  "value": -0.0038759592234566135,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_64_median": {
+  "value": -0.008003979082438191,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_66_median": {
+  "value": -0.07005856641861602,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_68_median": {
+  "value": 0.012575040603047875,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_70_median": {
+  "value": -0.026209937518036505,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_72_median": {
+  "value": 0.002526964252527222,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_74_median": {
+  "value": 0.005815020235057789,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_76_median": {
+  "value": 0.11281732148355872,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_78_median": {
+  "value": 0.11608293979132174,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_80_median": {
+  "value": 0.20774793653176335,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_82_median": {
+  "value": 0.32959861139665336,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_84_median": {
+  "value": 0.32243668246458623,
+  "tol": 1e-09,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.position_sweep_runs": {
+  "value": 130,
+  "tol": 0.0,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.crossing_positions": {
+  "value": 76,
+  "tol": 0.0,
+  "source": "stage3e_metrics.json"
+ },
+ "C3.grb2_positions": {
+  "value": 56,
+  "tol": 0.0,
+  "source": "stage3e_metrics.json"
+ }
+}

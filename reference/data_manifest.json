@@ -1,0 +1,198 @@
+{
+ "inputs": [
+  {
+   "file": "cmc_export.tsv",
+   "drive": "input/cosmic",
+   "md5": "fb25c81e212adbabb2c500d1bfb9a8c4",
+   "bytes": 1878773780,
+   "local": "<cancer/claude/cmc_export.tsv",
+   "used_by": [
+    "A0"
+   ],
+   "source": "COSMIC Cancer Mutation Census v104 (GRCh38), cancer.sanger.ac.uk, personal academic licence",
+   "paper": "Sondka et al. 2024, Nucleic Acids Res 52:D1210",
+   "note": "Licence forbids redistribution: never commit."
+  },
+  {
+   "file": "Cosmic_GenomeScreensMutant_v104_GRCh38.tsv.gz",
+   "drive": "input/cosmic",
+   "md5": "948320798d0cd8c13e012bda7ac0703b",
+   "bytes": 4479219276,
+   "local": "<cancer/Cosmic_GenomeScreensMutant_Tsv_v104_GRCh38/Cosmic_GenomeScreensMutant_v104_GRCh38.tsv.gz",
+   "used_by": [
+    "A0"
+   ],
+   "source": "COSMIC Genome Screens Mutant v104 (GRCh38), as downloaded (compressed)",
+   "paper": "Sondka et al. 2024",
+   "note": "Read by streaming; never unpacked. The 1.35 GB uncompressed copy in <cancer/claude/ is truncated: do not use."
+  },
+  {
+   "file": "Cosmic_Classification_v104_GRCh38.tsv",
+   "drive": "input/cosmic",
+   "md5": "db4ceeebe4f1d4bf716f3b89847088f5",
+   "bytes": 913873,
+   "local": "<cancer/claude/Cosmic_Classification_v104_GRCh38.tsv",
+   "used_by": [
+    "A0"
+   ],
+   "source": "COSMIC Classification v104 (phenotype -> primary site / histology)",
+   "paper": "Sondka et al. 2024",
+   "note": ""
+  },
+  {
+   "file": "sh3_domains_human.tsv",
+   "drive": "input/uniprot",
+   "md5": "35f86a42f92b7ca18ccf00709dc27816",
+   "bytes": 32848,
+   "local": "sh3/phase1_domain_atlas/sh3_domains_human.tsv",
+   "used_by": [
+    "A0",
+    "A1",
+    "A2"
+   ],
+   "source": "UniProt REST, query (organism_id:9606) AND (reviewed:true) AND (ft_domain:SH3), retrieved 2026-09-20",
+   "paper": "UniProt",
+   "note": "Frozen snapshot: 244 proteins, 325 SH3 domains."
+  },
+  {
+   "file": "sh3_proteins_seq.tsv",
+   "drive": "input/uniprot",
+   "md5": "53f3a9d05ce36f3de5314fc497b7eb01",
+   "bytes": 271473,
+   "local": "sh3/phase1_domain_atlas/sh3_proteins_seq.tsv",
+   "used_by": [
+    "A0"
+   ],
+   "source": "UniProt canonical sequences of the 244 proteins, retrieved 2026-09-20",
+   "paper": "UniProt",
+   "note": "Frozen snapshot."
+  },
+  {
+   "file": "isoforms_all.json",
+   "drive": "input/uniprot",
+   "md5": "6dc4c9810d4d5f4e2345c9622ac9de88",
+   "bytes": 777224,
+   "local": "sh3/phase1_domain_atlas/scripts/isoforms_all.json",
+   "used_by": [
+    "A0"
+   ],
+   "source": "UniProt includeIsoform=true for all 244 proteins (745 sequences, 501 alternative isoforms), retrieved 2026-09-20",
+   "paper": "UniProt",
+   "note": "Frozen snapshot."
+  },
+  {
+   "file": "Processed_K50_dG_datasets.zip",
+   "drive": "input/datasets",
+   "md5": "f7e8c553efee734cf161ee6f2b0a09cf",
+   "bytes": 1013678473,
+   "local": "sh3/new stage 1 data/Processed_K50_dG_datasets.zip",
+   "used_by": [
+    "A1"
+   ],
+   "source": "Zenodo record 7992926, doi 10.5281/zenodo.7992926 (MD5 matches the value published on the record)",
+   "paper": "Tsuboyama et al. 2023, Nature 620:434",
+   "note": "Uses Tsuboyama2023_Dataset2_Dataset3_20230416.csv inside."
+  },
+  {
+   "file": "Data.zip",
+   "drive": "input/datasets",
+   "md5": "c2a00a45dcb9d1df723d41ca043a1ff1",
+   "bytes": 575197360,
+   "local": "sh3/new stage 1 data/Data.zip",
+   "used_by": [
+    "A1",
+    "A2"
+   ],
+   "source": "github.com/lehner-lab/doubledeepms (Data.zip distributed by the authors)",
+   "paper": "Faure et al. 2022, Nature 604:175",
+   "note": "MoCHI fits, in vitro data, PDB files, FoldX, EVE, MSA."
+  },
+  {
+   "file": "DMS_ProteinGym_substitutions.zip",
+   "drive": "input/datasets",
+   "md5": "ca1a4d46941ef33cc972245347118c7d",
+   "bytes": 43021128,
+   "local": "sh3/new stage 1 data/DMS_ProteinGym_substitutions.zip",
+   "used_by": [
+    "B4"
+   ],
+   "source": "ProteinGym v1.3 substitution assays",
+   "paper": "Notin et al. 2023, NeurIPS Datasets & Benchmarks",
+   "note": ""
+  },
+  {
+   "file": "DMS_substitutions.csv",
+   "drive": "input/datasets",
+   "md5": "c434631737013fceb56efc98056151e0",
+   "bytes": 208734,
+   "local": "sh3/new stage 1 data/DMS_substitutions.csv",
+   "used_by": [
+    "B4"
+   ],
+   "source": "ProteinGym reference_files/DMS_substitutions.csv, repository commit 62eab5b (217 assays)",
+   "paper": "Notin et al. 2023",
+   "note": ""
+  },
+  {
+   "file": "SH3_PWM.zip",
+   "drive": "input/datasets",
+   "md5": "183e0945e339caa9f7e465f379af8fbe",
+   "bytes": 189305,
+   "local": "sh3/new stage 1 data/SH3_PWM.zip",
+   "used_by": [
+    "C4"
+   ],
+   "source": "Phage-display specificity profiles (154 PWMs, 115 human SH3 domains), supplementary data of Teyra et al. 2017, as obtained for this project",
+   "paper": "Teyra et al. 2017, Structure 25:1598",
+   "note": "Values are probability x 20 per column; normalised on load."
+  },
+  {
+   "file": "HumanSH3TableS2.xlsx",
+   "drive": "input/datasets",
+   "md5": "2421e9d396c25f0f24787fd4e93da2be",
+   "bytes": 63955,
+   "local": "sh3/HumanSH3TableS2.xlsx",
+   "used_by": [
+    "C4"
+   ],
+   "source": "Teyra et al. 2017 supplementary Table S2: domain ID -> domain sequence for every profiled SH3 domain",
+   "paper": "Teyra et al. 2017, Structure 25:1598",
+   "note": "Links each PWM file to its exact domain sequence."
+  },
+  {
+   "file": "SH3_cancer_master_v3.tsv",
+   "drive": "reference",
+   "md5": "cef897f4dd25f9cd56f2c40bb7ec0b08",
+   "bytes": 2348425,
+   "local": "sh3/phase1_domain_atlas/SH3_cancer_master_v3.tsv",
+   "used_by": [
+    "A0 (comparison only)"
+   ],
+   "source": "Original Stage 0 output, 2026-09-20",
+   "paper": "",
+   "note": "Not an input: A0 rebuilds it and checks it is identical. COSMIC-derived: never commit."
+  }
+ ],
+ "fetched_at_runtime": [
+  {
+   "name": "ESM-2 650M",
+   "id": "facebook/esm2_t33_650M_UR50D",
+   "source": "Hugging Face",
+   "used_by": [
+    "A2",
+    "B4"
+   ],
+   "paper": "Lin et al. 2023, Science 379:1123"
+  },
+  {
+   "name": "AlphaFold DB models",
+   "id": "AF-<UniProt>-F1-model_v6 (v5, v4 fallback)",
+   "source": "alphafold.ebi.ac.uk",
+   "used_by": [
+    "A2"
+   ],
+   "paper": "Varadi et al. 2024, Nucleic Acids Res 52:D368",
+   "note": "Cached on Drive under cache/alphafold after the first run."
+  }
+ ]
+}
