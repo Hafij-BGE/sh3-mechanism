@@ -36,7 +36,11 @@ COSMIC = ['input/cosmic/cmc_export.tsv',
           'input/cosmic/Cosmic_Classification_v104_GRCh38.tsv']
 UNIPROT = ['input/uniprot/sh3_domains_human.tsv', 'input/uniprot/sh3_proteins_seq.tsv',
            'input/uniprot/isoforms_all.json']
-R.verify_inputs(UNIPROT + COSMIC + ['reference/SH3_cancer_master_v3.tsv'])
+R.verify_inputs(UNIPROT + COSMIC)
+# optional: the original Stage 0 atlas, used ONLY to prove the rebuild is identical (section 5)
+ORIGINAL = f'{R.REF}/SH3_cancer_master_v3.tsv'
+HAVE_ORIGINAL = os.path.exists(ORIGINAL)
+print('original atlas for comparison:', 'found' if HAVE_ORIGINAL else 'not uploaded - comparison will be skipped')
 """),
 md("## 2. Unit tests of the shared code\nFast checks of mutation parsing, the sign convention, the "
    "partition modes and the conformal quantile (`code/run_tests.py`)."),
@@ -90,14 +94,17 @@ R.section('How the variants were mapped', '',
 R.section('Rejected rows, by gene (top 10)', 'Full list: `SH3_cancer_unmapped.tsv`.',
           U.gene.value_counts().head(10).rename_axis('gene').reset_index(name='rejected rows'))
 """),
-md("## 5. Is it the same atlas as the original?\nByte-for-byte comparison with the Stage 0 file of "
-   "2026-09-20; if it differs, the differing variants and columns are listed."),
+md("## 5. Is it the same atlas as the original?\nThe rebuilt file's MD5 is compared with the recorded MD5 of the Stage 0 "
+   "atlas of 2026-09-20. Only if they differ, and the original file was uploaded to `reference/`, are the "
+   "differing variants and columns listed."),
 code(r"""
 new_md5 = C.md5(R.out('SH3_cancer_master.tsv'))
-identical = new_md5 == C.md5(f'{R.REF}/SH3_cancer_master_v3.tsv')
-print('byte-identical to SH3_cancer_master_v3.tsv:', identical)
-if not identical:
-    O = pd.read_csv(f'{R.REF}/SH3_cancer_master_v3.tsv', sep='\t', keep_default_na=False, dtype=str)
+# the recorded MD5 of the original atlas also sits in expected_values.json, so the check in section 6
+# works even without the file; the file itself only adds a row-by-row diff if they ever differ
+identical = new_md5 == 'cef897f4dd25f9cd56f2c40bb7ec0b08'
+print('byte-identical to the original Stage 0 atlas (by recorded MD5):', identical)
+if not identical and HAVE_ORIGINAL:
+    O = pd.read_csv(ORIGINAL, sep='\t', keep_default_na=False, dtype=str)
     only_new, only_old = set(M.variant_id) - set(O.variant_id), set(O.variant_id) - set(M.variant_id)
     j = M.merge(O, on='variant_id', suffixes=('', '_old'))
     diff = {c: int((j[c] != j[c + '_old']).sum()) for c in M.columns if c != 'variant_id' and c + '_old' in j}

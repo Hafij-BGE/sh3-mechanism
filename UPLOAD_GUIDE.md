@@ -35,19 +35,22 @@ Paths on the left are on your laptop, relative to `~/Documents/thesis/`.
 | 10 | `sh3/new stage 1 data/DMS_substitutions.csv` | `input/datasets/` | 209 KB |
 | 11 | `sh3/new stage 1 data/SH3_PWM.zip` | `input/datasets/` | 189 KB |
 | 12 | `sh3/HumanSH3TableS2.xlsx` | `input/datasets/` | 64 KB |
-| 13 | `sh3/phase1_domain_atlas/SH3_cancer_master_v3.tsv` | `reference/` | 2.3 MB |
-| 14 | `sh3 updated/reference/expected_values.json` | `reference/` | small |
-| 15 | `sh3 updated/reference/checksums.md5` | `reference/` | small |
-| 16 | `sh3 updated/reference/data_manifest.json` | `reference/` | small |
-| 17 | `sh3 updated/src/sh3_common.py`, `sh3_atlas.py`, `run_tests.py` | `code/` | small |
-| 18 | `sh3 updated/notebooks/*.ipynb` (all 14) | `code/` | small |
+| 13 | `sh3 updated/reference/expected_values.json` | `reference/` | small |
+| 14 | `sh3 updated/reference/checksums.md5` | `reference/` | small |
+| 15 | `sh3 updated/reference/data_manifest.json` | `reference/` | small |
+| 16 | `sh3 updated/src/sh3_common.py`, `sh3_atlas.py`, `run_tests.py` | `code/` | small |
+| 17 | `sh3 updated/notebooks/*.ipynb` (all 14) | `code/` | small |
+
+**Shortcut for items 13–17:** drag the two folders in `sh3 updated/drive_upload/` (`code/` and `reference/`)
+into `MyDrive/sh3_repro/`.
 
 **About 8.1 GB in total.** The two big COSMIC files are the slow part; start them first.
 
 **Take care with these:**
 - **File 2** must be the `.tsv.gz` from the `Cosmic_GenomeScreensMutant_Tsv_v104_GRCh38` folder.
   The `.tsv` copy in `<cancer/claude/` is **truncated** (1.35 of 16.8 GB) and will be rejected.
-- **File 13** is not an input. A0 rebuilds the atlas and compares its result with this file.
+- **The atlas itself (`SH3_cancer_master_v3.tsv`) is not uploaded.** A0 derives it from the raw COSMIC files and checks
+  the result against the atlas's recorded MD5.
 - Do not rename anything. Every input is checked by MD5 against `reference/checksums.md5`, and
   a wrong or incomplete file stops the notebook with a message saying which one.
 

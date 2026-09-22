@@ -34,7 +34,7 @@ Start with [`docs/00_pipeline_overview.md`](docs/00_pipeline_overview.md).
 
 ## How to run
 
-1. Upload the inputs to Drive: [`UPLOAD_GUIDE.md`](UPLOAD_GUIDE.md) (about 8 GB, 18 items).
+1. Upload the inputs to Drive: [`UPLOAD_GUIDE.md`](UPLOAD_GUIDE.md) (about 8 GB, 17 items).
 2. Run the notebooks in the order given there (about 3.5 h; GPU for 7 of them).
 3. Download `results/` and commit it: [`GITHUB_GUIDE.md`](GITHUB_GUIDE.md).
 
