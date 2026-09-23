@@ -31,3 +31,17 @@ results/F1_experimental_candidates/experimental_candidates.csv
 
 # ── kept on the laptop only ──────────────────────────────────────────────────
 SH3_all_possible_upgrades_from_base_notebook.md
+
+# ── local input mirror and caches (never commit: COSMIC data, 7.5 GB) ────────
+database/
+cache/
+
+# ── setup guides kept on the laptop only ────────────────────────────────────
+GITHUB_GUIDE.md
+UPLOAD_GUIDE.md
+
+# ── large media and the duplicate reading copy (kept on the laptop) ─────────
+*.mp4
+*.pptx
+results/SH3_Mutation_Mechanism_Blueprint.pdf
+result analysis/

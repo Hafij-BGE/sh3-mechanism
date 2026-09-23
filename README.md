@@ -20,6 +20,7 @@ report automatically.
 | **F. Follow-up (reads results only)** | F1 experimental validation candidates · F2 figures for the candidate panel |
 
 Start with [`docs/00_pipeline_overview.md`](docs/00_pipeline_overview.md).
+A paper-style write-up of the whole project is in [`docs/REPORT.md`](docs/REPORT.md).
 
 ## Headline results (recorded run; re-checked by every notebook)
 
@@ -56,10 +57,10 @@ Next improvements: [`results/RECOMMENDATIONS.md`](results/RECOMMENDATIONS.md).
 
 ## How to run
 
-1. Upload the inputs to Drive: [`UPLOAD_GUIDE.md`](UPLOAD_GUIDE.md) (about 8 GB, 17 items).
+1. Upload the inputs to Drive (see `UPLOAD_GUIDE.md`, kept outside the repository; about 8 GB, 17 items).
 2. Run the notebooks in the order given there (about 2.5 h; GPU for 7 of them). F1 and F2 are optional and
    run last, in seconds.
-3. Download `results/` and commit it: [`GITHUB_GUIDE.md`](GITHUB_GUIDE.md).
+3. Download `results/` and commit it (see `GITHUB_GUIDE.md`, kept outside the repository).
 4. Read the results: [`results/README.md`](results/README.md) explains the two report files in every
    program folder (`RESULTS_<ID>.md`, written by the run; `ANALYSIS_<ID>.md`, the interpretation).
 
