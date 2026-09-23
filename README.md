@@ -86,3 +86,4 @@ tools/       notebook generator
 
 **Data are not in this repository.** COSMIC's licence forbids redistribution. Raw archives,
 per-variant tables, embeddings and model weights stay on Drive (see `.gitignore`).
+How to obtain and verify the inputs: [`docs/DATA_ACCESS.md`](docs/DATA_ACCESS.md).
