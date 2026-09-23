@@ -2,8 +2,6 @@
 
 ### Loss of fold is predictable; the limits on predicting rewiring of binding are quantified
 
-**Hafijur Rahman**
-Master's thesis project, Dokuz Eylül University
 Report of the full reproduction run of 22 September 2026
 
 ---

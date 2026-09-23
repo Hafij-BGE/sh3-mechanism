@@ -1,7 +1,6 @@
 # Mechanism-resolved prediction of cancer mutation effects in human SH3 domains
 
 *Distinguishing loss of fold from the limits on predicting rewiring of binding.*
-Master's thesis project — Hafijur Rahman.
 
 For a cancer missense mutation in a human SH3 domain, does it **destabilise the fold**, or leave the
 fold intact and **change binding**? This repository rebuilds every result **from the raw data**,
