@@ -1,4 +1,4 @@
-# E4 — Independent test of the specificity model  *(pre-registered, notebook written)*
+# E4 — Independent test of the specificity model  *(done, 27 September 2026)*
 
 **Why it is needed.** C4 built a specificity axis from 154 phage-display PWM profiles and failed its
 own pre-registered rule (median centred r = +0.288; better than the family-average profile on only
@@ -61,3 +61,24 @@ because C4's rule was already declared and already failed.
 the 8-domain sign test reaches 0.025 **only at 8/8**. So a null means "no effect large enough for 44
 measurements to see", never "no effect". The negative result this program expects is worth having
 because it is *independent*, not because it is precise.
+
+## What it found
+
+Full numbers in `results/E4_specificity_independent/RESULTS_E4.md`; reading in `ANALYSIS_E4.md`.
+
+- **Both verdicts are no.** Main test r = +0.023 (p = 0.91), and the model does not beat the
+  domain-agnostic average profile. Per-domain sign test: 3 of 8, p = 0.73.
+- **The control decides the interpretation.** The observed phage-display profile fails identically
+  (r = −0.051, p = 0.80). It is the ceiling — a predictor of X cannot beat X — so the honest claim is
+  **the measurement, not the model**. E4 does not convict C4's model, and the pre-registration fixed
+  that reading before any number existed.
+- **Why:** composition discards order, and SH3 ligand classes differ by order at identical
+  composition.
+- **Also true, and secondary:** the predictions are shrunk toward the family mean — r = +0.82 with the
+  domain-agnostic baseline, 70 % of their spread driven by peptide rather than domain. That is C4's
+  own `55/115` verdict from another angle, but fixing it could not have helped, because the target
+  itself does not predict affinity.
+- **The one hint of signal is not specificity.** Pooled without domain centring, ρ = −0.267 (p = 0.08)
+  — the largest effect in E4 and the one given no verdict in advance, because it measures which
+  peptide binds everything, not which domain prefers what.
+- The CV re-run reproduced C4's recorded median centred r to 1.6 × 10⁻¹⁴.

@@ -1,0 +1,80 @@
+{
+ "program": "E4",
+ "date": "2026-09-27 05:29",
+ "preregistration": "docs/preregistration/E4.md",
+ "alpha": 0.025,
+ "n_measurements": 44,
+ "n_domains": 16,
+ "n_excluded": 1,
+ "E1_main": {
+  "r": 0.02316983875825336,
+  "p": 0.9105476485593841,
+  "n": 37,
+  "k": 12,
+  "df": 24,
+  "verdict": "no",
+  "beats_average": false
+ },
+ "E1_average": {
+  "r": -0.04293438295748031,
+  "p": 0.8350321803029784,
+  "n": 37,
+  "k": 12,
+  "df": 24
+ },
+ "E1_observed": {
+  "r": -0.05110633427420561,
+  "p": 0.804182573275972,
+  "n": 37,
+  "k": 12,
+  "df": 24
+ },
+ "E2": {
+  "k": 3,
+  "n": 8,
+  "p": 0.7265625,
+  "median": 0.5,
+  "lo": -0.6,
+  "hi": 0.8660254037844387,
+  "verdict": "no"
+ },
+ "E2_observed": {
+  "k": 3,
+  "n": 8,
+  "p": 0.7265625,
+  "median": 0.35,
+  "lo": -0.39999999999999997,
+  "hi": 0.8660254037844387
+ },
+ "E3_pooled": {
+  "rho": -0.26708976059649525,
+  "p": 0.0796594184119061,
+  "n": 44,
+  "verdict": "none by design"
+ },
+ "E4_heldout": {
+  "rho": 0.03603749850782236,
+  "n": 7,
+  "domains": 4,
+  "verdict": "none by design"
+ },
+ "E5a_drop_RP1": {
+  "r": 0.2460618904393203,
+  "p": 0.2956741796587004,
+  "n": 30,
+  "k": 11,
+  "df": 18
+ },
+ "E5b_ranks": {
+  "r": -0.1496633269715976,
+  "p": 0.46555534972742374,
+  "n": 37,
+  "k": 12,
+  "df": 24
+ },
+ "observed_profile_passes": false,
+ "conclusion": "the measurement, not the model: compositional profiles do not predict these affinities",
+ "c4_recorded_median_centred_r": 0.2884351199911039,
+ "c4_validated": false,
+ "rerun_median_centred_r": 0.28843511999112015
+}

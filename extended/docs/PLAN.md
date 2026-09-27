@@ -2,7 +2,7 @@
 
 **One document. If it conflicts with anything else, this wins.**
 
-Last updated 27 September 2026 (after E1).
+Last updated 27 September 2026 (after E1 and E4).
 
 ---
 
@@ -96,24 +96,30 @@ augmented is still blank, the measured-construct structures are unconfirmed, and
 ProteinDPO are not actually available for our 15 domains** — the MGnify file covers 26 other
 proteins.
 
-### ▶ E4 · independent test of the C4 specificity model — **pre-registered, notebook ready to run** · [doc](E4_specificity_independent.md)
+### ✅ E4 · independent test of the C4 specificity model — **done** · [doc](E4_specificity_independent.md)
 
-45 measured affinities across 17 SH3 domains, independent of the PWM data C4 was built from. Expect
-failure again — a second *independent* failure is a stronger negative result than one internal failure,
-and that is the honest headline.
+Judged against [preregistration/E4.md](preregistration/E4.md), committed before the notebook.
+Analysis: `results/E4_specificity_independent/ANALYSIS_E4.md`.
 
-Pre-registration: [preregistration/E4.md](preregistration/E4.md), committed before the notebook. Three
-findings from writing it, each of which would have been a problem discovered too late:
+**Both verdicts are no, and the control says why.** The model scores r = **+0.023** (p = 0.91) on the
+within-domain-centred main test and does not beat the domain-agnostic baseline. But the **observed**
+phage-display profile — the quantity the model is trained to predict — fails identically
+(r = −0.051, p = 0.80). By the reading fixed in advance, that makes this **the measurement, not the
+model**: a predictor of X cannot beat X, so no improvement to C4's regression could have produced a
+positive result here.
 
-- **C4's axis is compositional, not positional.** Each 14 × 20 PWM is collapsed to one 20-vector, so
-  peptides can only be scored by amino-acid composition. This bounds what E4 can show either way.
-- **12 of the 17 domains are in C4's training set** (37 of 45 measurements). E4 re-runs C4's own
-  cross-validation and scores those from the leave-cluster-out fold; 4 domains C4 never saw use the
-  final model; ARHGEF30 is dropped for want of a domain sequence. 44 measurements, 16 domains.
-- **The observed phage-display profile is run as a control.** If it fails too, the negative result is
-  about the data and not about C4 — and that reading is fixed in advance.
+**The representation is the limit.** Collapsing a 14-position PWM to composition discards order, and
+SH3 ligand classes differ by order (class I `+xΦPxΦP` vs class II `ΦPxΦPx+`) at identical composition.
+Two further numbers: the model's score correlates **+0.82** with the domain-agnostic baseline and 70 %
+of its spread is peptide-driven, so the predictions are also shrunk hard toward the family mean — C4's
+internal verdict from another angle.
 
-Needs a GPU only to be quick; runs on CPU in about ten minutes.
+**The re-run reproduced C4 to 1.6 × 10⁻¹⁴**, so the predictions scored are exactly the ones
+`validated: false` came from.
+
+What this licenses: *44 independently measured affinities give no support to the compositional
+specificity axis, and the failure is the representation rather than the fit.* What it does not: "C4's
+model is wrong" — the control cannot separate that from "composition is the wrong representation".
 
 ---
 
@@ -144,8 +150,7 @@ isolation. Needs G4 done and a collaborator.
 ## Order of work
 
 ```
-E4  ─ hours, data in hand                  ← start here
-G1  ─ now load-bearing: the only route to objection 2
+G1  ─ now load-bearing: the only route to objection 2   ← start here
 E3  ─ needs GPU + ESM3 licence + structures
 G4  ─ minutes
 G2, G3

@@ -1,0 +1,18 @@
+measured_as,group,C4_entries,n_Kd
+ABI1,held out,-,2
+ABL2,trained,ABL2-1/1,3
+ARHGAP12,trained,ARHGAP12-1/1,4
+ARHGEF30,excluded,-,1
+BIN1,trained,BIN1-1/1,3
+CRK-1,trained,CRK-1/2,2
+DLG2,held out,-,1
+GRB2-1,trained,GRB2-1/2,5
+GRB2-2,trained,GRB2-2/2,5
+ITSN1-1,trained,ITSN1-1/5-IS3/3,3
+ITSN1-5,trained,ITSN1-5/5,3
+NCK1-2,trained,NCK1-2/3,2
+NCK1-3,held out,-,3
+RIMBP3B-1,trained,RIMBP3B-1/1,2
+SH3PXD2A-1,trained,SH3PXD2A-1/5,3
+SORBS1-1,held out,-,1
+SRC,trained,"SRC-1/1-IS1/2, SRC-1/1-IS2/2",2

@@ -14,13 +14,12 @@ Checked 27 September 2026, after E1.
 | Upload | into | Size |
 |---|---|---|
 | `notebooks/E1_clinvar_gnomad.ipynb` — **patched after the run**, re-upload and re-run | `code/` | 20 KB |
-| `notebooks/E4_specificity_independent.ipynb` — new, ready to run | `code/` | 24 KB |
-| `input/external/binding/kazemein_jasemi_2024_TableS2_peptides.csv` — E4 needs it | `input/external/binding/` | 1 KB |
 | `input/README.md` — **local copy was refreshed**, Drive's is now the stale one | `input/` | 3 KB |
 | `input/external/binding/` — the whole folder | `input/external/` | 18 MB |
 | `input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz` | `input/external/genome/` | **842 MB** |
 | `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 43 | `reference/` | 4 KB |
 | `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
+| `results/E4_specificity_independent/ANALYSIS_E4.md` | same path | small |
 | `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
 | `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
 | `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
@@ -37,8 +36,8 @@ serves them at `sh3_repro/results/C4_specificity_axis/`, so **they do not need u
 the frozen run and falls back to the bundle.
 
 **Downloaded from Drive instead:** E1 and E2 run in Colab and write to Drive, so
-`results/E1_clinvar_gnomad/{RESULTS_E1.md,summary_E1.csv,metrics_E1.json}` came the other way and are
-now in git. `input/README.md` was lost locally during the input redistribution and was recovered the
+`results/E1_clinvar_gnomad/{RESULTS_E1.md,summary_E1.csv,metrics_E1.json}` and all five of
+`results/E4_specificity_independent/` came the other way and are now in git. `input/README.md` was lost locally during the input redistribution and was recovered the
 same way — the Drive copy matched its recorded MD5 exactly, which is what the manifest is for.
 
 ## Then verify
@@ -60,7 +59,8 @@ If it reports failures on the model checkpoints, you used the wrong file — tho
 
 ## Already in sync
 
-`input/external/{domainome,stability,clinical,signatures}` · `input/frozen/` ·
+`input/external/{domainome,stability,clinical,signatures}` · the two binding CSVs ·
+`input/frozen/` · the E4 notebook ·
 `results/E1_clinvar_gnomad/` (written there by Colab) · the X0 notebook ·
 all five X0 output CSVs · `reference/{checksums_X0.md5,data_manifest_X0.csv,sh3_genes_uniprot.tsv,
 domainome_column_map.md,checksums_models.md5}` · `results/E2_domainome_external/{per_domain,

@@ -35,16 +35,22 @@ Every program in this phase with a pass/fail verdict gets the same treatment.
 | | Program | State |
 |---|---|---|
 | [E1.md](E1.md) | ClinVar and gnomAD | **signed, run, reported.** Decisions in Part 6, amendment in Part 7; result in `results/E1_clinvar_gnomad/` |
-| [E4.md](E4.md) | independent test of C4's specificity axis | **drafted 27 Sep**, unsigned |
+| [E4.md](E4.md) | independent test of C4's specificity axis | **run and reported.** Both verdicts no; the Part 6 control attributes the failure to the representation, not the model |
 | [E3.md](E3.md) | benchmark against current predictors | **draft — three decisions open**, see its Part 5 |
 
 E1 is signed and its result is in. E3 and E4 have an empty `Signed off / Date / Commit` block at the
 end; filling it and committing is what makes a pre-registration binding.
 
 E4 is the one case where the pre-registration tests a pre-registration: C4's rule already returned
-`validated: false`, so E4's job is to make an *independent* failure interpretable — which is why its
-Part 6 declares, in advance, how to tell "the model is wrong" apart from "this data cannot answer the
+`validated: false`, so E4's job was to make an *independent* failure interpretable — which is why its
+Part 6 declared, in advance, how to tell "the model is wrong" apart from "this data cannot answer the
 question".
+
+**That control earned its place.** Both of E4's verdicts came back no, and without Part 6 the obvious
+write-up would have been "the specificity axis fails an independent test". The control shows the
+*observed* phage-display profile fails the same test, so the honest claim is narrower and better
+founded: composition is the wrong representation, and no improvement to the model could have changed
+the result. A rule written afterwards could not have made that distinction credibly.
 
 ## What the 27 Sep review changed
 
