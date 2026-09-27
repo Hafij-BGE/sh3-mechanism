@@ -1,6 +1,6 @@
 # X0 - external data acquisition
 
-Run 2026-09-27 00:10, profile `core`. Genes: 235.
+Run 2026-09-27 04:46, profile `core`. Genes: 235.
 
 | Output | Rows | Size |
 |---|---|---|
@@ -8,7 +8,7 @@ Run 2026-09-27 00:10, profile `core`. Genes: 235.
 | `clinvar_sh3.csv` | 74,116 | 17.2 MB |
 | `domainome_atlas_matched.csv` | 880 | 0.4 MB |
 | `domainome_sh3_variants.csv` | 46,128 | 9.4 MB |
-| `gnomad_sh3_missense.csv` | 431,959 | 25.4 MB |
+| `gnomad_sh3_missense.csv` | 431,959 | 38.6 MB |
 
 ## Downloads kept on Drive
 
@@ -22,4 +22,4 @@ Run 2026-09-27 00:10, profile `core`. Genes: 235.
 ## Not automated
 
 MGnify Stability (Google Form), dbNSFP v5.4a (registration), COSMIC SBS
-signatures (terms acceptance). Upload into `input_new/`. See `DOWNLOADS.md`.
+signatures (terms acceptance). Upload into `input/external/`. See `DOWNLOADS.md`.

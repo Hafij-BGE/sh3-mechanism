@@ -14,9 +14,12 @@ Checked 27 September 2026, after E1.
 | Upload | into | Size |
 |---|---|---|
 | `notebooks/E1_clinvar_gnomad.ipynb` — **patched after the run**, re-upload and re-run | `code/` | 20 KB |
+| `notebooks/E4_specificity_independent.ipynb` — new, ready to run | `code/` | 24 KB |
+| `input/external/binding/kazemein_jasemi_2024_TableS2_peptides.csv` — E4 needs it | `input/external/binding/` | 1 KB |
+| `input/README.md` — **local copy was refreshed**, Drive's is now the stale one | `input/` | 3 KB |
 | `input/external/binding/` — the whole folder | `input/external/` | 18 MB |
 | `input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz` | `input/external/genome/` | **842 MB** |
-| `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 39 | `reference/` | 4 KB |
+| `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 43 | `reference/` | 4 KB |
 | `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
 | `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
 | `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
@@ -28,9 +31,15 @@ Everything but the genome is under 20 MB, and the genome is needed only by G1, s
 Use **New → Folder upload** for whole folders — it preserves the tree and is far less error-prone
 than file-by-file. Close any document open in OnlyOffice first, or its `.~lock.*#` file rides along.
 
+`input/frozen/results/` gained three C4 artefacts (`pwm_profiles.csv`, `specificity_cv.csv`,
+`specificity_decision.json`) so E4 runs from the bundle as well as from the frozen run. Drive already
+serves them at `sh3_repro/results/C4_specificity_axis/`, so **they do not need uploading** — E4 prefers
+the frozen run and falls back to the bundle.
+
 **Downloaded from Drive instead:** E1 and E2 run in Colab and write to Drive, so
 `results/E1_clinvar_gnomad/{RESULTS_E1.md,summary_E1.csv,metrics_E1.json}` came the other way and are
-now in git.
+now in git. `input/README.md` was lost locally during the input redistribution and was recovered the
+same way — the Drive copy matched its recorded MD5 exactly, which is what the manifest is for.
 
 ## Then verify
 
@@ -41,7 +50,7 @@ In a Colab cell (two lines — `%cd` is notebook magic and does not work in a sh
 !md5sum -c reference/checksums_ext.md5
 ```
 
-Expect **39 OK**. Drive's web uploader truncates large files silently often enough that this is worth
+Expect **43 OK**. Drive's web uploader truncates large files silently often enough that this is worth
 running after every bulk upload.
 
 If it reports failures on the model checkpoints, you used the wrong file — those live in

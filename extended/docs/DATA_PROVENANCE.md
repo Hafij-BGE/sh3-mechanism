@@ -4,7 +4,7 @@ Written as it happened, 26–27 September 2026, including the routes that failed
 rebuild `input/` from nothing should be able to follow this. `docs/DATA.md` says *what* the data is;
 this says *how it got here*.
 
-Every file has a checksum in `reference/checksums_ext.md5` (39 entries; 8 checked against a
+Every file has a checksum in `reference/checksums_ext.md5` (43 entries; 8 checked against a
 publisher's own published value, the rest recorded locally).
 
 ---
@@ -142,6 +142,26 @@ text-based, so `pypdf` extracts it, and a parser turns it into
 > **45 measured interactions, 17 SH3 domains, Kd 0.2–125 µM**
 
 Both the count and the range match the paper exactly, which is the check that the parse is right.
+
+**Table S2 gives the peptide sequences**, which E4 needs and the Kd table does not carry — it names
+peptides `P1`–`P10`, `RP1`, `RP2` only. Extracted from the same PDF with `pdftotext -layout` and a
+one-line regex, into `kazemein_jasemi_2024_TableS2_peptides.csv`:
+
+```
+P3   1146EVPVPPPVPPRRRPESAPAESSPSKI1171
+```
+
+Each row carries the residue coordinates, so the parse checks itself: `end − start + 1` must equal the
+sequence length, and it does for all twelve. That check also surfaces a fact the analysis has to
+handle — **RP1 (1147–1158) is a sub-sequence of P3 (1146–1171)**, so those two measurements are not
+independent.
+
+Ten peptides are SOS1-derived; RP1 and RP2 are the paper's reference peptides. Nine of the twelve carry
+at least one Kd.
+
+**These two CSVs are the only files under `input/` that are committed to git.** The paper is CC BY,
+which permits redistribution with attribution, and without them E4 cannot be reproduced from the
+repository alone. Everything else under `input/` stays out, for size or licence.
 
 ## 9. dbNSFP — requested, never arrived, not needed
 

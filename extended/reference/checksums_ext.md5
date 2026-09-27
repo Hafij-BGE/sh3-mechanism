@@ -12,7 +12,7 @@ d0e744d6e50be563e46254ecc8586f24  input/external/domainome/Supplementary_Table_2
 c585736d10302a92aa935f29eeddcde6  input/external/stability/mgnify/mgnify_training_index.csv
 
 # ---- LOCAL: recorded here only (extracted members, derived files) ----
-9df0d145632f1e821d40246f9a9b30a2  input/README.md
+71c0ab0aa0f9d58defd219ce93643757  input/README.md
 0ef1c60048748efe12ea3120ecc848ce  input/external/clinical/variant_summary.txt.gz
 ef1f5c4afe5979b4a5996e48536738db  input/external/domainome/Extended_data_Table_2_fitness_scores_normalized_domainranks.txt
 6c2f69159c6f2114be68b4464b3f874f  input/external/domainome/Extended_data_Table_5_aPCA_vs_variant_effect_predictors.txt
@@ -45,3 +45,9 @@ bc7af8ba0697b1956b33365e199f79a8  input/external/binding/kazemein_jasemi_2024/ce
 5ddcaebdb233949e6c8f2d3e81f00995  input/external/binding/kazemein_jasemi_2024/cells-2796338-supplementary.pdf
 cbb1c9eff9f6c0fd0e92a30f4c6051bc  input/external/binding/kazemein_jasemi_2024_TableS6_Kd.csv
 1c8c1d3ebfa7e615cd9ac2cf00853423  input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+
+# ---- LOCAL: added 2026-09-27 (E4: peptide table, C4 profiles imported from the frozen run) ----
+3dda0103f427ead5e2722daf2055045f  input/external/binding/kazemein_jasemi_2024_TableS2_peptides.csv
+fe61b4e0ddf836fbb64132a69778c179  input/frozen/results/pwm_profiles.csv
+8435c5079660abe628669f51b5993c65  input/frozen/results/specificity_cv.csv
+92c75300265b969dc0d0b64863564699  input/frozen/results/specificity_decision.json

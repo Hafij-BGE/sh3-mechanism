@@ -96,12 +96,24 @@ augmented is still blank, the measured-construct structures are unconfirmed, and
 ProteinDPO are not actually available for our 15 domains** — the MGnify file covers 26 other
 proteins.
 
-### E4 · independent test of the C4 specificity model · [doc](E4_specificity_independent.md)
+### ▶ E4 · independent test of the C4 specificity model — **pre-registered, notebook ready to run** · [doc](E4_specificity_independent.md)
 
-45 measured affinities across 17 SH3 domains, independent of the PWM data C4 was built from, in
-`input/external/binding/kazemein_jasemi_2024_TableS6_Kd.csv`. Expect failure again — a second
-*independent* failure is a stronger negative result than one internal failure, and that is the honest
-headline.
+45 measured affinities across 17 SH3 domains, independent of the PWM data C4 was built from. Expect
+failure again — a second *independent* failure is a stronger negative result than one internal failure,
+and that is the honest headline.
+
+Pre-registration: [preregistration/E4.md](preregistration/E4.md), committed before the notebook. Three
+findings from writing it, each of which would have been a problem discovered too late:
+
+- **C4's axis is compositional, not positional.** Each 14 × 20 PWM is collapsed to one 20-vector, so
+  peptides can only be scored by amino-acid composition. This bounds what E4 can show either way.
+- **12 of the 17 domains are in C4's training set** (37 of 45 measurements). E4 re-runs C4's own
+  cross-validation and scores those from the leave-cluster-out fold; 4 domains C4 never saw use the
+  final model; ARHGEF30 is dropped for want of a domain sequence. 44 measurements, 16 domains.
+- **The observed phage-display profile is run as a control.** If it fails too, the negative result is
+  about the data and not about C4 — and that reading is fixed in advance.
+
+Needs a GPU only to be quick; runs on CPU in about ten minutes.
 
 ---
 

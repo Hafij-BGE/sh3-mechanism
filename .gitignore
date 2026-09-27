@@ -46,7 +46,17 @@ results/SH3_Mutation_Mechanism_Blueprint.pdf
 result analysis/
 
 # --- extended/ (phase 2: external validation) -------------------------------
-extended/input/
+# git does not descend into an excluded directory, so each level is excluded by its
+# contents and re-admitted, to let through the two small derived tables E4 reads.
+# Kazemein Jasemi et al. 2024 is CC BY, which permits redistribution with attribution
+# (docs/DATA.md and DATA_PROVENANCE.md give it); without them E4 cannot be reproduced
+# from the repository alone. Everything else under input/ stays out.
+extended/input/*
+!extended/input/external/
+extended/input/external/*
+!extended/input/external/binding/
+extended/input/external/binding/*
+!extended/input/external/binding/*.csv
 extended/Downloded data/
 extended/absolute-stability-predictor/
 extended/results/**/*.parquet

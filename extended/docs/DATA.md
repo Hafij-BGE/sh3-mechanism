@@ -1,6 +1,6 @@
 # The data
 
-Everything this phase reads. `input/` verifies **39 / 39** against
+Everything this phase reads. `input/` verifies **43 / 43** against
 `reference/checksums_ext.md5` (8 of them against the publishers' own checksums).
 
 ```bash
@@ -24,9 +24,10 @@ input/                                     5.1 GB
 │   ├── clinical/      ClinVar variant_summary.txt.gz
 │   ├── signatures/    COSMIC v3.6 SBS96 GRCh38
 │   ├── genome/        GRCh38 primary assembly (882 MB) — for G1
-│   └── binding/       Kazemein Jasemi 2024 + the extracted Kd table — for E4
+│   └── binding/       Kazemein Jasemi 2024 + the extracted Kd and peptide tables — for E4
 └── frozen/      read-only copies from the 2026-09-22 run (chmod a-w)
-    ├── results/    atlas, B3 predictions, B1 held-out CIs, models.pt, F1 candidates
+    ├── results/    atlas, B3 predictions, B1 held-out CIs, models.pt, F1 candidates,
+    │               C4's collapsed PWM profiles + its CV table and decision (for E4)
     └── reference/  expected_values.json, checksums.md5, data_manifest.json
 ```
 
@@ -94,3 +95,8 @@ atlas is republishing the atlas. Derived analysis tables (subsets with predictio
 measurements, carrying no COSMIC identifiers, counts, sites or coordinates) **are** committed: they
 are ordinary supplementary-material results. The large public exports (gnomAD 25 MB, ClinVar 17 MB,
 Domainome 9 MB) stay out for size, not licence; X0 regenerates them.
+
+**One exception under `input/`.** The two derived binding tables E4 reads — the Kd table and the
+peptide table, together under 2 KB — *are* committed. Kazemein Jasemi et al. 2024 is CC BY, so
+redistribution with attribution is permitted, and E4 cannot otherwise be reproduced from the repository
+alone.
