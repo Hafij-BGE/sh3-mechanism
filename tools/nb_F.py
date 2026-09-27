@@ -222,6 +222,8 @@ setup('F2', 'Figures for the experimental candidate panel'),
 code(r"""
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
+from matplotlib.lines import Line2D
 plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False, 'figure.dpi': 110,
                      'savefig.dpi': 300, 'savefig.bbox': 'tight'})
 BLUE, ORANGE, GREEN, RED, PURPLE, GREY = '#2f6fb5', '#d8792a', '#3f8f5e', '#c0392b', '#7a5aa8', '#9a9a9a'
@@ -291,10 +293,14 @@ for _, r in POS.iterrows():
     ax.annotate(f'{int(r.picks)}', (r.ref_pos, FAM.set_index('ref_pos').mean_pred.get(r.ref_pos, ymax) + .08),
                 ha='center', color=RED, weight='bold')
     ax.plot(r.ref_pos, -0.12, '^', color=RED, ms=9, clip_on=False)
-ax.bar([], [], color=ORANGE, label='buried'); ax.bar([], [], color=GREY, label='exposed')
-ax.bar([], [], color='none', edgecolor=PURPLE, label='peptide interface'); ax.plot([], [], '^', color=RED, label='F1 picks (number above bar)')
+# proxy handles must be real artists: ax.bar([], []) yields a container with no patch,
+# so the legend falls back to a default swatch and the colours are wrong.
+HANDLES = [Patch(facecolor=ORANGE, label='buried'),
+           Patch(facecolor=GREY, label='exposed'),
+           Patch(facecolor='none', edgecolor=PURPLE, lw=1.5, label='peptide interface'),
+           Line2D([], [], marker='^', color=RED, ls='none', ms=9, label='F1 picks (number above bar)')]
 ax.set_xlabel('aligned position (GRB2-SH3 frame)'); ax.set_ylabel('mean predicted ΔΔG$_{fold}$, all substitutions')
-ax.set_ylim(0, ymax * 1.2); ax.legend(frameon=False, fontsize=8, ncol=4, loc='upper right')
+ax.set_ylim(0, ymax * 1.2); ax.legend(handles=HANDLES, frameon=False, fontsize=8, ncol=4, loc='upper right')
 TOPPOS = POS.sort_values('picks', ascending=False).iloc[0]
 ax.set_title(f'{int(TOPPOS.picks)} of {len(PICK)} picks sit at aligned position {int(TOPPOS.ref_pos)}: '
              f'the panel covers {len(POS)} of {len(FAM)} positions', loc='left', weight='bold')

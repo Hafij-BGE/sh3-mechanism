@@ -20,6 +20,7 @@ code(r"""
 import glob
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False, 'figure.dpi': 110,
                      'savefig.dpi': 300, 'savefig.bbox': 'tight'})
 BLUE, ORANGE, GREEN, RED, PURPLE, GREY = '#2f6fb5', '#d8792a', '#3f8f5e', '#c0392b', '#7a5aa8', '#9a9a9a'
@@ -182,7 +183,11 @@ if 'B6' in MET:
     fig, ax = plt.subplots(figsize=(11, 3.6))
     ax.bar(FAM.ref_pos, FAM.mean_pred, color=np.where(FAM.buried, GREEN, np.where(FAM.interface, PURPLE, GREY)))
     ax.set_xlabel('aligned position (GRB2-SH3 frame)'); ax.set_ylabel('mean predicted ΔΔG$_{fold}$, all substitutions')
-    ax.bar([], [], color=GREEN, label='buried'); ax.bar([], [], color=PURPLE, label='interface'); ax.legend(frameon=False)
+    # proxy handles must be real artists: ax.bar([], []) yields a container with no patch,
+    # so the legend falls back to a default swatch and the colours are wrong.
+    ax.legend(handles=[Patch(facecolor=GREEN, label='buried'),
+                       Patch(facecolor=PURPLE, label='interface'),
+                       Patch(facecolor=GREY, label='neither')], frameon=False)
     ax.set_title('Virtual saturation mutagenesis: where every human SH3 domain is fragile', loc='left', weight='bold'); save(fig, 'fig8_family_landscape')
 """),
 md("## 3. Summary files"),
