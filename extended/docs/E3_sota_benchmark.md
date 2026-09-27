@@ -1,4 +1,4 @@
-# E3 — Benchmark against the state of the art  *(Experiment 1 run, 27 September 2026)*
+# E3 — Benchmark against the state of the art  *(done, 27 September 2026)*
 
 **Why it is needed.** The single biggest objection to B1. The head beats zero-shot ESM-2, FoldX and
 EVE — but a reviewer will name three current supervised ΔΔG predictors and ask why they are missing.
@@ -87,13 +87,18 @@ better, and the unaligned correlations are printed beside the aligned ones so th
 
 Numbers in `results/E3_sota_benchmark/RESULTS_E3_exp1.md`; reading in `ANALYSIS_E3.md`.
 
-- **No clear difference against SaProtΔG.** Median per-domain ρ +0.855 against our +0.839, median
-  paired difference −0.028, Wilcoxon p = 0.107 against α = 0.025. 27,590 variants, 0 dropped.
-- **The asymmetry is the point.** Our head is sequence-only and saw no SH3 domain in training;
-  SaProtΔG gets the experimentally determined structure of the measured construct.
-- **Not a claim of parity.** SaProtΔG is nominally ahead on 11 of 15 domains. 15 domains cannot
-  resolve a 0.03 gap, which the plan stated before any result existed.
-- **ESM3ΔG was not run** (gated model, no token), so one of the two verdicts is outstanding.
-- **ThermoMPNN was not run** — `from datasets import Mutation` collided with the Hugging Face
-  `datasets` package. Fixed by setting `PYTHONPATH`. Its leakage audit, which is the valuable part,
-  did not depend on running it.
+| competitor | median ρ | ours | diff | p | verdict |
+|---|---|---|---|---|---|
+| SaProtΔG | +0.855 | +0.839 | −0.028 | 0.107 | no clear difference |
+| ESM3ΔG | +0.792 | +0.839 | +0.033 | 0.0084 | **ours better** |
+
+- **27,590 variants scored by each, 0 dropped.**
+- **The asymmetry is the point.** Our head is sequence-only and saw no SH3 domain in training; both
+  competitors get the measured construct's experimental structure.
+- **Consistency, not the median, is the finding.** ESM3ΔG ranges 0.460–0.892 across domains against
+  our 0.754–0.934; its worst cases are DOCK1 (0.460) and PTK6 (0.515), where SaProtΔG manages 0.780
+  and 0.835 on identical inputs.
+- **Not parity with the state of the art.** SaProtΔG is nominally ahead on 11 of 15, and 15 domains
+  cannot resolve a 0.03 gap — stated before any result existed.
+- **ThermoMPNN still has not run** (descriptive arm only): the `datasets` import collision was fixed,
+  and it then failed on position mapping, now fixed by deriving the offset instead of guessing it.

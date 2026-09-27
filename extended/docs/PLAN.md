@@ -2,7 +2,7 @@
 
 **One document. If it conflicts with anything else, this wins.**
 
-Last updated 27 September 2026 (after E1, E4 and E3 Experiment 1).
+Last updated 27 September 2026 (after E1, E3 and E4).
 
 ---
 
@@ -13,7 +13,7 @@ it and a journal submission, using public data that already exists.
 
 | # | Objection a reviewer will raise | Closed by | State |
 |---|---|---|---|
-| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | **partly closed** — no clear difference vs SaProtΔG; ESM3ΔG outstanding |
+| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | **closed** — level with SaProtΔG, better than ESM3ΔG (p = 0.0084) |
 | 2 | The B6 depletion could be mutational bias, not selection | **G1** alone — E1 could not | data ready |
 | 3 | Generality asserted from *n* = 1, twice | **H1**; partly **E2** | E2 done |
 | 4 | Nothing was measured | **E1**, **E2**, ultimately **H2** | **both done** |
@@ -100,27 +100,32 @@ Two practical notes: the release ships **no tabix index**, so the subset costs o
 (cached, paid once); and the two large files are ~100 GB together and are probably the same release
 twice — X1 §1 checks that cheaply and says whether one can be deleted.
 
-### ◐ E3 · benchmark against SaProtΔG and ESM3ΔG — **Experiment 1 run, half complete** · [doc](E3_sota_benchmark.md)
+### ✅ E3 · benchmark against SaProtΔG and ESM3ΔG — **done** · [doc](E3_sota_benchmark.md)
 
 Judged against [preregistration/E3.md](preregistration/E3.md) @ `ccd3446`. Analysis:
 `results/E3_sota_benchmark/ANALYSIS_E3.md`.
 
-**SaProtΔG +0.855 against our +0.839**, median paired difference −0.028, Wilcoxon p = **0.107** over
-15 domains against α = 0.025 → **no clear difference**. 27,590 variants scored, **0 dropped**.
+| competitor | median ρ | ours | diff | p | verdict |
+|---|---|---|---|---|---|
+| SaProtΔG | +0.855 | +0.839 | −0.028 | 0.107 | **no clear difference** |
+| ESM3ΔG | +0.792 | +0.839 | +0.033 | **0.0084** | **ours better** |
 
-The comparison is asymmetric in our favour to state and against us to run: **our head is sequence-only
-and saw no SH3 domain in training; SaProtΔG receives the experimentally determined structure of the
-exact measured construct.** Being within 0.03 median Spearman of that, with no structural input, is the
-finding. It is *not* "we match the state of the art" — the nominal direction favours SaProtΔG on 11 of
-15 domains, and the plan said in advance that 15 domains cannot resolve a gap this size.
+27,590 variants scored by each, **0 dropped**. **Our head is sequence-only and saw no SH3 domain in
+training; both competitors receive the measured construct's experimental structure.** On that footing
+we are indistinguishable from one and ahead of the other.
 
-**The leakage audit is the more durable half**, and it stands whatever the comparison returns:
-SaProtΔG 0 of 15, ESM3ΔG 0 of 15, **ThermoMPNN 13 of 15** — 23,191 of 27,590 held-out variants inside
-its own train or val split.
+**Consistency is the real finding.** ESM3ΔG ranges 0.460–0.892 across domains; we range 0.754–0.934.
+Our worst domain beats its fifth-worst. The 410 confident calls in B3 depend on behaving similarly
+across domains, not on a good average.
 
-**Still missing:** ESM3ΔG (gated, no token — this is the second verdict and E3 is incomplete without
-it), ThermoMPNN (a `datasets` name collision, now fixed), and Experiments 2–4. Every SaProtΔG scan is
-cached, so finishing costs only the new work.
+**Not a claim of state of the art:** SaProtΔG is nominally ahead on 11 of 15, and 15 domains cannot
+resolve a 0.03 gap — stated in the plan before any result.
+
+**The leakage audit stands on its own:** SaProtΔG 0 of 15, ESM3ΔG 0 of 15, **ThermoMPNN 13 of 15** —
+23,191 of 27,590 held-out variants inside its own train or val split.
+
+Outstanding: ThermoMPNN (descriptive only; import fixed, now a position-offset bug, also fixed) and
+Experiments 2–4. All scans are cached, so each costs only its own new work.
 
 ### ✅ E4 · independent test of the C4 specificity model — **done** · [doc](E4_specificity_independent.md)
 

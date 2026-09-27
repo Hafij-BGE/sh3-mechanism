@@ -1,73 +1,81 @@
 # E3 — analysis (Experiment 1, base)
 
-Run 27 September 2026. Machine numbers in `RESULTS_E3_exp1.md` and `metrics_E3_exp1.json`; the plan
-they were judged against is `docs/preregistration/E3.md` @ `ccd3446`, committed before the notebook
-existed.
+Run 27 September 2026, 15:53. Machine numbers in `RESULTS_E3_exp1.md` and `metrics_E3_exp1.json`;
+the plan they were judged against is `docs/preregistration/E3.md` @ `ccd3446`, committed before the
+notebook existed.
 
-**E3 is half done.** One of the two competitors that carry a verdict ran. See "What is still missing".
+**Both verdicts are in.** ThermoMPNN, which carries no verdict by design, still has not run.
 
 ---
 
 ## The result
 
-| | median per-domain ρ |
-|---|---|
-| SaProtΔG (base, 3 seeds averaged) | **+0.855** |
-| ours (B1, frozen) | **+0.839** |
-| median paired difference | **−0.028**, in SaProtΔG's favour |
-| paired Wilcoxon, 15 domains | **p = 0.107** against α = 0.025 |
+| competitor | median per-domain ρ | ours | median paired diff | Wilcoxon p | verdict |
+|---|---|---|---|---|---|
+| **SaProtΔG** | +0.855 | +0.839 | −0.028 | 0.107 | **no clear difference** |
+| **ESM3ΔG** | +0.792 | +0.839 | **+0.033** | **0.0084** | **ours better** |
 
-**Verdict, by the rule fixed in advance: no clear difference.**
+α = 0.025 (0.05 across the two competitors carrying a verdict). **27,590 variants scored by each, 0
+dropped** — the entire held-out set, not a favourable subset.
 
-**27,590 variants scored, 0 dropped.** Every held-out variant in the test set got a score from both
-models, so this is not a comparison on a favourable subset — it is the whole thing.
+**The asymmetry is what makes this worth reporting.** Our head is sequence-only and saw no SH3 domain
+in training. Both competitors receive the experimentally determined 3D structure of the exact
+construct that was measured. On that footing we are indistinguishable from one and ahead of the other.
 
-## What this does and does not license
+## ESM3ΔG — a pre-registered win, and a fragile competitor
 
-**Says:** across 15 held-out SH3 domains, no gap large enough for this test to see separates our model
-from SaProtΔG. Our head is **sequence-only** and was trained on non-SH3 MegaScale variants;
-SaProtΔG receives **the experimentally determined 3D structure of the exact construct that was
-measured**. Being within 0.03 median Spearman of that, with no structural input at all, is the result
-worth reporting.
+Ours is better on **12 of 15 domains**:
 
-**Does not say "we match the state of the art".** The nominal direction favours SaProtΔG on **11 of
-15 domains**, and a sign test on that split gives p ≈ 0.12 — the same story as the Wilcoxon. The
-pre-registration warned that 15 domains detects large gaps and not small ones; a median gap of 0.028
-is exactly the size this design cannot resolve. The honest sentence is *"no clear difference, with
-the competitor nominally ahead by a median 0.028"*, and Part 3 of the plan said in advance that a
-competitor win would be reported plainly.
-
-## Per-domain
-
-| gene | n | SaProtΔG | ours | ours − SaProtΔG |
+| gene | n | ESM3ΔG | ours | ours − ESM3ΔG |
 |---|---|---|---|---|
-| SPTAN1 | 10,112 | 0.755 | **0.872** | **+0.116** |
-| FYN | 2,187 | 0.879 | **0.934** | +0.055 |
-| TEC | 1,072 | 0.830 | **0.839** | +0.009 |
-| BTK | 1,060 | 0.8548 | **0.8549** | +0.0001 |
-| PTK6 | 1,125 | **0.835** | 0.829 | −0.006 |
-| DOCK1 | 1,208 | **0.780** | 0.774 | −0.006 |
-| NPHP1 | 2,212 | **0.858** | 0.842 | −0.016 |
-| OSTF1 | 1,028 | **0.874** | 0.845 | −0.030 |
-| LYN | 1,014 | **0.853** | 0.822 | −0.031 |
-| LCK | 983 | **0.877** | 0.837 | −0.040 |
-| SORBS1 | 1,210 | **0.846** | 0.797 | −0.049 |
-| PLCG1 | 1,091 | **0.832** | 0.772 | −0.060 |
-| LASP1 | 1,045 | **0.915** | 0.844 | −0.071 |
-| OBSCN | 1,209 | **0.865** | 0.754 | −0.111 |
+| DOCK1 | 1,208 | 0.460 | 0.774 | **+0.314** |
+| PTK6 | 1,125 | 0.515 | 0.829 | **+0.314** |
+| SPTAN1 | 10,112 | 0.683 | 0.872 | +0.189 |
+| TEC | 1,072 | 0.684 | 0.839 | +0.156 |
+| FYN | 2,187 | 0.841 | 0.934 | +0.093 |
+| OBSCN | 1,209 | 0.665 | 0.754 | +0.089 |
+| BTK | 1,060 | 0.768 | 0.855 | +0.087 |
+| OSTF1 | 1,028 | 0.812 | 0.845 | +0.033 |
+| HCK | 1,034 | 0.823 | 0.845 | +0.021 |
+| SORBS1 | 1,210 | 0.777 | 0.797 | +0.020 |
+| NPHP1 | 2,212 | 0.831 | 0.842 | +0.010 |
+| LYN | 1,014 | 0.820 | 0.822 | +0.002 |
+| LCK | 983 | **0.843** | 0.837 | −0.007 |
+| PLCG1 | 1,091 | **0.792** | 0.772 | −0.020 |
+| LASP1 | 1,045 | **0.892** | 0.844 | −0.048 |
 
-Two observations, offered as observations and not promoted to findings — the pre-registration fixed
-one main test and this is not it:
+**The spread is the story, not the median.** ESM3ΔG ranges **0.460 to 0.892**; we range 0.754 to
+0.934. At its best it beats us (LASP1 0.892); at its worst it collapses (DOCK1 0.460, PTK6 0.515).
+Our worst domain is better than ESM3ΔG's fifth-worst.
 
-- **SPTAN1 is 10,112 of the 27,590 variants — 37 % of the test set — and it is SaProtΔG's worst
-  domain (0.755) and one of our best (0.872).** SPTAN1 is also the domain measured across ten
-  separate MegaScale constructs. Whether structure-conditioned models struggle where one domain is
-  represented by many near-identical constructs is a question this run raises and does not answer.
-- **Our two clear wins, SPTAN1 and FYN, are the two largest domains in the set.** The median treats
-  every domain equally, which is what the plan specified; a variant-weighted comparison would look
-  more favourable to us and was *not* pre-registered, so it is not reported as a result.
+That is a consistency claim, and it is the more useful one for the project. The 410 confident calls in
+B3 depend on the head behaving similarly across domains, not on a good average.
 
-## The leakage audit is the more durable half of E3
+## SaProtΔG — no clear difference, competitor nominally ahead
+
+Nominally ahead on 11 of 15 domains, median gap 0.028, p = 0.107. The pre-registration warned that 15
+domains detects large gaps and not small ones, so this is *"no clear difference, with SaProtΔG
+nominally ahead"* — not parity, and not a win for us. Part 3 said a competitor win would be reported
+plainly, and this is as close as the data comes to one.
+
+Notably, **SaProtΔG and ESM3ΔG disagree with each other more than either disagrees with us on
+average.** SaProtΔG holds 0.755–0.915 while ESM3ΔG swings 0.460–0.892, on identical inputs. Whatever
+ESM3ΔG is doing on DOCK1 and PTK6, SaProtΔG is not doing it (0.780 and 0.835 there).
+
+## What the two together license
+
+*On 15 SH3 domains held out from training, a sequence-only ΔΔG head is statistically indistinguishable
+from SaProtΔG and significantly better than ESM3ΔG, with both competitors given the measured
+construct's experimental structure and 27,590 variants scored by all three with none dropped.*
+
+That closes objection 1 — "you only beat zero-shot ESM-2, FoldX and EVE" — against two current
+supervised predictors, one of them by a pre-registered test.
+
+**What it does not license.** Not "state of the art": SaProtΔG is nominally ahead, and 15 domains
+cannot resolve a 0.03 gap. Not a claim about ESM3 the base model — ESM3ΔG is a LoRA stability head on
+top of it, and its failure on DOCK1 is a property of that head on that domain, not of ESM3.
+
+## The leakage audit, which stands independently
 
 | competitor | held-out domains in its published training data |
 |---|---|
@@ -75,48 +83,30 @@ one main test and this is not it:
 | ESM3ΔG | 0 of 15 |
 | **ThermoMPNN** | **13 of 15** (12 train, 1 val) |
 
-This stands regardless of what the comparison returns. **23,191 of 27,590 held-out variants sit in
-ThermoMPNN's own training or validation split**, so a benchmark that had simply run all four
-competitors would have reported a MegaScale-trained model scoring its own training data against our
-held-out set. Any SH3 or MegaScale-derived benchmark needs this check before it means anything.
+**23,191 of 27,590 held-out variants sit in ThermoMPNN's own train or validation split.** A benchmark
+that had simply run all four competitors would have reported a MegaScale-trained model scoring its own
+training data against our held-out set. Scope, unchanged: this is the *published* split, not whatever
+the released weights saw.
 
-Scope, unchanged from Part 1: this establishes presence or absence in the **published** split, not in
-whatever the released weights actually saw.
+## Two checks that make the run believable
 
-## What is still missing
+- **Our numbers were re-derived, not copied.** The notebook recomputes the 15 per-domain ρ from B1's
+  frozen predictions and asserts they reproduce `folding_per_domain_ci.csv`. Median +0.839, exact.
+- **Sign alignment is visible, not fitted.** Unaligned medians were −0.855 and −0.792; aligned, +0.855
+  and +0.792. The negation came from each source's documented convention, and both numbers are printed.
 
-| | state | why it matters |
-|---|---|---|
-| **ESM3ΔG** | **not run** — gated model, no `HF_TOKEN` | the second verdict. E3 is incomplete without it |
-| **ThermoMPNN** | **not run** — import collision, now fixed | descriptive only; its absence costs little, since the audit already did the work |
-| Experiments 2, 3, 4 | not run | augmented weights, AlphaFold structures, per-seed spread |
+Added during the run and worth recording: the scan was batched 16-wide after proving it reproduces the
+library's batch-1 result to 1.6 × 10⁻⁵, and every scan is cached per construct — which is why adding
+ESM3ΔG cost only ESM3ΔG's own time.
 
-ThermoMPNN failed on a name collision, not on anything about the model:
+## Still outstanding
 
-```
-from datasets import Mutation
-ImportError: cannot import name 'Mutation' from 'datasets'
-```
+**ThermoMPNN.** The `datasets` import collision is fixed and it now runs, but it fails on position
+mapping: *no consistent offset for 1A0N.pdb_L7S*. The offset search tried 0, +1 and −1, assuming its
+positions index the parsed chain; for 1A0N chain B they are PDB author numbering, which starts far
+from any of those. Now derived from the data — every index carrying the first wild-type residue gives
+a candidate offset, each tested against all positions — rather than guessed. Descriptive arm only, so
+nothing in the table above depends on it.
 
-ThermoMPNN ships its own `datasets.py`, but `custom_inference.py` only *appends* the repo root to
-`sys.path`, so Hugging Face's `datasets` package wins. Fixed by setting `PYTHONPATH`, which is
-searched before site-packages.
-
-**Every SaProtΔG scan is cached**, so completing E3 costs only ESM3ΔG's own runtime plus a few minutes
-for ThermoMPNN. Nothing already computed is repeated.
-
-## Two checks that make this run believable
-
-- **Our own numbers were re-derived, not copied.** The notebook recomputes the 15 per-domain ρ from
-  B1's frozen predictions and asserts they reproduce `folding_per_domain_ci.csv`. Median +0.839
-  matches B1 exactly.
-- **The sign alignment is visible, not fitted.** The unaligned median correlation was **−0.855** and
-  the aligned one **+0.855**. The negation came from SaProtΔG's documented convention (ΔG on a
-  higher-is-more-stable scale, so ΔΔG negative = destabilising), not from whichever direction scored
-  better. Both numbers are printed so a reader can check that.
-
-## Effect on the plan
-
-**Objection 1 — "you only beat zero-shot ESM-2, FoldX and EVE" — is partly closed.** Against one
-current supervised ΔG predictor, on 15 domains it never saw, there is no clear difference. Closing it
-fully needs ESM3ΔG, which needs the licence accepted and a token set.
+**Experiments 2, 3 and 4** — augmented weights, AlphaFold structures, per-seed spread. All scans
+cached, so each costs only its own new work.
