@@ -36,10 +36,10 @@ Every program in this phase with a pass/fail verdict gets the same treatment.
 |---|---|---|
 | [E1.md](E1.md) | ClinVar and gnomAD | **signed, run, reported.** Decisions in Part 6, amendment in Part 7; result in `results/E1_clinvar_gnomad/` |
 | [E4.md](E4.md) | independent test of C4's specificity axis | **run and reported.** Both verdicts no; the Part 6 control attributes the failure to the representation, not the model |
-| [E3.md](E3.md) | benchmark against current predictors | **draft — three decisions open**, see its Part 5 |
+| [E3.md](E3.md) | benchmark against current predictors | **decisions taken (Part 6), unsigned.** The pre-commit leakage check disqualified ThermoMPNN |
 
-E1 is signed and its result is in. E3 and E4 have an empty `Signed off / Date / Commit` block at the
-end; filling it and committing is what makes a pre-registration binding.
+E1 is signed and its result is in. E3 has an empty `Signed off / Date / Commit` block; filling it is
+what makes a pre-registration binding.
 
 E4 is the one case where the pre-registration tests a pre-registration: C4's rule already returned
 `validated: false`, so E4's job was to make an *independent* failure interpretable — which is why its
@@ -64,6 +64,12 @@ and it caught three things that would otherwise have surfaced *after* a result e
   so the fallback would fire every time.
 - **E3 assumed ThermoMPNN and ProteinDPO predictions were in hand.** They cover 26 proteins with
   **zero overlap** with our 15 held-out domains.
+
+And the follow-up check that decision forced, run before E3's Part 6 was committed, found something
+larger: **13 of our 15 held-out domains sit in ThermoMPNN's own published training or validation
+split.** Running it as a competitor would have scored its training data against our held-out set. It
+is now reported descriptively on the 2 clean domains, with no verdict, and the audit itself is
+reported as a result.
 
 Finding these before signing is cheap. Finding them after a result exists would mean either changing
 the plan retrospectively — which destroys the guarantee — or reporting a comparison that cannot
