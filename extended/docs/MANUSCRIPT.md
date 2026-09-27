@@ -1,0 +1,411 @@
+# A sequence-only model of folding stability for human SH3 domains matches structure-conditioned predictors and recovers clinical variant effects
+
+**Draft manuscript.** IMRAD, biomedical/computational venue. Reference details marked *[verify]* need
+completing from the primary sources before submission — only identifiers confirmed during this work are
+given. Every number is traceable to a committed result table; the source is named in each Results
+paragraph.
+
+---
+
+## Abstract
+
+**Background.** Predicting the change in folding free energy (ΔΔG) caused by a missense substitution
+is central to interpreting variants of uncertain significance, but most current predictors require a
+three-dimensional structure and most are trained on the same proteolysis dataset used to evaluate
+them.
+
+**Methods.** We trained a supervised head (1,292 → 512 → 128 → 1) on frozen ESM-2 650M embeddings
+plus twelve biophysical scalars, using ~361,000 non-SH3 substitutions from a mega-scale proteolysis
+dataset, and held out the entire SH3 family (15 genes, 27,590 variants) with splits grouped on
+UniProt accession and domain index. Calibrated uncertainty was obtained by normalised split-conformal
+prediction. We then evaluated the frozen model, without re-fitting, against four independent sources:
+abundance measurements from a second assay, ClinVar and gnomAD labels, two current
+structure-conditioned ΔG predictors, and an independent set of binding affinities. Decision rules for
+three of the four evaluations were pre-registered and committed to version control before the
+analysis code existed.
+
+**Results.** On 15 held-out domains the model reached a median per-domain Spearman ρ of 0.839. Against
+880 variants measured by an independent abundance assay, pooled |ρ| was 0.600; two independent assays
+agree with one another at |ρ| = 0.709, so the model reaches 90–113 % of the achievable limit on
+matched variants. Predicted ΔΔG separated ClinVar pathogenic from benign variants inside SH3 domains
+(median 1.67 vs 0.19 kcal mol⁻¹, Mann–Whitney p = 4.9 × 10⁻⁶, rank-biserial +0.615). Against two
+structure-conditioned predictors given the experimental structure of the measured construct, the
+sequence-only model showed no clear difference from SaProtΔG (median ρ 0.839 vs 0.855, paired
+Wilcoxon p = 0.107) and outperformed ESM3ΔG (0.839 vs 0.792, p = 0.0084), with all 27,590 variants
+scored by every model and none dropped. A third predictor was disqualified before evaluation: 13 of
+our 15 held-out domains lie inside its published training split.
+
+**Conclusions.** A sequence-only stability model is competitive with structure-conditioned predictors
+on held-out domains and recovers a substantial part of the clinical signal without ever seeing a
+clinical label. Two negative results are reported with equal weight: the conservative confident-call
+threshold has 4.8 % sensitivity for pathogenic variants and is not a clinical filter, and an internal
+specificity axis failed a second, independent test — attributable to the representation rather than
+the model.
+
+**Keywords:** protein stability, ΔΔG, variant effect prediction, SH3 domain, protein language model,
+pre-registration
+
+---
+
+## 1. Introduction
+
+Most missense variants observed in human genomes have no established clinical interpretation, and a
+large fraction of those that are pathogenic act by destabilising the folded protein rather than by
+disrupting a specific interaction. Quantifying that destabilisation — the change in folding free
+energy, ΔΔG — therefore connects sequence variation to a mechanism.
+
+Two developments have changed what is possible. Mega-scale proteolysis experiments now provide
+hundreds of thousands of directly measured folding stabilities [1], and protein language models
+supply representations that transfer across families [2]. Supervised heads trained on the former
+using the latter are now standard, and several recent predictors add a three-dimensional structure as
+input [3,4].
+
+Three problems recur in the evaluation of such models.
+
+**Structure availability is assumed.** Predictors that require a structure cannot be applied where
+none exists, and comparisons that supply an experimental structure to one model and a sequence to
+another are rarely reported as such.
+
+**Training and test data share a source.** Most current ΔΔG predictors are trained on the same
+mega-scale dataset used to benchmark them. Unless the published splits are checked, a benchmark can
+report a model scoring its own training data.
+
+**Evaluation is internal.** A model evaluated only against held-out variants from the assay it was
+trained on has not been tested against an independent measurement, a clinical label, or a competing
+method.
+
+We addressed these in a single protein family. The SH3 domain is small, abundant in the human
+proteome, and measured in multiple independent assays, which makes external validation tractable.
+Having previously trained and frozen a sequence-only model on non-SH3 data, we here evaluate it
+without re-fitting against four independent sources, with the decision rules committed in advance.
+
+Our contributions are: (i) a benchmark against two current structure-conditioned predictors in which
+the competitors receive the experimental structure of the exact measured construct and the model does
+not; (ii) a leakage audit that disqualifies a widely used predictor from this benchmark; (iii)
+external validation against a second measurement assay, interpreted against the agreement between the
+two assays; (iv) clinical evaluation against ClinVar with the sensitivity of the confident-call
+threshold stated; and (v) an independent negative result on a specificity axis, with a control that
+identifies the representation rather than the model as the cause.
+
+## 2. Methods
+
+### 2.1 Model and training (previously reported, unchanged here)
+
+The predictor is a feed-forward head of 1,292 → 512 → 128 → 1 units over frozen features: the 1,280
+dimensional ESM-2 650M (`facebook/esm2_t33_650M_UR50D`) embedding of the mutated residue concatenated
+with twelve biophysical scalars. It was trained on approximately 361,000 **non-SH3** single
+substitutions from the mega-scale proteolysis dataset [1], across five random seeds, with validation
+on whole held-out domains. Splits were grouped on UniProt accession and domain index, so no domain
+appears on both sides. The entire SH3 family — 15 genes, 27,590 variants — was held out.
+
+Throughout, **positive ΔΔG denotes destabilising**; the proteolysis dataset ships the opposite sign
+and is negated on load.
+
+Uncertainty was calibrated by normalised split-conformal prediction, giving a 90 % lower bound
+`fold_lo`. A variant is called confidently destabilising when `fold_lo ≥ 1` kcal mol⁻¹.
+
+**All evaluations below read this model's recorded outputs.** Nothing was re-fitted, re-trained or
+re-tuned. The stored artefacts are write-protected, and each evaluation re-derives the previously
+published per-domain correlations from them and asserts agreement before proceeding.
+
+### 2.2 External data
+
+| Source | Content | Used for |
+|---|---|---|
+| Human Domainome 1.0 [5] | aPCA abundance for 45 SH3 domains | §3.2 |
+| ClinVar (`variant_summary`, retrieved 26 Sep 2026) | clinical significance, review status | §3.3 |
+| gnomAD v4 (GraphQL API, 235 gene queries) | population frequency, popmax | §3.3 |
+| SaProtΔG, ESM3ΔG [3] | structure-conditioned ΔG predictors | §3.4 |
+| ThermoMPNN [4] | ΔΔG predictor (audited, then excluded) | §3.4 |
+| Kazemein Jasemi et al. [6] | 45 dissociation constants, 17 SH3 domains | §3.5 |
+| dbNSFP 5.4a [7] | ~50 precomputed pathogenicity predictors | future work |
+
+Every input was verified by MD5 before use; where the publisher publishes a checksum, ours is compared
+against theirs rather than only against a locally recorded value.
+
+### 2.3 Pre-registration
+
+Decision rules for the ClinVar/gnomAD, benchmark and specificity analyses were written as documents,
+committed to version control **before the corresponding analysis code existed**, and are reproduced in
+the supplement. Each states the main comparison, the significance threshold, the minimum group size,
+and how the results table would be read. Group sizes were counted before sign-off; model predictions
+were not consulted.
+
+Significance thresholds were set per analysis by Bonferroni correction over the comparisons carrying a
+verdict within that analysis (α = 0.025 with two, 0.0167 with three).
+
+### 2.4 Statistical analysis
+
+Per-domain agreement is Spearman ρ. Paired comparisons between models across domains use the Wilcoxon
+signed-rank test on per-domain correlations. Group comparisons of predicted ΔΔG use Mann–Whitney U
+with rank-biserial correlation as the effect size. Rate comparisons use Fisher's exact test; depletion
+against a null uses an exact binomial test. Within-domain associations pool values centred on their
+own domain mean, with df = n − k − 1 for k domains.
+
+For every predictor, the sign convention was aligned using each source's **documented** definition,
+never by whichever direction correlated better; unaligned correlations are reported alongside.
+
+## 3. Results
+
+### 3.1 The frozen model, and what was previously established
+
+On the 15 held-out SH3 domains the model reached a **median per-domain Spearman ρ of 0.839** and
+exceeded the zero-shot ESM-2 score it is built on for 15 of 15 domains. Conformal calibration gave
+q₉₀ = 6.807 in normalised units with 89.9 % empirical coverage, yielding **410 confidently
+destabilising calls among 6,884 cancer-derived variants (6.0 %)**. A virtual saturation scan of all
+366,168 possible substitutions in 310 domains found 12.1 % destabilising overall and 9.2 % among
+single-nucleotide-reachable substitutions, against 6.0 % of observed cancer variants; a
+domain-matched null gave 5.93 % observed versus 9.18 % expected (p = 0.001). An independently
+constructed specificity axis failed its own pre-registered rule (median centred r = +0.288;
+`validated: false`).
+
+These are the prior results. Section 3.2 onward tests them against external data; none was re-fitted,
+and the median ρ of 0.839 was re-derived from the stored predictions in every downstream analysis and
+asserted to match.
+
+### 3.2 Agreement with an independent abundance assay, relative to the assay ceiling
+
+Of the 6,884 atlas variants, **880 have a direct abundance measurement** in an independent
+aPCA dataset [5], spanning 41 domains and 32 genes. Pooled agreement was **|ρ| = 0.600**
+(p = 4.1 × 10⁻⁸⁷), with a per-domain median of 0.573; all 21 domains with sufficient sampling
+correlated in the expected direction. Variants called confidently destabilising had markedly lower
+measured abundance than tolerated variants (median fitness −0.748 vs −0.106, Mann–Whitney
+p = 2.3 × 10⁻²²; n = 63 and 817).
+
+A correlation of 0.600 is uninterpretable without knowing what is achievable. Seven SH3 domains have
+been measured by **both** proteolysis and abundance, in different laboratories by different methods;
+**four** could be reconciled between the two position-numbering schemes and yielded a ceiling. On
+shared variants those two assays agree at a median **|ρ| = 0.709** (n ≈ 800–1,200 variants per
+domain). The model
+therefore reaches **85 % of the between-assay agreement** on the pooled comparison, and on variants
+matched to the same subsets used for the ceiling it reaches **90 %, 102 % and 113 %** for LCK
+(n = 26), HCK (n = 19) and BTK (n = 39) respectively (Figure 1B).
+
+A ratio above 100 % does not mean the model exceeds the experiment; it means the model and the
+ceiling are indistinguishable at these sample sizes. The matched ceilings rest on 19–39 variants and
+are indicative, not precise.
+
+### 3.3 Clinical labels: the ranking separates, the binary call does not
+
+Inside SH3 domain boundaries, 21 ClinVar pathogenic or likely-pathogenic and 101 benign or
+likely-benign variants (review status ≥ 1 star) carried a prediction. Predicted ΔΔG separated them
+clearly: **median 1.67 vs 0.19 kcal mol⁻¹, Mann–Whitney p = 4.9 × 10⁻⁶, rank-biserial +0.615**,
+corresponding to a probability of approximately 0.81 that a randomly chosen pathogenic variant is
+predicted more destabilising than a randomly chosen benign one. Relaxing the review-status filter gave
+p = 1.2 × 10⁻⁶ with an effect size of +0.582. The model has never seen a clinical label.
+
+**The binary call behaves differently and the difference matters.** The pre-registered threshold
+`fold_lo ≥ 1` flagged **4.8 % of pathogenic variants (1 of 21) against 1.0 % of benign (1 of 101)**;
+Fisher's exact p = 0.32, no verdict. Published estimates place the fraction of pathogenic missense
+variants that reduce abundance near 60 % [5]. This is not a disagreement about biology: `fold_lo` is
+the lower bound of a 90 % conformal interval and therefore answers "is this variant *certainly*
+destabilising", refusing everything it cannot resolve. At a ~5 % event rate, 21 variants cannot
+support a proportion test. The pre-registration designated the continuous comparison as primary for
+exactly this reason, before any result existed.
+
+**Population depletion did not reach the pre-registered threshold.** Of 35 variants common in healthy
+populations (popmax > 1 %), **none** was called destabilising, against 9.63 % expected under the
+domain-matched null — an exact binomial p = 0.0289 against α = 0.025. The direction is as predicted
+and the threshold is missed by 0.004. Because the rule was fixed in advance, the result is reported as
+*consistent with depletion, not established*. With 35 variants, even perfect depletion could not clear
+the threshold; this analysis was underpowered by roughly an order of magnitude and cannot corroborate
+the previously reported depletion among cancer variants.
+
+### 3.4 Benchmark against structure-conditioned predictors
+
+#### 3.4.1 Leakage audit
+
+Before any comparison, each competitor's published training split was searched for our 15 held-out
+domains. SaProtΔG and ESM3ΔG [3] contained **0 of 15**. ThermoMPNN [4] contained **13 of 15** — 12 in
+its training split and one in validation — covering **23,191 of 27,590 held-out variants**
+(Figure 1D). Only two domains survive, and only because their constructs are background point mutants
+absent from every split.
+
+ThermoMPNN was therefore **excluded from the comparison before it was run**, and the significance
+threshold was fixed at α = 0.025 over the two remaining competitors. This exclusion is a fact about
+training data established prior to any prediction, not a post-hoc adjustment. A benchmark that had
+simply run all competitors would have reported a model scoring its own training data.
+
+This establishes presence or absence in the *published* split, not in whatever the released weights
+were ultimately trained on.
+
+#### 3.4.2 Comparison
+
+Both competitors were given the experimentally determined structure of the exact construct that was
+measured; ours receives sequence only. All 27,590 held-out variants were scored by all three models
+and **none was dropped**.
+
+| Model | Median per-domain ρ | Median paired difference | Wilcoxon p | Verdict |
+|---|---|---|---|---|
+| Ours (sequence only) | 0.839 | — | — | — |
+| SaProtΔG (base, 3 seeds) | 0.855 | −0.028 | 0.107 | no clear difference |
+| ESM3ΔG (base, 3 seeds) | 0.792 | +0.033 | **0.0084** | ours better |
+
+Against ESM3ΔG the model was better on 12 of 15 domains, meeting the pre-registered threshold.
+Against SaProtΔG no clear difference was established; SaProtΔG was nominally ahead on 11 of 15
+domains, and with 15 domains this design cannot resolve a median gap of 0.028. We therefore do **not**
+claim parity with the best current predictor.
+
+**Consistency differed more than central tendency.** Across domains, ESM3ΔG ranged from **0.460 to
+0.892** while our model ranged from **0.754 to 0.934** (Figure 1A). ESM3ΔG's two weakest domains,
+DOCK1 (0.460) and PTK6 (0.515), are handled by SaProtΔG at 0.780 and 0.835 on identical inputs,
+indicating a property of that model's stability head on those domains rather than of the underlying
+language model. For an application that issues a small number of high-confidence calls, behaviour at
+the worst domain matters more than the median.
+
+### 3.5 Independent test of the specificity axis: a negative result attributed to the representation
+
+An axis intended to capture binding specificity had previously failed its own pre-registered rule
+(median centred r = +0.288; not validated). We tested it against **44 dissociation constants across
+16 SH3 domains** measured by another group with a different method [6]. Twelve of the 17 domains lie
+in the axis's training set, so leave-cluster-out predictions were used for those, and the final model
+only for the four it had never seen; the re-run reproduced the original verdict to 1.6 × 10⁻¹⁴.
+
+The axis showed no association with measured affinity (within-domain-centred r = **+0.023**,
+p = 0.91) and did not exceed a domain-agnostic baseline (r = −0.043).
+
+**A pre-registered control determines the interpretation.** We repeated the analysis using each
+domain's *observed* experimental profile — the quantity the model is trained to predict, and therefore
+an upper bound on what any predictor of it could achieve. It failed identically (**r = −0.051**,
+p = 0.80; Figure 1C). Since a predictor of X cannot outperform X, no improvement to the regression
+could have produced a positive result here. The failure lies in the **representation**: the axis
+collapses a positional profile to amino-acid composition, and SH3 ligand classes are distinguished by
+the *order* of residues at identical composition.
+
+The defensible claim is therefore narrower and better supported than "the axis fails": *compositional
+profiles derived from this assay do not predict these affinities.* Reported as a post-hoc distinction
+would have been unconvincing; the reading was fixed in advance.
+
+## 4. Discussion
+
+### 4.1 Principal findings
+
+A sequence-only stability model, trained without any SH3 domain, is statistically indistinguishable
+from a structure-conditioned predictor and significantly better than another, on 15 domains neither
+had trained on, with the competitors given the experimental structure of the measured construct. It
+agrees with an independent abundance assay at 85 % of the agreement between two such assays, and
+separates ClinVar pathogenic from benign variants at p = 4.9 × 10⁻⁶ without having seen a clinical
+label.
+
+### 4.2 What the confident-call threshold is for
+
+The most consequential negative result is the 4.8 % sensitivity of `fold_lo ≥ 1` among pathogenic
+variants. A 90 % conformal lower bound is deliberately conservative; it is suited to selecting a small
+number of experimentally testable claims, not to triaging variants of uncertain significance.
+Reporting ΔΔG with its interval is defensible; presenting the thresholded call as a clinical filter,
+without stating that sensitivity in the same sentence, is not. We recommend the former.
+
+### 4.3 Leakage as a routine requirement
+
+Thirteen of our fifteen held-out domains lay inside one competitor's published training split. This
+was not an unusual case: most current ΔΔG predictors are trained on the same mega-scale dataset that
+supplies most held-out evaluation sets. Any benchmark drawn from that dataset should publish a leakage
+audit alongside its results, and we suggest it be treated as a reporting requirement rather than an
+optional check.
+
+### 4.4 Comparison with previous internal results
+
+| Previously reported | Value | Status after external evaluation |
+|---|---|---|
+| Per-domain folding accuracy | median ρ 0.839 | **Supported** — re-derived exactly; competitive with two current predictors |
+| Exceeds zero-shot ESM-2 | 15/15 domains | **Supported**, and extended to supervised predictors |
+| Conformal calls | 410 of 6,884 (6.0 %) | **Supported, with sensitivity now quantified** at 4.8 % |
+| Cancer variants depleted of damage | 5.93 % vs 9.18 % (p = 0.001) | **Not independently tested** — the germline analysis was underpowered |
+| Specificity axis | r = +0.288, not validated | **Independently confirmed as failed**, and attributed to the representation |
+
+No previously reported result was contradicted. One — the depletion of destabilising substitutions
+among observed cancer variants — remains supported only by the internal null model, because the
+germline test that would have corroborated it had insufficient power. Distinguishing selection from
+mutational bias requires a trinucleotide-context-aware null, which is the natural next step.
+
+### 4.5 Limitations
+
+1. **Fifteen domains detect large differences only.** The benchmark cannot resolve a median gap of
+   0.03; "no clear difference" is not equivalence.
+2. **One family.** All results concern SH3 domains. Generality to other families is asserted by the
+   family-agnostic training procedure, not demonstrated.
+3. **Small clinical groups.** 21 pathogenic and 101 benign variants support a large-effect comparison
+   and nothing finer; the null in the rate analysis is ambiguous between absence of effect and absence
+   of power.
+4. **Asymmetric inputs, in our favour to state.** Competitors received structures; if they had won,
+   part of the reason might have been that extra information. They did not, which strengthens the
+   conclusion but does not make the comparison symmetric.
+5. **The assay ceiling rests on four domains.** Seven were measured by both assays; two could not be
+   reconciled between the position-numbering schemes, which is a mapping defect rather than a property
+   of those domains. The matched-subset comparisons use 19–39 variants and are indicative only.
+6. **The binding dataset is narrow.** Nine proline-rich peptides from a single protein give a narrow
+   compositional range, which works against any compositional model.
+7. **Leakage audits establish absence from published splits**, not from the data the released weights
+   actually saw.
+
+### 4.6 Pre-registration in computational method evaluation
+
+Three analyses had their rules committed before the analysis code existed. This changed two outcomes.
+The pre-commit leakage check disqualified a competitor that would otherwise have been benchmarked on
+its own training data. The pre-registered control in the specificity analysis prevented a correct
+number from supporting a wrong conclusion: without it, the natural report would have been "the axis
+fails an independent test", when in fact the measured profile fails the same test.
+
+Both are cheap, and neither depends on the result. We suggest that computational evaluations with a
+pass/fail character adopt the practice.
+
+## 5. Conclusions
+
+A sequence-only ΔΔG model for SH3 domains is competitive with structure-conditioned predictors on
+domains none had trained on, agrees with an independent abundance assay at close to the limit set by
+assay-to-assay agreement, and recovers clinical variant effects it was never trained on. Its
+conservative confident-call threshold has low sensitivity and should be reported as such. A
+specificity axis built alongside it fails independently, and a pre-registered control locates the
+failure in the representation. The one internal claim still lacking external support — depletion of
+destabilising substitutions among observed cancer variants — requires a mutation-context-aware null.
+
+---
+
+## Data and code availability
+
+All analysis code, pre-registration documents, machine-written result tables and hand-written analyses
+are in the project repository. Input datasets are obtained from their original sources; checksums for
+every input, and the provenance of each including routes that failed, are recorded in the repository.
+The complete cancer-variant atlas is not redistributed because it is derived from a licensed database;
+derived analysis tables carrying no licensed identifiers are included.
+
+## References
+
+*Identifiers below were confirmed during this work. Entries marked [verify] require full bibliographic
+details before submission.*
+
+1. Tsuboyama K, *et al.* Mega-scale experimental analysis of protein folding stability. **2023**.
+   Dataset: `Tsuboyama2023_Dataset2_Dataset3_20230416`. [verify full citation]
+2. Lin Z, *et al.* Language models of protein sequences. Model: `facebook/esm2_t33_650M_UR50D`.
+   [verify full citation]
+3. Cho Y, *et al.* Absolute protein stability prediction (SaProtΔG, ESM3ΔG). bioRxiv, PMC13228446.
+   Weights: Hugging Face `Yehlin/absolute-stability`. Code:
+   `github.com/yehlincho/absolute-stability-predictor`. [verify full citation]
+4. Dieckhaus H, *et al.* Transfer learning to leverage larger datasets for improved prediction of
+   protein stability changes. *PNAS* **2024**. doi:10.1073/pnas.2314853121. Code:
+   `github.com/Kuhlman-Lab/ThermoMPNN`.
+5. Beltran A, *et al.* Human Domainome 1.0. *Nature* **2025**. doi:10.1038/s41586-024-08370-4.
+   Data: Zenodo v5, record 14356805; concept DOI 10.5281/zenodo.11043642.
+6. Kazemein Jasemi NS, *et al.* *Cells* **2024**;13(2):195. doi:10.3390/cells13020195.
+7. Liu X, *et al.* dbNSFP v5.4a. [verify full citation]
+8. Landrum MJ, *et al.* ClinVar. NCBI, `variant_summary.txt.gz`, retrieved 26 September 2026.
+   [verify full citation]
+9. gnomAD v4. Broad Institute GraphQL API. [verify full citation]
+10. Faure AJ, *et al.* ddPCA / MoCHI: separating folding and binding free energies. **2022**.
+    [verify full citation]
+
+---
+
+## Figure legend
+
+**Figure 1. External evaluation of a frozen, sequence-only ΔΔG model.**
+**(A)** Per-domain Spearman ρ against measured ΔΔG for the 15 held-out SH3 domains; each row is one
+domain, showing our model and the two structure-conditioned predictors, which received the
+experimental structure of the measured construct. 27,590 variants, none dropped.
+**(B)** Model agreement as a share of the between-assay ceiling on matched variants; the ceiling is
+the agreement of two independent assays on the same variants. n per domain as shown.
+**(C)** Specificity axis (44 measurements, 16 domains): the model's prediction, a domain-agnostic
+baseline, and the observed experimental profile. Shaded region marks effects smaller than 44
+measurements can resolve (|r| < 0.44). All three fall inside it, including the observed profile.
+**(D)** Leakage audit: held-out domains present in each competitor's published training split.
+Colour-vision-safe palette throughout; generated from the committed result tables.
