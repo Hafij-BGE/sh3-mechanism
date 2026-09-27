@@ -212,5 +212,6 @@ Unchanged, because they are what made the first run defensible: one folder per p
 verified by MD5 before use; recorded values so the extended run is itself reproducible; and a
 pre-registered decision rule written down **before** any program with a pass/fail verdict.
 
-See also: [DATA.md](DATA.md) and [DATA_PROVENANCE.md](DATA_PROVENANCE.md) for the data, [SYNC.md](SYNC.md) for keeping
-local and Drive in step.
+See also: [OUTCOMES.md](OUTCOMES.md) for what this phase changed against the frozen run,
+[DATA.md](DATA.md) and [DATA_PROVENANCE.md](DATA_PROVENANCE.md) for the data, [SYNC.md](SYNC.md) for
+keeping local and Drive in step.

@@ -20,6 +20,9 @@ Checked 27 September 2026, after E1.
 | `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 43 | `reference/` | 4 KB |
 | `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
 | `results/E4_specificity_independent/ANALYSIS_E4.md` | same path | small |
+| `results/X0_external_data/ANALYSIS_X0.md` | same path | small |
+| `results/X1_dbnsfp_subset/ANALYSIS_X1.md` | same path | small |
+| `docs/OUTCOMES.md` | `docs/` | small |
 | `notebooks/E3_sota_benchmark.ipynb` — new, ready to run | `code/` | 28 KB |
 | `notebooks/X1_dbnsfp_subset.ipynb` — new, ready to run | `code/` | 20 KB |
 | the 12 SaProtΔG/ESM3ΔG checkpoints — **optional but recommended**, see below | `input/external/models/absolute-stability-predictor/` | 213 MB |
