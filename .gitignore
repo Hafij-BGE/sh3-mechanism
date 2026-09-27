@@ -70,3 +70,7 @@ extended/results/**/atlas_with_external.csv
 extended/results/X0_external_data/gnomad_sh3_missense.csv
 extended/results/X0_external_data/clinvar_sh3.csv
 extended/results/X0_external_data/domainome_sh3_variants.csv
+
+# in-progress browser downloads, and dbNSFP staged at the extended/ root
+*.crdownload
+extended/*.csv

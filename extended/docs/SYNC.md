@@ -20,12 +20,17 @@ Checked 27 September 2026, after E1.
 | `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 43 | `reference/` | 4 KB |
 | `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
 | `results/E4_specificity_independent/ANALYSIS_E4.md` | same path | small |
+| `notebooks/E3_sota_benchmark.ipynb` — new, ready to run | `code/` | 28 KB |
 | `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
 | `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
 | `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
 | `README.md` | root | small |
 
 Everything but the genome is under 20 MB, and the genome is needed only by G1, so it can wait.
+
+E3 creates `input/external/structures/` on Drive itself (22 PDB entries, ~2 MB) and caches every
+saturation scan under `results/E3_sota_benchmark/cache/`. Neither needs uploading; both are worth
+leaving in place, because the cache is what makes a timed-out E3 session resumable.
 
 Use **New → Folder upload** for whole folders — it preserves the tree and is far less error-prone
 than file-by-file. Close any document open in OnlyOffice first, or its `.~lock.*#` file rides along.

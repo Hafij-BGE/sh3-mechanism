@@ -1,4 +1,4 @@
-# E3 — Benchmark against the state of the art  *(planned)*
+# E3 — Benchmark against the state of the art  *(pre-registered, notebook written)*
 
 **Why it is needed.** The single biggest objection to B1. The head beats zero-shot ESM-2, FoldX and
 EVE — but a reviewer will name three current supervised ΔΔG predictors and ask why they are missing.
@@ -44,4 +44,41 @@ whatever subset trained the final checkpoints. Say that.
 ## Setup
 GPU runtime; ESM3 licence accepted on Hugging Face under your own account; SaProt 650M; PyTorch
 matching the CUDA version **before** the package. `ddg_scanning=True` gives a full saturation scan
-from one structure, so E3 is 15 structures × 3 checkpoints, not thousands of calls.
+from one structure, so E3 is 26 constructs × 3 checkpoints per model, not
+thousands of calls — but a scan is still ~1,200 forward passes, so every scan is cached to Drive per
+(model, version, seed, construct) and the notebook resumes rather than restarts.
+
+## What was settled before the notebook was written
+
+Pre-registration: [preregistration/E3.md](preregistration/E3.md) @ `ccd3446`, Part 6.
+
+**ThermoMPNN cannot be a competitor here.** The pre-commit leakage check — the same one already run
+for SaProtΔG and ESM3ΔG — found **13 of our 15 held-out domains in ThermoMPNN's own published train
+(12) or validation (1) split**, covering 23,191 of 27,590 held-out variants. Running it across all 15
+would have scored its training data against our held-out set. It runs on **FYN and NPHP1 only**
+(4,399 variants) and carries **no verdict at any n**. ProteinDPO was dropped before any result, for
+cost and risk.
+
+| competitor | held-out domains in its published training data | role |
+|---|---|---|
+| SaProtΔG | 0 of 15 | verdict |
+| ESM3ΔG | 0 of 15 | verdict |
+| ThermoMPNN | **13 of 15** | descriptive only |
+
+So **two competitors carry a verdict and the threshold is p < 0.025**, not the 0.0125 the draft assumed
+for four. The audit is reported as a result in its own right: a MegaScale-derived benchmark cannot
+compare MegaScale-trained predictors without it.
+
+**Structures resolved, with no fallback needed.** Every held-out variant already names its structure —
+for MegaScale rows the frozen run set `domain_key` to the construct name and `pos` to the position
+inside it. The 26 constructs resolve to 22 PDB entries and **all 22 are present at RCSB**: 10 NMR
+(model 1 is used), 11 X-ray, one powder diffraction, and only 1A0N has a second chain. Eight
+constructs are background point mutants with no structure of their own — parent coordinates, the
+background applied to the sequence only, affected count reported. **The AlphaFold fallback fires for
+zero domains**, so Experiment 3 stays a genuine sensitivity check.
+
+**Version: base** for Experiment 1, so the comparison is about method rather than training-set size;
+augmented remains Experiment 2.
+
+**Signs are aligned by each source's documented convention**, never by which direction correlates
+better, and the unaligned correlations are printed beside the aligned ones so that is visible.

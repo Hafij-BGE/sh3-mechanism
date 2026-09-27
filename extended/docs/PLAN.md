@@ -2,7 +2,7 @@
 
 **One document. If it conflicts with anything else, this wins.**
 
-Last updated 27 September 2026 (after E1 and E4).
+Last updated 27 September 2026 (after E1 and E4; E3 pre-registered).
 
 ---
 
@@ -13,7 +13,7 @@ it and a journal submission, using public data that already exists.
 
 | # | Objection a reviewer will raise | Closed by | State |
 |---|---|---|---|
-| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | data ready |
+| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | pre-registered, ready to run |
 | 2 | The B6 depletion could be mutational bias, not selection | **G1** alone — E1 could not | data ready |
 | 3 | Generality asserted from *n* = 1, twice | **H1**; partly **E2** | E2 done |
 | 4 | Nothing was measured | **E1**, **E2**, ultimately **H2** | **both done** |
@@ -81,20 +81,24 @@ canonical (0 pathogenic dropped, so no bias toward the hypothesis); and the Clin
 affects only Q1 while the frequency threshold affects only Q2, so each question has one genuinely
 independent corroborating arm, not four.
 
-### E3 · benchmark against SaProtΔG, ESM3ΔG, ThermoMPNN · [doc](E3_sota_benchmark.md)
+### ▶ E3 · benchmark against SaProtΔG and ESM3ΔG — **pre-registered, notebook ready to run** · [doc](E3_sota_benchmark.md)
 
-**The leakage audit is already done and clean** — none of the 15 held-out domains appear in either
-published training split, though 13 are in the underlying measurement set. Report the audit *and its
-scope*; claim no more than that.
+The single biggest objection to B1. Pre-registration [preregistration/E3.md](preregistration/E3.md)
+@ `ccd3446`; its Part 6 settles the three open items, and one of them was overturned by its own check.
 
-Needs a GPU runtime, the ESM3 licence accepted on Hugging Face, SaProt 650M, and one structure per
-domain (AlphaFold `.cif` is accepted). Checkpoints are archived on the DEU drive and verify 12/12.
+**ThermoMPNN is disqualified as a competitor.** The pre-commit leakage check found **13 of our 15
+held-out domains in its published train (12) or val (1) split** — 23,191 of 27,590 held-out variants.
+It runs on FYN and NPHP1 only and carries **no verdict**. ProteinDPO was dropped for cost and risk.
+So **SaProtΔG and ESM3ΔG carry the verdicts at p < 0.025**, and the audit itself is reported as a
+result: a MegaScale-derived benchmark cannot compare MegaScale-trained predictors without it.
 
-Pre-registration drafted — [preregistration/E3.md](preregistration/E3.md), four experiments with
-base/measured-constructs/3-seed-average as the main one. **Three decisions open** (Part 5): base vs
-augmented is still blank, the measured-construct structures are unconfirmed, and **ThermoMPNN and
-ProteinDPO are not actually available for our 15 domains** — the MGnify file covers 26 other
-proteins.
+**The leakage audit now reads 0 / 0 / 13 of 15** for SaProtΔG, ESM3ΔG and ThermoMPNN.
+
+**Structures need no fallback.** Every held-out variant already names its construct, the 26 constructs
+resolve to 22 PDB entries, and all 22 are present at RCSB. Experiment 1 stands as written.
+
+Needs a GPU and the ESM3 licence accepted; without a token ESM3ΔG is recorded as *not run* and the
+other arms stand. Scans are cached per construct, so a timed-out session resumes.
 
 ### ✅ E4 · independent test of the C4 specificity model — **done** · [doc](E4_specificity_independent.md)
 
