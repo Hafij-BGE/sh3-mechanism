@@ -1,4 +1,4 @@
-# E3 — Benchmark against the state of the art  *(pre-registered, notebook written)*
+# E3 — Benchmark against the state of the art  *(Experiment 1 run, 27 September 2026)*
 
 **Why it is needed.** The single biggest objection to B1. The head beats zero-shot ESM-2, FoldX and
 EVE — but a reviewer will name three current supervised ΔΔG predictors and ask why they are missing.
@@ -82,3 +82,18 @@ augmented remains Experiment 2.
 
 **Signs are aligned by each source's documented convention**, never by which direction correlates
 better, and the unaligned correlations are printed beside the aligned ones so that is visible.
+
+## What Experiment 1 found
+
+Numbers in `results/E3_sota_benchmark/RESULTS_E3_exp1.md`; reading in `ANALYSIS_E3.md`.
+
+- **No clear difference against SaProtΔG.** Median per-domain ρ +0.855 against our +0.839, median
+  paired difference −0.028, Wilcoxon p = 0.107 against α = 0.025. 27,590 variants, 0 dropped.
+- **The asymmetry is the point.** Our head is sequence-only and saw no SH3 domain in training;
+  SaProtΔG gets the experimentally determined structure of the measured construct.
+- **Not a claim of parity.** SaProtΔG is nominally ahead on 11 of 15 domains. 15 domains cannot
+  resolve a 0.03 gap, which the plan stated before any result existed.
+- **ESM3ΔG was not run** (gated model, no token), so one of the two verdicts is outstanding.
+- **ThermoMPNN was not run** — `from datasets import Mutation` collided with the Hugging Face
+  `datasets` package. Fixed by setting `PYTHONPATH`. Its leakage audit, which is the valuable part,
+  did not depend on running it.

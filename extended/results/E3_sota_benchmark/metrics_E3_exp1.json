@@ -1,0 +1,38 @@
+{
+ "program": "E3",
+ "experiment": 1,
+ "version": "base",
+ "date": "2026-09-27 12:37",
+ "preregistration": "docs/preregistration/E3.md @ ccd3446",
+ "alpha": 0.025,
+ "esm3_run": false,
+ "held_out_variants": 27590,
+ "our_median_rho": 0.8391701341203324,
+ "thermompnn_commit": "370f76ec62bd929f7425e311d8df04a0d094990f",
+ "thermompnn_md5": "da6f7cf27d921e26af832b112b83cebb",
+ "thermompnn_clean_domains": [
+  "FYN",
+  "NPHP1"
+ ],
+ "thermompnn_run": false,
+ "thermompnn_error": "ThermoMPNN failed on 1A0N.pdb_L7S chain B:\nTraceback (most recent call last):\n  File \"/content/ThermoMPNN/analysis/custom_inference.py\", line 12, in <module>\n    from datasets import Mutation\nImportError: cannot import name 'Mutation' from 'datasets' (/usr/local/lib/python3.13/dist-packages/datasets/__init__.py)\n",
+ "leakage": {
+  "SaProtdG": "0 of 15",
+  "ESM3dG": "0 of 15",
+  "ThermoMPNN": "13 of 15"
+ },
+ "results": [
+  {
+   "competitor": "SaProtdG",
+   "domains": 15,
+   "variants_scored": 27590,
+   "variants_dropped": 0,
+   "median_rho_comp": 0.8548045921237561,
+   "median_rho_ours": 0.8391701341203324,
+   "median_diff": -0.027646627458747797,
+   "median_rho_comp_raw_sign": -0.8548045921237561,
+   "p": 0.10699462890625,
+   "verdict": "no clear difference"
+  }
+ ]
+}

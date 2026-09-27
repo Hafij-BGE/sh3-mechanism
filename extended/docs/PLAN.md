@@ -2,7 +2,7 @@
 
 **One document. If it conflicts with anything else, this wins.**
 
-Last updated 27 September 2026 (after E1 and E4; E3 pre-registered).
+Last updated 27 September 2026 (after E1, E4 and E3 Experiment 1).
 
 ---
 
@@ -13,7 +13,7 @@ it and a journal submission, using public data that already exists.
 
 | # | Objection a reviewer will raise | Closed by | State |
 |---|---|---|---|
-| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | pre-registered, ready to run |
+| 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | **partly closed** — no clear difference vs SaProtΔG; ESM3ΔG outstanding |
 | 2 | The B6 depletion could be mutational bias, not selection | **G1** alone — E1 could not | data ready |
 | 3 | Generality asserted from *n* = 1, twice | **H1**; partly **E2** | E2 done |
 | 4 | Nothing was measured | **E1**, **E2**, ultimately **H2** | **both done** |
@@ -100,24 +100,27 @@ Two practical notes: the release ships **no tabix index**, so the subset costs o
 (cached, paid once); and the two large files are ~100 GB together and are probably the same release
 twice — X1 §1 checks that cheaply and says whether one can be deleted.
 
-### ▶ E3 · benchmark against SaProtΔG and ESM3ΔG — **pre-registered, notebook ready to run** · [doc](E3_sota_benchmark.md)
+### ◐ E3 · benchmark against SaProtΔG and ESM3ΔG — **Experiment 1 run, half complete** · [doc](E3_sota_benchmark.md)
 
-The single biggest objection to B1. Pre-registration [preregistration/E3.md](preregistration/E3.md)
-@ `ccd3446`; its Part 6 settles the three open items, and one of them was overturned by its own check.
+Judged against [preregistration/E3.md](preregistration/E3.md) @ `ccd3446`. Analysis:
+`results/E3_sota_benchmark/ANALYSIS_E3.md`.
 
-**ThermoMPNN is disqualified as a competitor.** The pre-commit leakage check found **13 of our 15
-held-out domains in its published train (12) or val (1) split** — 23,191 of 27,590 held-out variants.
-It runs on FYN and NPHP1 only and carries **no verdict**. ProteinDPO was dropped for cost and risk.
-So **SaProtΔG and ESM3ΔG carry the verdicts at p < 0.025**, and the audit itself is reported as a
-result: a MegaScale-derived benchmark cannot compare MegaScale-trained predictors without it.
+**SaProtΔG +0.855 against our +0.839**, median paired difference −0.028, Wilcoxon p = **0.107** over
+15 domains against α = 0.025 → **no clear difference**. 27,590 variants scored, **0 dropped**.
 
-**The leakage audit now reads 0 / 0 / 13 of 15** for SaProtΔG, ESM3ΔG and ThermoMPNN.
+The comparison is asymmetric in our favour to state and against us to run: **our head is sequence-only
+and saw no SH3 domain in training; SaProtΔG receives the experimentally determined structure of the
+exact measured construct.** Being within 0.03 median Spearman of that, with no structural input, is the
+finding. It is *not* "we match the state of the art" — the nominal direction favours SaProtΔG on 11 of
+15 domains, and the plan said in advance that 15 domains cannot resolve a gap this size.
 
-**Structures need no fallback.** Every held-out variant already names its construct, the 26 constructs
-resolve to 22 PDB entries, and all 22 are present at RCSB. Experiment 1 stands as written.
+**The leakage audit is the more durable half**, and it stands whatever the comparison returns:
+SaProtΔG 0 of 15, ESM3ΔG 0 of 15, **ThermoMPNN 13 of 15** — 23,191 of 27,590 held-out variants inside
+its own train or val split.
 
-Needs a GPU and the ESM3 licence accepted; without a token ESM3ΔG is recorded as *not run* and the
-other arms stand. Scans are cached per construct, so a timed-out session resumes.
+**Still missing:** ESM3ΔG (gated, no token — this is the second verdict and E3 is incomplete without
+it), ThermoMPNN (a `datasets` name collision, now fixed), and Experiments 2–4. Every SaProtΔG scan is
+cached, so finishing costs only the new work.
 
 ### ✅ E4 · independent test of the C4 specificity model — **done** · [doc](E4_specificity_independent.md)
 
