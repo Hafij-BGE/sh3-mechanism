@@ -1,0 +1,137 @@
+{
+ "program": "E1",
+ "date": "2026-09-27 04:54",
+ "preregistration": "docs/preregistration/E1.md @ 07d2b81, amended e9b509e",
+ "alpha": 0.025,
+ "min_group_n": 20,
+ "clinvar_in_domains": 134,
+ "gnomad_in_domains": 24005,
+ "main_Q1_verdict": "yes",
+ "main_Q1_p": 4.890358696376856e-06,
+ "main_Q1_effect": 0.6152758132956153,
+ "robust_across_arms": true,
+ "Q1": [
+  {
+   "arm": "1 - MAIN (1+ stars)",
+   "n_pathogenic": 21,
+   "n_benign": 101,
+   "verdict": "yes",
+   "p": 4.890358696376856e-06,
+   "effect": 0.6152758132956153,
+   "median_path": 1.6715809106826782,
+   "median_benign": 0.18896256387233734
+  },
+  {
+   "arm": "3 (0+ stars)",
+   "n_pathogenic": 28,
+   "n_benign": 106,
+   "verdict": "yes",
+   "p": 1.1786628728241908e-06,
+   "effect": 0.5815363881401616,
+   "median_path": 1.439261794090271,
+   "median_benign": 0.1896090805530548
+  },
+  {
+   "arm": "4 (1+ stars, AF>5%)",
+   "n_pathogenic": 21,
+   "n_benign": 101,
+   "verdict": "yes",
+   "p": 4.890358696376856e-06,
+   "effect": 0.6152758132956153,
+   "median_path": 1.6715809106826782,
+   "median_benign": 0.18896256387233734
+  },
+  {
+   "arm": "2 (2+ stars)",
+   "n_pathogenic": 4,
+   "n_benign": 25,
+   "verdict": "too few",
+   "p": NaN,
+   "effect": NaN,
+   "median_path": 1.9983389377593994,
+   "median_benign": 0.18859988451004028
+  },
+  {
+   "arm": "6 (atlas only)",
+   "n_pathogenic": 3,
+   "n_benign": 35,
+   "verdict": "too few",
+   "p": NaN,
+   "effect": NaN,
+   "median_path": 0.5616838932037354,
+   "median_benign": 0.21457651257514954
+  }
+ ],
+ "Q1_rate": [
+  {
+   "arm": "1 - MAIN",
+   "verdict": "no",
+   "rate_path": 0.047619047619047616,
+   "rate_benign": 0.009900990099009901,
+   "p": 0.31581086573635014
+  },
+  {
+   "arm": "3",
+   "verdict": "no",
+   "rate_path": 0.07142857142857142,
+   "rate_benign": 0.009433962264150943,
+   "p": 0.11054773977004928
+  },
+  {
+   "arm": "2",
+   "verdict": "too few",
+   "rate_path": 0.0,
+   "rate_benign": 0.04,
+   "p": NaN
+  },
+  {
+   "arm": "6",
+   "verdict": "too few",
+   "rate_path": 0.0,
+   "rate_benign": 0.0,
+   "p": NaN
+  }
+ ],
+ "Q2": [
+  {
+   "arm": "1 - MAIN (popmax>1%)",
+   "n_common": 35,
+   "observed": 0.0,
+   "expected": 0.09626850673276613,
+   "verdict": "no",
+   "p": 0.028932075509573975
+  },
+  {
+   "arm": "3 (popmax>1%)",
+   "n_common": 35,
+   "observed": 0.0,
+   "expected": 0.09626850673276613,
+   "verdict": "no",
+   "p": 0.028932075509573975
+  },
+  {
+   "arm": "4 (popmax>5%)",
+   "n_common": 19,
+   "observed": 0.0,
+   "expected": 0.09359850839030454,
+   "verdict": "too few",
+   "p": NaN
+  },
+  {
+   "arm": "2 (popmax>1%)",
+   "n_common": 35,
+   "observed": 0.0,
+   "expected": 0.09626850673276613,
+   "verdict": "no",
+   "p": 0.028932075509573975
+  },
+  {
+   "arm": "6 (atlas only)",
+   "n_common": 30,
+   "observed": 0.0,
+   "expected": 0.09428571428571429,
+   "verdict": "no",
+   "p": 0.05125503518971713
+  }
+ ]
+}

@@ -2,7 +2,7 @@
 
 **One document. If it conflicts with anything else, this wins.**
 
-Last updated 27 September 2026.
+Last updated 27 September 2026 (after E1).
 
 ---
 
@@ -14,9 +14,9 @@ it and a journal submission, using public data that already exists.
 | # | Objection a reviewer will raise | Closed by | State |
 |---|---|---|---|
 | 1 | You only beat zero-shot ESM-2, FoldX and EVE | **E3** | data ready |
-| 2 | The B6 depletion could be mutational bias, not selection | **G1**, triangulated by **E1** | data ready |
+| 2 | The B6 depletion could be mutational bias, not selection | **G1** alone — E1 could not | data ready |
 | 3 | Generality asserted from *n* = 1, twice | **H1**; partly **E2** | E2 done |
-| 4 | Nothing was measured | **E1**, **E2**, ultimately **H2** | E2 done |
+| 4 | Nothing was measured | **E1**, **E2**, ultimately **H2** | **both done** |
 
 ## The rule that governs everything
 
@@ -52,25 +52,34 @@ ceiling.
 
 Program doc: [E2_domainome_external.md](E2_domainome_external.md). Analysis: `results/E2_domainome_external/ANALYSIS_E2.md`.
 
-### ▶ E1 · ClinVar and gnomAD — **next, start here** · [doc](E1_clinvar_gnomad.md)
+### ✅ E1 · ClinVar and gnomAD — **done** · [doc](E1_clinvar_gnomad.md)
 
-Cheapest remaining item, highest value, needs no new data and no GPU.
+Judged against [preregistration/E1.md](preregistration/E1.md), signed and committed before the
+notebook existed. Analysis: `results/E1_clinvar_gnomad/ANALYSIS_E1.md`.
 
-1. **The pre-registration is drafted** — [preregistration/E1.md](preregistration/E1.md), six
-   experiments with the main one fixed in advance. **Three decisions are still open** (Part 5): the
-   fallback experiment is unusable, popmax is missing from the data, and the groups are small —
-   21 disease-causing variants at the main setting, 4 at the stricter one. Resolve, sign, commit,
-   *then* write the notebook.
-2. Of ClinVar pathogenic missense variants in SH3 domains, how many are called confidently
-   destabilising? Of benign, how many are not?
-3. Predicted ΔΔG across four groups: pathogenic / benign / gnomAD-common / COSMIC.
-4. Compare the pathogenic-destabilising rate with the 60 % Beltran et al. report.
-5. **The germline arm for G1:** are germline-tolerated variants depleted of destabilising
-   substitutions the way cancer variants are? This attacks B6's confound without depending on a
-   signature model being right.
+**Q1 — do the predictions track pathogenicity? Yes, decisively.** 21 pathogenic against 101 benign
+ClinVar variants inside SH3 domains: median predicted ΔΔG **1.67** against **0.19** kcal/mol,
+Mann–Whitney p = **4.9 × 10⁻⁶**, rank-biserial **+0.615**. Holds with the star filter relaxed. The
+head has never seen a clinical label, so this is the project's strongest external validation of the
+ranking.
 
-Already decided in X0 and worth keeping or changing deliberately: 249 ClinVar keys carry contradictory
-submissions, collapsed by highest star rating then severity.
+**The binary call is a different story, and it is a limitation to report.** `fold_lo ≥ 1` flags
+**4.8 %** of pathogenic variants against 1.0 % of benign (Fisher p = 0.32, no verdict) — against the
+~60 % Beltran et al. report. The conformal lower bound answers "certainly destabilising", so it is
+conservative by construction. Report ΔΔG with its interval; do not present `fold_lo ≥ 1` as a
+clinical filter without stating its sensitivity in the same sentence.
+
+**Q2 — germline depletion: right direction, not significant.** 0 of 35 common variants
+(popmax > 1 %) are destabilising against 9.6 % expected, p = **0.0289** against the pre-registered
+α = 0.025. Missed by 0.004, so the verdict is *consistent with depletion, not established*. Even
+perfect depletion cannot clear the bar at n = 35, so **E1 cannot triangulate B6 — G1 is the only
+route left to objection 2.**
+
+Two bookkeeping notes: 25 benign variants dropped against the pre-registered count of 126, all in
+large multi-isoform proteins where ClinVar's transcript numbers residues differently from UniProt
+canonical (0 pathogenic dropped, so no bias toward the hypothesis); and the ClinVar star threshold
+affects only Q1 while the frequency threshold affects only Q2, so each question has one genuinely
+independent corroborating arm, not four.
 
 ### E3 · benchmark against SaProtΔG, ESM3ΔG, ThermoMPNN · [doc](E3_sota_benchmark.md)
 
@@ -123,11 +132,10 @@ isolation. Needs G4 done and a collaborator.
 ## Order of work
 
 ```
-E1  ─ days, no GPU, no new data            ← start here
-E4  ─ hours, data in hand
+E4  ─ hours, data in hand                  ← start here
+G1  ─ now load-bearing: the only route to objection 2
 E3  ─ needs GPU + ESM3 licence + structures
 G4  ─ minutes
-G1  ─ genome downloaded, ready
 G2, G3
 H1, H2
 ```

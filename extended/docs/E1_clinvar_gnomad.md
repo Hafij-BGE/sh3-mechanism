@@ -1,4 +1,4 @@
-# E1 — ClinVar and gnomAD  *(planned — next)*
+# E1 — ClinVar and gnomAD  *(done, 27 September 2026)*
 
 **Why it is needed.** E2 showed the predictions track a physical measurement. E1 asks the clinical
 question: do the confidently destabilising calls line up with variants independently judged
@@ -43,3 +43,19 @@ run.
 If pathogenic variants are not enriched for destabilising calls, that is a real negative result about
 the calls, and it should be reported as one. The pre-registered thresholds are what make that
 statement credible.
+
+## What it found
+
+Full numbers in `results/E1_clinvar_gnomad/RESULTS_E1.md`; reading in `ANALYSIS_E1.md`.
+
+- **Q1, the pre-registered main test: passed.** 21 pathogenic against 101 benign, median predicted
+  ΔΔG 1.67 against 0.19 kcal/mol, p = 4.9 × 10⁻⁶, rank-biserial +0.615.
+- **Question 4 above answered, and not in our favour.** `fold_lo ≥ 1` flags 4.8 % of pathogenic
+  variants, not 60 %. The conformal lower bound is conservative by construction; the ranking is
+  informative, the binary call is not a clinical filter at this threshold.
+- **The germline arm did not settle B6.** 0 of 35 common variants destabilising against 9.6 %
+  expected, p = 0.0289 against α = 0.025 — the right direction, short of the pre-registered bar, and
+  underpowered by roughly an order of magnitude. G1 is now the only route to that objection.
+- Of the 126 benign variants counted in the pre-registration, 101 have their wild-type residue in the
+  sequence B6 scored; the other 25 are ClinVar transcript choices in large multi-isoform proteins.
+  No pathogenic variant was lost.

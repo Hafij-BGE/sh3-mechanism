@@ -9,21 +9,28 @@ run sits beside it at `MyDrive/sh3_repro/`, which every old notebook hardcodes �
 
 ## Outstanding: upload to Drive
 
-Checked 27 September 2026.
+Checked 27 September 2026, after E1.
 
 | Upload | into | Size |
 |---|---|---|
-| `input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz` | `input/external/genome/` | **842 MB** |
+| `notebooks/E1_clinvar_gnomad.ipynb` — **patched after the run**, re-upload and re-run | `code/` | 20 KB |
 | `input/external/binding/` — the whole folder | `input/external/` | 18 MB |
+| `input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz` | `input/external/genome/` | **842 MB** |
 | `reference/checksums_ext.md5` — **Drive's copy is stale**, 35 entries against 39 | `reference/` | 4 KB |
-| `results/E2_domainome_external/` — `noise_ceiling_E2.csv`, `noise_ceiling_matched_E2.csv`, `ANALYSIS_E2_noise_ceiling.md` | same path | small |
-| `tools/*.py` — `nb_X.py`, `e2_domainome_validation.py`, `e2_noise_ceiling.py` | `code/` | small |
-| `docs/` — `PLAN.md`, `DATA.md`, `SYNC.md` | `docs/` | small |
+| `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
+| `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
+| `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
+| `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
+| `README.md` | root | small |
 
 Everything but the genome is under 20 MB, and the genome is needed only by G1, so it can wait.
 
 Use **New → Folder upload** for whole folders — it preserves the tree and is far less error-prone
-than file-by-file.
+than file-by-file. Close any document open in OnlyOffice first, or its `.~lock.*#` file rides along.
+
+**Downloaded from Drive instead:** E1 and E2 run in Colab and write to Drive, so
+`results/E1_clinvar_gnomad/{RESULTS_E1.md,summary_E1.csv,metrics_E1.json}` came the other way and are
+now in git.
 
 ## Then verify
 
@@ -44,7 +51,8 @@ If it reports failures on the model checkpoints, you used the wrong file — tho
 
 ## Already in sync
 
-`input/external/{domainome,stability,clinical,signatures}` · `input/frozen/` · the X0 notebook ·
+`input/external/{domainome,stability,clinical,signatures}` · `input/frozen/` ·
+`results/E1_clinvar_gnomad/` (written there by Colab) · the X0 notebook ·
 all five X0 output CSVs · `reference/{checksums_X0.md5,data_manifest_X0.csv,sh3_genes_uniprot.tsv,
 domainome_column_map.md,checksums_models.md5}` · `results/E2_domainome_external/{per_domain,
 matched_variants}_E2.csv`
