@@ -34,7 +34,7 @@ Two consequences that decide the order of work:
 
 ## Phase 1 — evaluation only
 
-### ✅ X0 · acquire the external data — **done**
+### ✅ X0 · acquire the external data — **done** · [doc](X0_acquire_external_data.md)
 
 Domainome v5, ClinVar and gnomAD v4 downloaded, verified by MD5, reduced to the 235 SH3 genes and
 joined onto the frozen predictions. 74,116 ClinVar records, 431,959 gnomAD missense variants,
@@ -50,9 +50,9 @@ Pooled |ρ| = **0.600**; all 21 sufficiently sampled domains correlate in the ri
 achievable limit, not a moderate result. On matched variants the head reaches **90–113 %** of the
 ceiling.
 
-Details: `results/E2_domainome_external/ANALYSIS_E2_noise_ceiling.md`.
+Program doc: [E2_domainome_external.md](E2_domainome_external.md). Analysis: `results/E2_domainome_external/ANALYSIS_E2.md`.
 
-### ▶ E1 · ClinVar and gnomAD — **next, start here**
+### ▶ E1 · ClinVar and gnomAD — **next, start here** · [doc](E1_clinvar_gnomad.md)
 
 Cheapest remaining item, highest value, needs no new data and no GPU.
 
@@ -70,7 +70,7 @@ Cheapest remaining item, highest value, needs no new data and no GPU.
 Already decided in X0 and worth keeping or changing deliberately: 249 ClinVar keys carry contradictory
 submissions, collapsed by highest star rating then severity.
 
-### E3 · benchmark against SaProtΔG, ESM3ΔG, ThermoMPNN
+### E3 · benchmark against SaProtΔG, ESM3ΔG, ThermoMPNN · [doc](E3_sota_benchmark.md)
 
 **The leakage audit is already done and clean** — none of the 15 held-out domains appear in either
 published training split, though 13 are in the underlying measurement set. Report the audit *and its
@@ -82,7 +82,7 @@ domain (AlphaFold `.cif` is accepted). Checkpoints are archived on the DEU drive
 Decide **base or augmented before running**, on a stated reason. Running all four variants and
 reporting the best is the trap C4 taught.
 
-### E4 · independent test of the C4 specificity model
+### E4 · independent test of the C4 specificity model · [doc](E4_specificity_independent.md)
 
 45 measured affinities across 17 SH3 domains, independent of the PWM data C4 was built from, in
 `input/external/binding/kazemein_jasemi_2024_TableS6_Kd.csv`. Expect failure again — a second
@@ -147,5 +147,5 @@ Unchanged, because they are what made the first run defensible: one folder per p
 verified by MD5 before use; recorded values so the extended run is itself reproducible; and a
 pre-registered decision rule written down **before** any program with a pass/fail verdict.
 
-See also: [DATA.md](DATA.md) for what the data is and where it lives, [SYNC.md](SYNC.md) for keeping
+See also: [DATA.md](DATA.md) and [DATA_PROVENANCE.md](DATA_PROVENANCE.md) for the data, [SYNC.md](SYNC.md) for keeping
 local and Drive in step.
