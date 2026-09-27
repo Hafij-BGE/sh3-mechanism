@@ -22,6 +22,7 @@ Checked 27 September 2026, after E1.
 | `results/E4_specificity_independent/ANALYSIS_E4.md` | same path | small |
 | `notebooks/E3_sota_benchmark.ipynb` — new, ready to run | `code/` | 28 KB |
 | `notebooks/X1_dbnsfp_subset.ipynb` — new, ready to run | `code/` | 20 KB |
+| the 12 SaProtΔG/ESM3ΔG checkpoints — **optional but recommended**, see below | `input/external/models/absolute-stability-predictor/` | 213 MB |
 | `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
 | `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
 | `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
@@ -45,6 +46,17 @@ the frozen run and falls back to the bundle.
 `results/E1_clinvar_gnomad/{RESULTS_E1.md,summary_E1.csv,metrics_E1.json}` and all five of
 `results/E4_specificity_independent/` came the other way and are now in git. `input/README.md` was lost locally during the input redistribution and was recovered the
 same way — the Drive copy matched its recorded MD5 exactly, which is what the manifest is for.
+
+### The 12 model checkpoints are worth uploading
+
+They live on the DEU drive at `Downloded data/absolute-stability-predictor/` and verify **12/12**
+against `reference/checksums_models.md5`. They were deliberately kept off Drive because
+`download_weights.sh` refetches them — but that fetch is a live dependency on Hugging Face, and when
+it silently failed to run it cost a whole E3 session.
+
+Upload `esm3dg_weights/` and `saprotdg_weights/` (213 MB total) into
+`input/external/models/absolute-stability-predictor/` and E3 will use them directly; without them it
+still falls back to Hugging Face, so this is a robustness measure rather than a requirement.
 
 ## Then verify
 
@@ -78,7 +90,7 @@ matched_variants}_E2.csv`
 |---|---|
 | `Downloded data/` (19 GB archive) | DEU drive only |
 | `input/dbNSFP/` (~100 GB) | **Drive only** — never copied locally; X1 reads it from the mount |
-| `absolute-stability-predictor/` (221 MB) | DEU drive only; `download_weights.sh` refetches it in Colab |
+| `absolute-stability-predictor/` (221 MB) | DEU drive only — but see the note on the 12 checkpoints below |
 | `.git`, `.gitignore` | local only |
 | The 12 original inputs (7.5 GB) | Drive `sh3_repro/input/` and the DEU drive — not duplicated into `extended/` |
 

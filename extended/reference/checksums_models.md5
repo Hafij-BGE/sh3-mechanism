@@ -1,7 +1,10 @@
 # Model checkpoints from Hugging Face Yehlin/absolute-stability,
 # repo yehlincho/absolute-stability-predictor @ c55db530.
 #
-# NOT on Drive by design: bash download_weights.sh refetches them in Colab.
+# Archived on the DEU drive at "Downloded data/absolute-stability-predictor/",
+# where all 12 verify. NOT on Google Drive unless uploaded: E3 looks for a mirror at
+# input/external/models/absolute-stability-predictor/ first, and falls back to
+# bash download_weights.sh, which refetches them from Hugging Face in Colab.
 # Verify only where the repo is checked out:
 #     md5sum -c reference/checksums_models.md5
 
