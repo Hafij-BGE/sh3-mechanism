@@ -99,6 +99,34 @@ cross-check on ours.
 
 ---
 
+## Every comparable number, side by side
+
+| quantity | 2026-09-22 (frozen) | 26–27 Sep (extended) | source |
+|---|---|---|---|
+| Atlas variants | 6,884 in 310 domains | **6,884**, join asserted unchanged | X0 |
+| Per-domain folding ρ, 15 held-out | **0.839** median | **0.839**, re-derived from frozen predictions | E3 |
+| Best competitor on the same 15 | ESM-2 zero-shot, beaten 15/15 | SaProtΔG **0.855**, ESM3ΔG **0.792** | E3 |
+| Variants in the benchmark | 27,590 held-out | 27,590 scored by each, **0 dropped** | E3 |
+| Conformal q90 / coverage | 6.807 / 89.9 % | unchanged, not re-fitted | — |
+| Confident destabilising calls | 410 of 6,884 (6.0 %) | unchanged; **sensitivity now measured at 4.8 %** on pathogenic | E1 |
+| External measured validation | none | 880 variants, 41 domains, pooled \|ρ\| **0.600** | E2 |
+| Noise ceiling | unknown | **0.709** between two independent assays | E2 |
+| Fraction of ceiling reached | unknown | **90–113 %** on matched variants | E2 |
+| Clinical separation | none | median ΔΔG **1.67 vs 0.19**, p = 4.9 × 10⁻⁶ | E1 |
+| Rank-biserial, pathogenic vs benign | none | **+0.615** (AUC ≈ 0.81) | E1 |
+| Cancer depletion | 5.93 % vs 9.18 %, p = 0.001 | **not independently tested** | E1 Q2 |
+| Germline depletion | none | 0 of 35 vs 9.63 %, p = 0.0289 vs α = 0.025 | E1 Q2 |
+| Specificity axis | median centred r **+0.288**, `validated: false` | re-run reproduces **+0.288** to 1.6 × 10⁻¹⁴; external r = **+0.023** | E4 |
+| Specificity, observed-profile control | none | r = **−0.051**, p = 0.80 — the ceiling also fails | E4 |
+| Predictor leakage audited | none | SaProtΔG 0/15, ESM3ΔG 0/15, **ThermoMPNN 13/15** | E3 |
+| dbNSFP predictors in domain | none | 152,852 rows, ~50 scores, coverage matches publisher | X1 |
+| Recorded values reproduced | 187/187 | untouched — nothing re-run | — |
+
+Two rows carry the whole story. **`0.839` appears identically in both columns** — the extended phase
+re-derived it from the frozen predictions and asserted the match, so every comparison here is against
+the published model and not a re-fit of it. And **`5.93 % vs 9.18 %` is the one frozen number with no
+independent support**, which is what G1 is for.
+
 ## What the frozen run said, and whether it survived
 
 | frozen claim | 22 Sep value | extended verdict |
