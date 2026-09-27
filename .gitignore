@@ -27,7 +27,6 @@ __pycache__/
 drive_upload/
 
 # ── per-variant follow-up table (COSMIC variants with tumour sites) ──────────
-results/F1_experimental_candidates/experimental_candidates.csv
 
 # ── kept on the laptop only ──────────────────────────────────────────────────
 SH3_all_possible_upgrades_from_base_notebook.md
@@ -52,11 +51,10 @@ extended/Downloded data/
 extended/absolute-stability-predictor/
 extended/results/**/*.parquet
 
-# COSMIC-derived per-variant tables: the licence forbids redistribution.
-# These list which variants occur in COSMIC tumours, so they are COSMIC content.
+# The complete atlas must not be republished, in any dressing: atlas_with_external.csv
+# is SH3_cancer_master.tsv plus extra columns. Derived analysis tables (subsets with
+# predictions and external measurements, no COSMIC fields) are fine to publish.
 extended/results/**/atlas_with_external.csv
-extended/results/**/domainome_atlas_matched.csv
-extended/results/**/matched_variants_E2.csv
 
 # Large regenerable exports (X0 rebuilds them; they are on Drive)
 extended/results/X0_external_data/gnomad_sh3_missense.csv
