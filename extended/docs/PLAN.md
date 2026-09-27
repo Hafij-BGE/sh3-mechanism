@@ -56,9 +56,11 @@ Program doc: [E2_domainome_external.md](E2_domainome_external.md). Analysis: `re
 
 Cheapest remaining item, highest value, needs no new data and no GPU.
 
-1. **Write the decision rule down before looking at any result.** ClinVar star floor (recommend ≥ 2:
-   multiple submitters, no conflicts) and the gnomAD allele-frequency threshold for "common". C4 is
-   the reason this rule exists.
+1. **The pre-registration is drafted** — [preregistration/E1.md](preregistration/E1.md), six
+   experiments with the main one fixed in advance. **Three decisions are still open** (Part 5): the
+   fallback experiment is unusable, popmax is missing from the data, and the groups are small —
+   21 disease-causing variants at the main setting, 4 at the stricter one. Resolve, sign, commit,
+   *then* write the notebook.
 2. Of ClinVar pathogenic missense variants in SH3 domains, how many are called confidently
    destabilising? Of benign, how many are not?
 3. Predicted ΔΔG across four groups: pathogenic / benign / gnomAD-common / COSMIC.
@@ -79,8 +81,11 @@ scope*; claim no more than that.
 Needs a GPU runtime, the ESM3 licence accepted on Hugging Face, SaProt 650M, and one structure per
 domain (AlphaFold `.cif` is accepted). Checkpoints are archived on the DEU drive and verify 12/12.
 
-Decide **base or augmented before running**, on a stated reason. Running all four variants and
-reporting the best is the trap C4 taught.
+Pre-registration drafted — [preregistration/E3.md](preregistration/E3.md), four experiments with
+base/measured-constructs/3-seed-average as the main one. **Three decisions open** (Part 5): base vs
+augmented is still blank, the measured-construct structures are unconfirmed, and **ThermoMPNN and
+ProteinDPO are not actually available for our 15 domains** — the MGnify file covers 26 other
+proteins.
 
 ### E4 · independent test of the C4 specificity model · [doc](E4_specificity_independent.md)
 

@@ -25,6 +25,7 @@ that already exists.
 | [docs/DATA.md](docs/DATA.md) | what the data is, where each copy lives, the two traps in it |
 | [docs/DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md) | **how each dataset was obtained**, including the routes that failed |
 | [docs/SYNC.md](docs/SYNC.md) | local vs Drive; what still needs uploading |
+| [docs/preregistration/](docs/preregistration/) | **rules fixed before the result exists** — E1 and E3 drafted, both with open decisions |
 
 One document per program, same convention as `../docs/`:
 
