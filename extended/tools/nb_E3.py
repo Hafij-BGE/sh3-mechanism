@@ -57,7 +57,14 @@ SETUP = code(
     "ALPHA = 0.025                    # Part 6.1: 0.05 across the two competitors with a verdict",
     "AAS   = 'ACDEFGHIKLMNPQRSTVWY'   # the alphabet BOTH competitors index their scans by",
     "print('project:', PROJECT); print('frozen :', FROZEN)",
-    "!nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null || print('no GPU')",
+    "",
+    "# a saturation scan is ~1,200 forward passes of a 650M-1.4B model, so this is not optional",
+    "try:",
+    "    g = subprocess.run(['nvidia-smi', '--query-gpu=name,memory.total', '--format=csv,noheader'],",
+    "                       capture_output=True, text=True)",
+    "    print('GPU:', g.stdout.strip() if g.returncode == 0 else 'none')",
+    "except FileNotFoundError:",
+    "    print('GPU: NONE - Runtime > Change runtime type > GPU. On CPU the scans take days.')",
 )
 
 CELLS = [
