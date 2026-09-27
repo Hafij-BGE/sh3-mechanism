@@ -51,3 +51,14 @@ extended/input/
 extended/Downloded data/
 extended/absolute-stability-predictor/
 extended/results/**/*.parquet
+
+# COSMIC-derived per-variant tables: the licence forbids redistribution.
+# These list which variants occur in COSMIC tumours, so they are COSMIC content.
+extended/results/**/atlas_with_external.csv
+extended/results/**/domainome_atlas_matched.csv
+extended/results/**/matched_variants_E2.csv
+
+# Large regenerable exports (X0 rebuilds them; they are on Drive)
+extended/results/X0_external_data/gnomad_sh3_missense.csv
+extended/results/X0_external_data/clinvar_sh3.csv
+extended/results/X0_external_data/domainome_sh3_variants.csv

@@ -1,52 +1,47 @@
-# Checksums for input/ - regenerated 2026-09-27 for the input/{external,frozen} layout.
-# Verify from the project root:   md5sum -c reference/checksums_ext.md5
+# Checksums for extended/. Regenerated 2026-09-27.
+# Verify from this directory:   md5sum -c reference/checksums_ext.md5
 
-# PUBLISHED = matches the host's own checksum.  LOCAL = recorded here only.
+# ---- PUBLISHED: matches the checksum the publisher records ----
+9efcf1ae4f90e975f0c0719c79d136a6  input/external/domainome/Supplementary_Table_1_library_design.txt
+d0e744d6e50be563e46254ecc8586f24  input/external/domainome/Supplementary_Table_2_fitness_scores_normalized_domainranks.txt.zip
+4401c96dd6f3083a50f13796eaa4a837  input/external/domainome/Supplementary_Table_3_esm1v_residuals.txt
+2f3ff661e25aa5e6d92b664dc0709c17  input/external/domainome/Supplementary_Table_5_aPCA_vs_variant_effect_predictors.txt.zip
+371a3ebbfdb5c3ca1f0f2af8b2b8d3a8  input/external/stability/mgnify/230515_K50dG_dmsv4_dmsv5_dmsv7_concat260429.csv
+45f1ac1bfcc2aeefecab0e4907725987  input/external/stability/mgnify/README.md
+2fc80af825fd4052997997e2f1ae3385  input/external/stability/mgnify/dmsv4_filtered_train_splits.csv
+c585736d10302a92aa935f29eeddcde6  input/external/stability/mgnify/mgnify_training_index.csv
 
-f72049c17b67a0d5baeffc11cb1a2bb6  input/README.md   # LOCAL
-0ef1c60048748efe12ea3120ecc848ce  input/external/clinical/variant_summary.txt.gz   # LOCAL
-ef1f5c4afe5979b4a5996e48536738db  input/external/domainome/Extended_data_Table_2_fitness_scores_normalized_domainranks.txt   # LOCAL
-6c2f69159c6f2114be68b4464b3f874f  input/external/domainome/Extended_data_Table_5_aPCA_vs_variant_effect_predictors.txt   # LOCAL
-9efcf1ae4f90e975f0c0719c79d136a6  input/external/domainome/Supplementary_Table_1_library_design.txt   # PUBLISHED
-d0e744d6e50be563e46254ecc8586f24  input/external/domainome/Supplementary_Table_2_fitness_scores_normalized_domainranks.txt.zip   # PUBLISHED
-4401c96dd6f3083a50f13796eaa4a837  input/external/domainome/Supplementary_Table_3_esm1v_residuals.txt   # PUBLISHED
-2f3ff661e25aa5e6d92b664dc0709c17  input/external/domainome/Supplementary_Table_5_aPCA_vs_variant_effect_predictors.txt.zip   # PUBLISHED
-c7430013eb1ff3de760d29a201612178  input/external/domainome/analysis_files/K50_dG_Dataset1_Dataset2_in_aPCA.csv   # LOCAL
-1e457968404ec60dfa7834af57667439  input/external/domainome/analysis_files/domainome_structural_annotation.txt   # LOCAL
-2fceea32124418ea1c033f869cf2fa29  input/external/domainome/analysis_files/domains_from_tsuboyama_rocklin_overlaps.txt   # LOCAL
-c76d90b67aabc5bd259724120bb045df  input/external/domainome/analysis_files/gnomad_v4_variants_domainome.txt   # LOCAL
-203100658b2da33417cb1a8048a31e1b  input/external/domainome/analysis_files/megascale_uniprot_mappings_offsets.tsv   # LOCAL
-bd89f2ba925b2c65d6d79079c0499e6d  input/external/domainome/notebooks/02_validation.Rmd   # LOCAL
-9eb9fd92ab08b3712974f38878535728  input/external/domainome/notebooks/11_prepare_data_for_homolog_mochi.Rmd   # LOCAL
-393f6197468851c0e83ad929b5d31239  input/external/domainome/notebooks/12_evaluate_mochi_models.Rmd   # LOCAL
-2fa474f4d1e4cd82bf4cb0698907b4a3  input/external/signatures/COSMIC_catalogue-signatures_SBS96_v3.6.zip   # LOCAL
-e57ea22969e14bcd695a9c4e5b19f53c  input/external/signatures/COSMIC_v3.6_SBS_GRCh38.txt   # LOCAL
-8d87016414f0a6be3ebca1b2d79481bc  input/external/stability/benchmarks/S1724_PDB_sequences.csv   # LOCAL
-45c2f3f8ab04724ce1daad67cd575de5  input/external/stability/benchmarks/S1724_thermomutdb_cleaned_withseq.csv   # LOCAL
-0d2d43d8cc8d050f660443c24b1d0f8d  input/external/stability/benchmarks/fig3__megascale_point_mutants_predictions.csv   # LOCAL
-371a3ebbfdb5c3ca1f0f2af8b2b8d3a8  input/external/stability/mgnify/230515_K50dG_dmsv4_dmsv5_dmsv7_concat260429.csv   # PUBLISHED
-45f1ac1bfcc2aeefecab0e4907725987  input/external/stability/mgnify/README.md   # PUBLISHED
-2fc80af825fd4052997997e2f1ae3385  input/external/stability/mgnify/dmsv4_filtered_train_splits.csv   # PUBLISHED
-c585736d10302a92aa935f29eeddcde6  input/external/stability/mgnify/mgnify_training_index.csv   # PUBLISHED
-a936646a9ef7463ee45e26bf049b41bd  input/frozen/reference/checksums.md5   # LOCAL
-df460fd8a62f7d21326cd41f4c8ad6ce  input/frozen/reference/data_manifest.json   # LOCAL
-20b4f8219bafb49c5ce17cbe6a68a240  input/frozen/reference/expected_values.json   # LOCAL
-cef897f4dd25f9cd56f2c40bb7ec0b08  input/frozen/results/SH3_cancer_master.tsv   # LOCAL
-815b696272f1de58c9a8a49415ffbcc3  input/frozen/results/atlas_fold_predictions.parquet   # LOCAL
-c9993a766ec97ec594bd579514d4cb7c  input/frozen/results/atlas_predictions.parquet   # LOCAL
-236ae4e6f8224b8c9bfe3ce87b3b83aa  input/frozen/results/experimental_candidates.csv   # LOCAL
-6b8c22328c5ef4b658aa8f042c5545dd  input/frozen/results/folding_per_domain_ci.csv   # LOCAL
-81bbafa7faff065ae743294a942a5598  input/frozen/results/heldout_predictions.parquet   # LOCAL
-fef10a7b1c1d731e6ce3e430c274b11f  input/frozen/results/models.pt   # LOCAL
-e1f1f397ca4512a178055935f0eae769  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_1_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-2f8a68799e2ab2ef811c31efdf6a4e22  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_2_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-51d259e74e7f1c56e55c31cb3f9c3ac8  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_3_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-1a090f44cd66a78466a8bb36465a3fd3  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_1_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-d683d26c6dcf815ede0a2240caf1405a  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_2_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-7f191ee0b20fc5cdda1e2bb2b715d6a3  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_3_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-a854bb83a1bb6724aa1d037900490d0c  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_1_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-07530741f28e2c0fa5470598ad2df3cd  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_2_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-e1c1cbf4a136752f9245f5a9e2d6347f  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_3_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-cbd79c253007aa448532cb9b70397c5f  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_1_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-c8bd733c16e91317341a278e030d4236  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_2_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
-2295448fe764984766665827b8a669b2  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_3_lora.ckpt   # LOCAL (HF Yehlin/absolute-stability @ c55db530)
+# ---- LOCAL: recorded here only (extracted members, derived files) ----
+9df0d145632f1e821d40246f9a9b30a2  input/README.md
+0ef1c60048748efe12ea3120ecc848ce  input/external/clinical/variant_summary.txt.gz
+ef1f5c4afe5979b4a5996e48536738db  input/external/domainome/Extended_data_Table_2_fitness_scores_normalized_domainranks.txt
+6c2f69159c6f2114be68b4464b3f874f  input/external/domainome/Extended_data_Table_5_aPCA_vs_variant_effect_predictors.txt
+c7430013eb1ff3de760d29a201612178  input/external/domainome/analysis_files/K50_dG_Dataset1_Dataset2_in_aPCA.csv
+1e457968404ec60dfa7834af57667439  input/external/domainome/analysis_files/domainome_structural_annotation.txt
+2fceea32124418ea1c033f869cf2fa29  input/external/domainome/analysis_files/domains_from_tsuboyama_rocklin_overlaps.txt
+c76d90b67aabc5bd259724120bb045df  input/external/domainome/analysis_files/gnomad_v4_variants_domainome.txt
+203100658b2da33417cb1a8048a31e1b  input/external/domainome/analysis_files/megascale_uniprot_mappings_offsets.tsv
+bd89f2ba925b2c65d6d79079c0499e6d  input/external/domainome/notebooks/02_validation.Rmd
+9eb9fd92ab08b3712974f38878535728  input/external/domainome/notebooks/11_prepare_data_for_homolog_mochi.Rmd
+393f6197468851c0e83ad929b5d31239  input/external/domainome/notebooks/12_evaluate_mochi_models.Rmd
+2fa474f4d1e4cd82bf4cb0698907b4a3  input/external/signatures/COSMIC_catalogue-signatures_SBS96_v3.6.zip
+e57ea22969e14bcd695a9c4e5b19f53c  input/external/signatures/COSMIC_v3.6_SBS_GRCh38.txt
+8d87016414f0a6be3ebca1b2d79481bc  input/external/stability/benchmarks/S1724_PDB_sequences.csv
+45c2f3f8ab04724ce1daad67cd575de5  input/external/stability/benchmarks/S1724_thermomutdb_cleaned_withseq.csv
+0d2d43d8cc8d050f660443c24b1d0f8d  input/external/stability/benchmarks/fig3__megascale_point_mutants_predictions.csv
+a936646a9ef7463ee45e26bf049b41bd  input/frozen/reference/checksums.md5
+df460fd8a62f7d21326cd41f4c8ad6ce  input/frozen/reference/data_manifest.json
+20b4f8219bafb49c5ce17cbe6a68a240  input/frozen/reference/expected_values.json
+cef897f4dd25f9cd56f2c40bb7ec0b08  input/frozen/results/SH3_cancer_master.tsv
+815b696272f1de58c9a8a49415ffbcc3  input/frozen/results/atlas_fold_predictions.parquet
+c9993a766ec97ec594bd579514d4cb7c  input/frozen/results/atlas_predictions.parquet
+236ae4e6f8224b8c9bfe3ce87b3b83aa  input/frozen/results/experimental_candidates.csv
+6b8c22328c5ef4b658aa8f042c5545dd  input/frozen/results/folding_per_domain_ci.csv
+81bbafa7faff065ae743294a942a5598  input/frozen/results/heldout_predictions.parquet
+fef10a7b1c1d731e6ce3e430c274b11f  input/frozen/results/models.pt
+
+# ---- LOCAL: added 2026-09-27 (genome, binding) ----
+bc7af8ba0697b1956b33365e199f79a8  input/external/binding/kazemein_jasemi_2024/cells-13-00195-s001.zip
+5ddcaebdb233949e6c8f2d3e81f00995  input/external/binding/kazemein_jasemi_2024/cells-2796338-supplementary.pdf
+cbb1c9eff9f6c0fd0e92a30f4c6051bc  input/external/binding/kazemein_jasemi_2024_TableS6_Kd.csv
+1c8c1d3ebfa7e615cd9ac2cf00853423  input/external/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz

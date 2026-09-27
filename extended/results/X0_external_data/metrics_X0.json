@@ -1,0 +1,16 @@
+{
+ "date": "2026-09-27 00:10",
+ "profile": "core",
+ "genes": 235,
+ "domainome_sh3_variants": 46128,
+ "domainome_sh3_domains": 44,
+ "clinvar_records": 74116,
+ "gnomad_missense": 431959,
+ "outputs": {
+  "atlas_with_external.csv": 2720999,
+  "clinvar_sh3.csv": 17150663,
+  "domainome_atlas_matched.csv": 402355,
+  "domainome_sh3_variants.csv": 9391109,
+  "gnomad_sh3_missense.csv": 25359860
+ }
+}

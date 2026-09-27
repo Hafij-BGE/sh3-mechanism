@@ -1,0 +1,19 @@
+# Model checkpoints from Hugging Face Yehlin/absolute-stability,
+# repo yehlincho/absolute-stability-predictor @ c55db530.
+#
+# NOT on Drive by design: bash download_weights.sh refetches them in Colab.
+# Verify only where the repo is checked out:
+#     md5sum -c reference/checksums_models.md5
+
+e1f1f397ca4512a178055935f0eae769  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_1_lora.ckpt
+2f8a68799e2ab2ef811c31efdf6a4e22  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_2_lora.ckpt
+51d259e74e7f1c56e55c31cb3f9c3ac8  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_3_lora.ckpt
+1a090f44cd66a78466a8bb36465a3fd3  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_1_lora.ckpt
+d683d26c6dcf815ede0a2240caf1405a  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_2_lora.ckpt
+7f191ee0b20fc5cdda1e2bb2b715d6a3  absolute-stability-predictor/esm3dg_weights/ESM3dG_weights_augmented_3_lora.ckpt
+a854bb83a1bb6724aa1d037900490d0c  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_1_lora.ckpt
+07530741f28e2c0fa5470598ad2df3cd  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_2_lora.ckpt
+e1c1cbf4a136752f9245f5a9e2d6347f  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_3_lora.ckpt
+cbd79c253007aa448532cb9b70397c5f  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_1_lora.ckpt
+c8bd733c16e91317341a278e030d4236  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_2_lora.ckpt
+2295448fe764984766665827b8a669b2  absolute-stability-predictor/saprotdg_weights/SaProtdG_weights_augmented_3_lora.ckpt
