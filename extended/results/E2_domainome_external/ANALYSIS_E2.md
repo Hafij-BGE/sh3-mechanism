@@ -1,6 +1,6 @@
-# E2 — the noise ceiling
+# E2 — analysis
 
-**Question.** E2 found a pooled Spearman ρ = −0.600 between the frozen folding head and Domainome
+**The noise ceiling.** E2 found a pooled Spearman ρ = −0.600 between the frozen folding head and Domainome
 abundance, with a per-domain median of −0.573. Is that good? The number means nothing until we know
 what the *maximum achievable* correlation is.
 

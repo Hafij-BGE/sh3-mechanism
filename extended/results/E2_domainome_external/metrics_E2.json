@@ -1,0 +1,21 @@
+{
+ "program": "E2",
+ "date": "2026-09-27 05:29",
+ "atlas_variants": 6884,
+ "measured_in_domainome": 880,
+ "domains": 41,
+ "genes": 32,
+ "pooled_rho": -0.5998658725258966,
+ "pooled_p": 4.093419889672036e-87,
+ "per_domain_median_rho": -0.573076923076923,
+ "per_domain_correct_direction": "21/21",
+ "destabilising_n": 63,
+ "destabilising_median_fitness": -0.74848569553081,
+ "tolerated_n": 817,
+ "tolerated_median_fitness": -0.106010061420384,
+ "mannwhitney_p": 2.3239185430049667e-22,
+ "ceiling_median": 0.7093249629128183,
+ "ceiling_domains": 4,
+ "domainome_rows_dropped_null_key": 45,
+ "domainome_rows_collapsed_dual_pfam": 3856
+}
