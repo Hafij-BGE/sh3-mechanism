@@ -45,3 +45,9 @@ UPLOAD_GUIDE.md
 *.pptx
 results/SH3_Mutation_Mechanism_Blueprint.pdf
 result analysis/
+
+# --- extended/ (phase 2: external validation) -------------------------------
+extended/input/
+extended/Downloded data/
+extended/absolute-stability-predictor/
+extended/results/**/*.parquet

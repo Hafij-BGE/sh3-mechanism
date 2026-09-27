@@ -72,7 +72,33 @@ docs/        one explanation per program + overview + roadmap status
 reference/   expected_values.json (187 recorded values), checksums.md5, data_manifest.json
 results/     after a run: RESULTS_<ID>.md + ANALYSIS_<ID>.md per program, metrics, small tables, figures
 tools/       notebook generator
+extended/    phase 2 — external validation (see below)
 ```
+
+## `extended/` — phase 2
+
+The run above is **frozen**. `extended/` is a second phase that reads it and never modifies it: its
+purpose is to close the objections that stand between this work and a journal submission, using
+public data that already exists.
+
+| Program | Question |
+|---|---|
+| X0 | acquire and verify the external data |
+| E1 | do the 410 destabilising calls agree with ClinVar and gnomAD? |
+| E2 | do they agree with independently measured human protein abundance? |
+| E3 | how does the folding head compare with SaProtΔG, ESM3ΔG and ThermoMPNN? |
+| E4 | does the C4 specificity model fail a second, independent test? |
+| G1–G4 | signature-aware null, per-domain conformal, AlphaFold fragments, panel redesign |
+| H1–H2 | a second domain family; bench validation |
+
+First result: **880 of the 6,884 atlas cancer variants have a direct experimental measurement** in
+Human Domainome 1.0. The frozen head, trained with the entire SH3 family held out, reaches a pooled
+Spearman ρ = −0.600 against measured abundance, with all 21 sufficiently sampled domains correlating
+in the right direction.
+
+Start at [extended/PLAN.md](extended/PLAN.md); data sources are in
+[extended/DOWNLOADS.md](extended/DOWNLOADS.md). `extended/input/` is not committed, for the same
+reasons as `input/`.
 
 ## Re-checking found three procedural flaws; all are kept visible
 
