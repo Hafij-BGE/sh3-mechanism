@@ -21,6 +21,7 @@ Checked 27 September 2026, after E1.
 | `results/E1_clinvar_gnomad/ANALYSIS_E1.md` | same path | small |
 | `results/E4_specificity_independent/ANALYSIS_E4.md` | same path | small |
 | `notebooks/E3_sota_benchmark.ipynb` — new, ready to run | `code/` | 28 KB |
+| `notebooks/X1_dbnsfp_subset.ipynb` — new, ready to run | `code/` | 20 KB |
 | `results/E2_domainome_external/` — everything but `per_domain_E2.csv` and `matched_variants_E2.csv` | same path | small |
 | `notebooks/E2_domainome_external.ipynb`, `tools/*.py` | `code/` | small |
 | `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
@@ -76,6 +77,7 @@ matched_variants}_E2.csv`
 | | |
 |---|---|
 | `Downloded data/` (19 GB archive) | DEU drive only |
+| `input/dbNSFP/` (~100 GB) | **Drive only** — never copied locally; X1 reads it from the mount |
 | `absolute-stability-predictor/` (221 MB) | DEU drive only; `download_weights.sh` refetches it in Colab |
 | `.git`, `.gitignore` | local only |
 | The 12 original inputs (7.5 GB) | Drive `sh3_repro/input/` and the DEU drive — not duplicated into `extended/` |

@@ -81,6 +81,25 @@ canonical (0 pathogenic dropped, so no bias toward the hypothesis); and the Clin
 affects only Q1 while the frequency threshold affects only Q2, so each question has one genuinely
 independent corroborating arm, not four.
 
+### ▶ X1 · reduce dbNSFP 5.4a to the SH3 domains — **notebook ready to run**
+
+dbNSFP arrived on 27 September, after §9 of the provenance had written it off. Nothing was blocked by
+its absence, so this is an addition.
+
+**It predicts pathogenicity, not ΔΔG**, so it is *not* an E3 competitor — that table is for stability
+predictors. It is the external comparison for **E1**. dbNSFP ships its own ClinVar benchmark: on all
+genes, star 1+ missense, MetaRNN reaches **AUC 0.988**, REVEL 0.976, AlphaMissense 0.964. E1 put our
+stability head at rank-biserial +0.615, i.e. **AUC ≈ 0.81**.
+
+So the question worth asking is **not** whether a folding model beats dedicated pathogenicity
+predictors — it should not, and nothing in this project claims it would. It is whether **ΔΔG_fold adds
+anything they do not have**, on the same variants. That would be a new program with its own
+pre-registration; X1 only acquires and reduces, and deliberately computes no comparison.
+
+Two practical notes: the release ships **no tabix index**, so the subset costs one streaming pass
+(cached, paid once); and the two large files are ~100 GB together and are probably the same release
+twice — X1 §1 checks that cheaply and says whether one can be deleted.
+
 ### ▶ E3 · benchmark against SaProtΔG and ESM3ΔG — **pre-registered, notebook ready to run** · [doc](E3_sota_benchmark.md)
 
 The single biggest objection to B1. Pre-registration [preregistration/E3.md](preregistration/E3.md)

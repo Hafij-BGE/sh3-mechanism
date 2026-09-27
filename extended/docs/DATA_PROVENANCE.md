@@ -163,14 +163,43 @@ at least one Kd.
 which permits redistribution with attribution, and without them E4 cannot be reproduced from the
 repository alone. Everything else under `input/` stays out, for size or licence.
 
-## 9. dbNSFP — requested, never arrived, not needed
+## 9. dbNSFP — arrived 27 September 2026, after it had been written off
 
-Registration requires an institutional email and a returned access code, which had not come through.
-It would have been a convenience only: gnomAD frequencies and ClinVar significance in one file,
-pre-mapped to UniProt accessions and amino-acid positions.
+Registration requires an institutional email and a returned access code. It had not come through when
+§4 and §5 were written, so ClinVar and gnomAD were taken from primary sources and **nothing was ever
+blocked**. The access then came through the same day E4 finished. This is an *addition*, not a repair,
+and the earlier route stays exactly as it was — the primary-source extraction is what X0 verified and
+what E1 ran on.
 
-Both arms were obtained from primary sources instead (§4, §5), so **nothing is blocked**. If the code
-arrives, use it for the extra predictor scores.
+Four files, on Drive at `input/dbNSFP/`:
+
+| File | Bytes | What it is |
+|---|---|---|
+| `dbNSFP5.4a.zip` | 51,053,386,192 | the release archive |
+| `dbNSFP5.4a_grch38.gz` | 55,386,634,577 | the same release, second packaging |
+| `dbNSFP5.4_gene.gz` | 24,069,120 | per-gene annotation and constraint |
+| `dbnsfp_performance_matrix.csv` | 127,915 | **dbNSFP's own ClinVar benchmark of every score it ships** |
+
+**The two large files are ~100 GB together and are believed to hold the same release twice.** That is
+not assumed: X1 §1 probes both cheaply — a zip central directory, and the first 64 KB of the gz — and
+reports which is usable and whether one can be deleted, *before* anything reads 50 GB. **No tabix or
+CSI index ships with the release**, so a region query is impossible and the subset is built by one
+streaming pass filtered on the 235 gene names. The pass is cached, so it is paid once.
+
+**What dbNSFP is, precisely.** About 50 precomputed **pathogenicity** predictors per missense variant —
+AlphaMissense, REVEL, MetaRNN, ESM1b, CADD and the rest — plus its own copies of ClinVar and gnomAD.
+It does **not** predict ΔΔG. So it is **not** a competitor for E3, which benchmarks stability
+predictors; putting a pathogenicity score in that table would be a category error. It is the external
+comparison for **E1**, whose question was whether our stability calls track pathogenicity.
+
+The performance matrix is worth reading before any such comparison is designed. On all genes, ClinVar
+2026, star 1+ missense, the best scores reach **AUC 0.94–0.99** (MetaRNN 0.988, REVEL 0.976,
+AlphaMissense 0.964). E1 put our stability head at rank-biserial +0.615, which is AUC ≈ 0.81. The
+useful question is therefore not whether we win — we should not, and we are not trying to — but
+**whether ΔΔG_fold carries anything those predictors do not**.
+
+X1 (`notebooks/X1_dbnsfp_subset.ipynb`) does the acquisition and reduction only. It computes no
+comparison and returns no verdict, because that needs a pre-registration written first.
 
 ## 10. The 12 original inputs — not re-obtained
 

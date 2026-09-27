@@ -42,6 +42,7 @@ input/                                     5.1 GB
 | COSMIC SBS v3.6 | cancer.sanger.ac.uk/signatures | COSMIC terms | G1 |
 | GRCh38 | Ensembl `current_fasta` primary assembly | open | G1 |
 | SH3 affinities | Kazemein Jasemi et al. 2024, *Cells* 13(2):195 · doi:10.3390/cells13020195 | CC BY | E4 |
+| dbNSFP 5.4a | registration; ~100 GB in two packagings on Drive at `input/dbNSFP/` | academic use | X1, then any E1 follow-up |
 | The 12 original inputs | on Drive at `sh3_repro/input/` and on the DEU drive — **not duplicated here** | mixed; COSMIC restricted | G3, H1 only |
 
 Cite Zenodo by the concept DOI `10.5281/zenodo.11043642`, which always resolves to the latest version.
@@ -51,10 +52,12 @@ Cite Zenodo by the concept DOI `10.5281/zenodo.11043642`, which always resolves 
 The Domainome record has five versions. v3 predates the Nature paper; **v5 (10 Dec 2024) matches it**,
 and the file names differ between them — a script written against v3 names will fail.
 
-### dbNSFP is not needed
+### dbNSFP arrived late, and is an addition
 
-It was the convenience route to gnomAD and ClinVar in one file. Both are in hand from primary sources,
-so registration being pending blocks nothing. If the code arrives, use it for extra predictor scores.
+It was the convenience route to gnomAD and ClinVar in one file; both were taken from primary sources
+instead, so nothing was blocked. Access came through on 27 Sep, after E1 and E4 had run. Its value is
+the ~50 **pathogenicity** predictors it carries — not ΔΔG, so **not** an E3 competitor. Reduced to the
+SH3 domains by `X1`. See [DATA_PROVENANCE.md](DATA_PROVENANCE.md) §9.
 
 ---
 
