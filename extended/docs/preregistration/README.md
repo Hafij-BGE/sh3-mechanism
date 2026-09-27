@@ -34,11 +34,17 @@ Every program in this phase with a pass/fail verdict gets the same treatment.
 
 | | Program | State |
 |---|---|---|
-| [E1.md](E1.md) | ClinVar and gnomAD | **draft — three decisions open**, see its Part 5 |
+| [E1.md](E1.md) | ClinVar and gnomAD | **signed, run, reported.** Decisions in Part 6, amendment in Part 7; result in `results/E1_clinvar_gnomad/` |
+| [E4.md](E4.md) | independent test of C4's specificity axis | **drafted 27 Sep**, unsigned |
 | [E3.md](E3.md) | benchmark against current predictors | **draft — three decisions open**, see its Part 5 |
 
-Neither is signed. Both have an empty `Signed off / Date / Commit` block at the end; filling it and
-committing is what makes the pre-registration binding.
+E1 is signed and its result is in. E3 and E4 have an empty `Signed off / Date / Commit` block at the
+end; filling it and committing is what makes a pre-registration binding.
+
+E4 is the one case where the pre-registration tests a pre-registration: C4's rule already returned
+`validated: false`, so E4's job is to make an *independent* failure interpretable — which is why its
+Part 6 declares, in advance, how to tell "the model is wrong" apart from "this data cannot answer the
+question".
 
 ## What the 27 Sep review changed
 
