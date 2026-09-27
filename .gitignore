@@ -74,3 +74,6 @@ extended/results/X0_external_data/domainome_sh3_variants.csv
 # in-progress browser downloads, and dbNSFP staged at the extended/ root
 *.crdownload
 extended/*.csv
+
+# executed copies downloaded back from Colab (the generated one lives in notebooks/)
+extended/*.ipynb
