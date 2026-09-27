@@ -181,11 +181,15 @@ isolation. Needs G4 done and a collaborator.
 ## Order of work
 
 ```
-G1  ─ now load-bearing: the only route to objection 2   ← start here
-E3  ─ needs GPU + ESM3 licence + structures
-G4  ─ minutes
+Phase 1 is done: X0, E1, E2, E3, E4 all reported.   X1 adds dbNSFP.
+
+G1  ─ the only route left to objection 2            ← start here
+G4  ─ minutes, and do it before anyone synthesises anything
 G2, G3
 H1, H2
+
+optional, all cached so each costs only its own work:
+E3 Experiments 2-4, and the ThermoMPNN descriptive arm
 ```
 
 Phase 1 plus rewriting the report as a paper rather than a reproduction record is enough for a
