@@ -265,7 +265,7 @@ down on mutational bias.
 | | why it matters |
 |---|---|
 | X1's 63.8 % | blocks any dbNSFP-based follow-up to E1 — though G1 found the likely mechanism |
-| **G3** | the AlphaFold fragment fix — 219 variants in nine large proteins, and the only item that re-runs frozen outputs |
+| 3.2 % of the atlas has no structural annotation | AlphaFold DB has no model for those nine proteins, or only an isoform model too short. **A database limit, not a defect** — G3 scoped and dropped |
 | E3 Experiments 2–4, ThermoMPNN | sensitivity checks; cannot change Experiment 1's verdict |
 | H1, H2 | generality beyond SH3, and bench validation |
 

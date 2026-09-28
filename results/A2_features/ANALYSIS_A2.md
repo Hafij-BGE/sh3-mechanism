@@ -1,3 +1,18 @@
+> **Corrected 28 September 2026 — see `extended/results/G3_structure_scoping/ANALYSIS_G3.md`.**
+>
+> The diagnosis below, that these proteins lack coverage because *only fragment F1 is requested*,
+> is **wrong**. Probed directly, `AF-{acc}-F1` returns 404 for all nine on every model version, so
+> the fragment filter never ran. The AlphaFold DB API gives two causes: **four proteins have no
+> model at all** (OBSCN, NEB, PLEC, MACF1) and **five are keyed to isoform-suffixed entity ids**
+> such as `AF-P15924-2-F1`, which A2 never tries.
+>
+> The real defect is the missing isoform suffix, and it caps out at **72 of the 219 variants** —
+> the rest have no model, or a model too short to reach the SH3 domain. None of it would change a
+> prediction: structure is annotation only, as this file's own "Why structure is not a model
+> feature" section explains.
+
+---
+
 # A2 — Analysis of the result: features for every variant
 
 **Colab run:** 2026-09-22, 20.9 min on a Tesla T4. **Verdict: REPRODUCED** — 8 values identical, 13 within
