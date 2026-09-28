@@ -142,6 +142,28 @@ def add_context(df: pd.DataFrame, flanks: dict[tuple, str]) -> pd.DataFrame:
 # Pools
 # ─────────────────────────────────────────────────────────────────────────────
 
+def wt_by_position(b6: pd.DataFrame, domains: pd.DataFrame) -> dict:
+    """The atlas's own wild-type residue at every in-domain protein position.
+
+    This is the key a dbNSFP row has to satisfy to enter the null pool.  Matching
+    the UniProt *accession* is not enough: dbNSFP lists one `aapos` per transcript,
+    and the transcript it carries for an accession can be a different isoform with
+    different numbering.  Measured against the release, 31,458 of 132,704
+    accession-matched rows (23.7 %) land on a position whose residue disagrees with
+    the atlas -- and it is all-or-nothing per gene, which is what a frame shift
+    looks like.
+
+    Requiring `aaref` to equal the atlas residue is the rule `g1_coordinates.py`
+    already used for the observed set, so pool and observed are built alike.  A null
+    drawn under a different rule from the thing it is a null for is not a null.
+    """
+    x = b6.merge(domains.drop_duplicates(['gene', 'uniprot', 'domain_idx'])
+                        [['gene', 'uniprot', 'domain_idx', 'dom_start']],
+                 on=['gene', 'uniprot', 'domain_idx'], how='inner')
+    pos = x['dom_start'].astype(int) + x['pos'].astype(int) - 1
+    return dict(zip(zip(x['gene'], pos), x['wt_aa']))
+
+
 def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
                   b6: pd.DataFrame, domains: pd.DataFrame, fasta: Path) -> dict:
     """Everything both notebooks share.
