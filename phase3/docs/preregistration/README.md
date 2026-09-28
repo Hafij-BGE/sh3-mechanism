@@ -19,9 +19,9 @@ of rule would have been worth something.
 
 | | Program | State |
 |---|---|---|
-| — | H1 · a second domain family | **not yet written.** The leakage audit (H1.0) comes first, because its answer changes what H1 is |
+| — | H1 · a second domain family | **next.** The audit (H1.0) is done and the design is decided: a length-matched main arm (Myb/SANT) and PDZ as a secondary arm carrying the length confound |
 
-H1's pre-registration cannot be written honestly until the audit says whether PDZ is in the training
-set: one answer makes H1 an evaluation of the frozen model, the other makes it a retrain. Those are
-different experiments with different risks, and pre-registering the wrong one would be worse than
-pre-registering nothing.
+The audit answered the question and changed the experiment. PDZ is absent from training, so no
+retraining is needed — but it is absent because MegaScale's assay caps constructs at 72 residues and
+PDZ is longer, which would have confounded *new family* with *longer than training*. Writing H1's
+rule before that was known would have pre-registered the wrong experiment.

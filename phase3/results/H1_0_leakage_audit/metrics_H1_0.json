@@ -1,0 +1,68 @@
+{
+  "megascale": {
+    "domains": 412,
+    "rows": 389068,
+    "len_min": 32,
+    "len_max": 72,
+    "len_median": 51.0
+  },
+  "matched_to_a_domainome_family": 100,
+  "sh3_control": {
+    "is_sh3_in_training": 26,
+    "matched_PF00018": 27
+  },
+  "candidates": [
+    {
+      "pfam": "PF00628",
+      "domainome_domains": 23,
+      "median_len": 55.0,
+      "min_len": 52,
+      "max_len": 66,
+      "megascale_domains": 0,
+      "in_training": false,
+      "length_matched": true
+    },
+    {
+      "pfam": "PF00249",
+      "domainome_domains": 22,
+      "median_len": 52.0,
+      "min_len": 40,
+      "max_len": 64,
+      "megascale_domains": 0,
+      "in_training": false,
+      "length_matched": true
+    },
+    {
+      "pfam": "PF00643",
+      "domainome_domains": 17,
+      "median_len": 45.0,
+      "min_len": 42,
+      "max_len": 55,
+      "megascale_domains": 0,
+      "in_training": false,
+      "length_matched": true
+    },
+    {
+      "pfam": "PF00013",
+      "domainome_domains": 17,
+      "median_len": 72.0,
+      "min_len": 59,
+      "max_len": 76,
+      "megascale_domains": 0,
+      "in_training": false,
+      "length_matched": true
+    }
+  ],
+  "pdz": [
+    {
+      "pfam": "PF00595",
+      "domainome_domains": 43,
+      "median_len": 88.0,
+      "min_len": 70,
+      "max_len": 97,
+      "megascale_domains": 0,
+      "in_training": false,
+      "length_matched": false
+    }
+  ]
+}

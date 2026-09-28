@@ -39,24 +39,43 @@ This is E3's lesson, which cost nothing because it was asked first: the ThermoMP
 disqualified when 13 of our 15 held-out domains turned out to sit inside its published training
 split. **H1 asks the equivalent question before writing a notebook, not after.**
 
-Two outcomes, and they differ by roughly a day of work:
+**Answered, 28 September 2026 — `results/H1_0_leakage_audit/`.**
 
-| | |
-|---|---|
-| **PDZ is absent from MegaScale** | the frozen model can be applied directly. A genuine family-holdout test, at the cost of an evaluation |
-| **PDZ is in MegaScale** | the model must be **retrained** with PDZ held out, using the same family-grouped split. `src/sh3_common.py` is already family-agnostic |
+**PDZ is absent from training, so no retraining is needed — but it is absent for the wrong reason.**
+MegaScale's 412 training domains are 32–72 residues (median 51) because the proteolysis assay caps
+construct length there. PDZ runs 70–97 (median 88), and only 1 of 43 would even fit. So a PDZ
+evaluation confounds *new family* with *longer than anything in training*, and a drop in accuracy
+could not be attributed to either.
 
-Early evidence points at the second. The Domainome/MegaScale overlap table
-(`domains_from_tsuboyama_rocklin_overlaps.txt`, 32 domains) lists sixteen Pfam families and
-**PF00595 is not among them** — but that table is the aPCA intersection, not all of MegaScale, so it
-settles nothing. The audit reads MegaScale itself.
+The audit validates itself on SH3: 27 MegaScale domains match PF00018 against the 26 flagged
+`is_sh3`, so the matching recovers the one family known to be in training.
+
+**Better families exist**, absent from training and length-matched:
+
+| Pfam | domains | median length | |
+|---|---|---|---|
+| **PF00249** Myb/SANT | 22 | **52** | MegaScale's median is 51 |
+| **PF00628** PHD finger | 23 | 55 | |
+| PF00643 B-box | 17 | 45 | |
+| PF00595 **PDZ** | 43 | 88 | above the 72 ceiling |
 
 ### What the evaluation would be
 
 The design mirrors E2 and E3, so the two families are compared on like terms rather than on separate
 conventions:
 
-1. **Per-domain Spearman ρ** on held-out PDZ domains, against the SH3 figure of 0.839.
+**Two arms, so the contrast separates family from length:**
+
+| arm | family | what it isolates |
+|---|---|---|
+| **main** | PF00249 Myb/SANT (or PF00628 PHD) | a clean family-holdout test |
+| **secondary** | PF00595 PDZ | family *plus* length extrapolation |
+
+If the length-matched family holds and PDZ does not, the limit is **construct length, not family** —
+a more useful finding than either arm alone, and available for one extra evaluation since neither
+requires retraining.
+
+1. **Per-domain Spearman ρ** on the held-out family, against the SH3 figure of 0.839.
 2. **An external measured comparison.** Domainome aPCA covers PDZ heavily — **75,023 annotated rows,
    the largest family in the dataset, ahead of SH3's 57,949** — so the E2 design transfers directly,
    noise ceiling included.
@@ -103,9 +122,10 @@ hydrophobic-to-charged substitution is called destabilising by any method; an ex
 ## Order of work
 
 ```
-H1.0  leakage audit: is PDZ in MegaScale?        ← start here, and it decides the rest
-H1.1  pre-registration, once the audit is known
-H1.2  the evaluation (or the retrain, then the evaluation)
+H1.0  leakage audit                              DONE 28 Sep. PDZ absent, but for the
+                                                 wrong reason; main arm is now Myb/SANT
+H1.1  pre-registration                           ← start here, design is decided
+H1.2  the evaluation -- no retraining needed
 H2    bench, in parallel and on someone else's clock
 ```
 
