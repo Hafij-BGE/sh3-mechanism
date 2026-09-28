@@ -214,6 +214,18 @@ def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
     b6k = b6[keys + ['domain_key', 'destabilising', CALL]].drop_duplicates(keys)
 
     n_obs_in, n_pool_in = len(observed), len(pool)
+
+    # Why anything drops, recorded rather than argued. build_pool only emits a row
+    # where the atlas residue equals dbNSFP's aaref, so gene, pos_protein and wt_aa
+    # already agree by construction and B6 holds all 19 non-wildtype standard
+    # residues at every position it covers. A drop can therefore only come from
+    # mut_aa, and this says which values caused it.
+    _lost = pool.merge(b6k[keys], on=keys, how='left', indicator=True)
+    _lost = _lost[_lost['_merge'] == 'left_only']
+    drop_mut_aa = _lost['mut_aa'].value_counts().head(25).to_dict()
+    _std = set('ACDEFGHIKLMNPQRSTVWY')
+    drop_nonstandard = int((~_lost['mut_aa'].isin(_std)).sum())
+
     observed = observed.merge(b6k, on=keys, how='inner', validate='m:1')
     pool = pool.merge(b6k, on=keys, how='inner', validate='m:1')
 
@@ -258,10 +270,13 @@ def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
             'pool_substitutions': len(subs),
             'domains_observed': observed['domain_key'].nunique(),
             'domains_pool': pool['domain_key'].nunique(),
+            'pool_dropped': int(n_pool_in - len(pool)),
+            'pool_dropped_nonstandard_mut_aa': drop_nonstandard,
             'b6_keys_in_two_domains': dup_keys,
             'b6_keys_whose_domains_disagree': dup_conflict,
         },
         'multiplicity': {int(k): int(v) for k, v in mult.value_counts().items()},
+        'pool_drop_reason_mut_aa': drop_mut_aa,
         'opportunity': pool['channel'].value_counts().reindex(channels()).fillna(0)
                            .astype(int).to_dict(),
     }
