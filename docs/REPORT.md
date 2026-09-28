@@ -1,3 +1,10 @@
+> **Correction, 28 September 2026.** The depletion reported here (5.93 % vs 9.18 %) **did not
+> survive** the trinucleotide-aware null this report called for in its own limitation 6. G1 supplied
+> it and the effect vanished — 5.96 % observed against 6.04 % expected, p = 0.40, two independently
+> specified spectra agreeing. **The claim is withdrawn.** Nothing in this report was re-run or
+> re-fitted; what changed is the background the predictions were compared against. See
+> `extended/results/G1_mutational_context/ANALYSIS_G1.md`.
+
 # Mechanism-resolved prediction of cancer mutation effects in human SH3 domains
 
 ### Loss of fold is predictable; the limits on predicting rewiring of binding are quantified

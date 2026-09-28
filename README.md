@@ -36,9 +36,12 @@ A paper-style write-up of the whole project is in [`docs/REPORT.md`](docs/REPORT
 - **410 cancer variants (6 %) are confidently destabilising** (lower 90 % conformal bound ≥ 1 kcal/mol).
 - **An independent specificity axis (C4, 154 PWMs) did not pass its pre-registered rule,** so no rewiring
   claim is made.
-- **Observed cancer variants are depleted of fold-breaking substitutions** against a domain-matched
-  single-nucleotide background (5.9 % vs 9.2 %, B6). Consistent with purifying selection; mutational
-  context is not modelled.
+- ~~**Observed cancer variants are depleted of fold-breaking substitutions**~~ **— withdrawn,
+  28 September 2026.** B6 reported 5.9 % against 9.2 % expected and said a trinucleotide-aware null
+  was needed before calling it selection. G1 supplied that null and the effect disappeared: 5.96 %
+  observed against 6.04 % expected, p = 0.40, with a second independently specified mutational
+  spectrum agreeing. **The depletion was mutational bias.** See
+  [`extended/results/G1_mutational_context/`](extended/results/G1_mutational_context/).
 
 ## Status of the full Colab run (2026-09-22)
 
