@@ -1,3 +1,23 @@
+> **Superseded, 28 September 2026 — see `extended/results/G1_mutational_context/ANALYSIS_G1.md`.**
+>
+> Section 4's depletion (5.93 % against 9.18 %, p ≤ 0.001) **did not survive** the trinucleotide-aware
+> null this file called for. G1 supplied that null and the effect disappeared: 5.96 % observed against
+> 6.04 % expected, p = 0.40, with a second, independently specified spectrum agreeing. **The claim is
+> withdrawn.**
+>
+> G1 also found two defects in the null model below, which apply to any reuse of it. `snv_reachable`
+> asks whether a substitution is reachable from *some* codon of the wild-type residue rather than
+> from *the* codon actually present; that admits substitutions which cannot arise at those positions,
+> and they are more damaging than those that can, inflating the 9.18 % by 0.60 pp. Drawing at the
+> amino-acid level also ignores that one substitution can be reached by several base changes carrying
+> different sequence contexts, worth a further 0.71 pp.
+>
+> **Nothing in B6 was re-run or re-fitted.** The predictions are unchanged and still reproduce; what
+> changed is the background they were compared against. Section 4's own caveat — *"a context-aware
+> null is needed before it can be called selection"* — was correct, and is the reason this was found.
+
+---
+
 # B6 — Analysis of the result: virtual saturation mutagenesis
 
 **Colab run:** 2026-09-22, 1.9 min on CPU. **New program:** there are no recorded values to compare. It ran

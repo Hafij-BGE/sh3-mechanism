@@ -20,9 +20,10 @@ dataset, and held out the entire SH3 family (15 genes, 27,590 variants) with spl
 UniProt accession and domain index. Calibrated uncertainty was obtained by normalised split-conformal
 prediction. We then evaluated the frozen model, without re-fitting, against four independent sources:
 abundance measurements from a second assay, ClinVar and gnomAD labels, two current
-structure-conditioned ΔG predictors, and an independent set of binding affinities. Decision rules for
-three of the four evaluations were pre-registered and committed to version control before the
-analysis code existed.
+structure-conditioned ΔG predictors, and an independent set of binding affinities. We additionally
+re-tested a previously reported depletion of destabilising substitutions among cancer variants
+against a null matched to trinucleotide sequence context. Decision rules for four of the five
+evaluations were pre-registered and committed to version control before the analysis code existed.
 
 **Results.** On 15 held-out domains the model reached a median per-domain Spearman ρ of 0.839. Against
 880 variants measured by an independent abundance assay, pooled |ρ| was 0.600; two independent assays
@@ -33,14 +34,18 @@ structure-conditioned predictors given the experimental structure of the measure
 sequence-only model showed no clear difference from SaProtΔG (median ρ 0.839 vs 0.855, paired
 Wilcoxon p = 0.107) and outperformed ESM3ΔG (0.839 vs 0.792, p = 0.0084), with all 27,590 variants
 scored by every model and none dropped. A third predictor was disqualified before evaluation: 13 of
-our 15 held-out domains lie inside its published training split.
+our 15 held-out domains lie inside its published training split. A previously reported depletion of
+destabilising substitutions among cancer variants (5.93 % observed vs 9.18 % expected) did **not**
+survive a context-matched null: 5.96 % against 6.04 % expected, p = 0.40, with a second,
+independently specified mutational spectrum agreeing (p = 0.92).
 
 **Conclusions.** A sequence-only stability model is competitive with structure-conditioned predictors
 on held-out domains and recovers a substantial part of the clinical signal without ever seeing a
-clinical label. Two negative results are reported with equal weight: the conservative confident-call
-threshold has 4.8 % sensitivity for pathogenic variants and is not a clinical filter, and an internal
-specificity axis failed a second, independent test — attributable to the representation rather than
-the model.
+clinical label. Three negative results are reported with equal weight: the conservative
+confident-call threshold has 4.8 % sensitivity for pathogenic variants and is not a clinical filter;
+an internal specificity axis failed a second, independent test, attributable to the representation
+rather than the model; and a previously reported depletion of destabilising cancer variants is
+withdrawn, being attributable to mutational context rather than selection.
 
 **Keywords:** protein stability, ΔΔG, variant effect prediction, SH3 domain, protein language model,
 pre-registration
@@ -155,7 +160,8 @@ q₉₀ = 6.807 in normalised units with 89.9 % empirical coverage, yielding **4
 destabilising calls among 6,884 cancer-derived variants (6.0 %)**. A virtual saturation scan of all
 366,168 possible substitutions in 310 domains found 12.1 % destabilising overall and 9.2 % among
 single-nucleotide-reachable substitutions, against 6.0 % of observed cancer variants; a
-domain-matched null gave 5.93 % observed versus 9.18 % expected (p = 0.001). An independently
+domain-matched null gave 5.93 % observed versus 9.18 % expected (p = 0.001) — a claim Section 3.6
+retracts. An independently
 constructed specificity axis failed its own pre-registered rule (median centred r = +0.288;
 `validated: false`).
 
@@ -209,7 +215,8 @@ domain-matched null — an exact binomial p = 0.0289 against α = 0.025. The dir
 and the threshold is missed by 0.004. Because the rule was fixed in advance, the result is reported as
 *consistent with depletion, not established*. With 35 variants, even perfect depletion could not clear
 the threshold; this analysis was underpowered by roughly an order of magnitude and cannot corroborate
-the previously reported depletion among cancer variants.
+the previously reported depletion among cancer variants. Section 3.6 tests that depletion directly,
+with adequate power, and does not support it.
 
 ### 3.4 Benchmark against structure-conditioned predictors
 
@@ -276,6 +283,61 @@ The defensible claim is therefore narrower and better supported than "the axis f
 profiles derived from this assay do not predict these affinities.* Reported as a post-hoc distinction
 would have been unconvincing; the reading was fixed in advance.
 
+### 3.6 The reported depletion of destabilising cancer variants does not survive a context-matched null
+
+The frozen model's virtual saturation scan reported that observed cancer variants are depleted of
+predicted fold-breaking substitutions: 5.93 % destabilising against 9.18 % expected from a
+domain-matched null over single-nucleotide-reachable substitutions (p = 0.001). That null weights
+every reachable substitution equally. Because mutation rates vary by more than an order of magnitude
+with trinucleotide context, a uniform null will report depletion whenever the substitutions that are
+common are also the ones that are mild, with no selection involved.
+
+Genomic coordinates were recovered for 6,456 of 6,884 atlas variants (93.8 %) by joining to dbNSFP on
+gene, residue and substitution; all 6,456 carry the expected GRCh38 reference base. The null pool
+comprises 154,708 in-domain missense base changes over 115,742 distinct substitutions, each with its
+trinucleotide context read from GRCh38. Draws are domain-matched to the observed set, 10,000 per arm,
+weighted by the 96-channel spectrum.
+
+Two spectra were specified in advance: the observed 96-channel distribution of the atlas variants
+themselves, and an equal mixture of COSMIC SBS1 and SBS5. Neither was designated primary before the
+run, so both were treated as co-primary at α = 0.0125 (Bonferroni, family-wise 0.025).
+
+**Neither supports the depletion** (Table 4).
+
+| Null | Expected | Observed | Difference | *p* |
+|---|---|---|---|---|
+| Observed atlas spectrum | 6.04 % | 5.96 % | +0.08 pp | 0.401 |
+| COSMIC SBS1 + SBS5 | 5.58 % | 5.96 % | −0.39 pp | 0.918 |
+
+The effect is recovered stepwise (Table 5). Correcting the reachability definition reduces the
+expected rate but leaves the depletion significant; adding trinucleotide context removes it.
+
+| Null model | Expected | Change | *p* |
+|---|---|---|---|
+| As previously reported (amino-acid-pair reachability) | 9.23 % | — | 0.001 |
+| Codon-level reachability | 8.60 % | −0.64 pp | 0.0001 |
+| + reachability multiplicity | 7.88 % | −0.71 pp | 0.0001 |
+| + trinucleotide context | **6.04 %** | **−1.84 pp** | **0.401** |
+
+Two properties of the previously used null were identified in the course of this analysis. First,
+reachability was assessed at the amino-acid level — whether a substitution is attainable by one base
+change from *any* codon of the wild-type residue — rather than from the codon present at that
+position. Across 150 amino-acid pairs with *n* ≥ 100, the fraction attainable from the codon present
+correlates with the genetic-code prediction at r = +0.955 (mean absolute deviation 0.05), and the
+substitutions thereby excluded are more often destabilising than those retained (11.2 % versus
+8.6 %). Second, one amino-acid substitution may be reachable by several distinct base changes with
+different sequence contexts; drawing at the amino-acid level treats these as a single candidate.
+
+The null result is not a power limitation. The Monte-Carlo standard deviation of the drawn fraction
+was 0.00295, against a binomial estimate of 0.00296 computed before the analysis; the smallest
+difference detectable at α = 0.0125 is 0.66 pp, and the observed difference is 0.08 pp. The observed
+rate lies near the centre of the null distribution (95 % interval 5.48–6.63 %).
+
+The two spectra describe the mutational process differently — cosine similarity 0.688, with C>T at
+CpG accounting for 19.3 % of the observed distribution against 47.2 % for the COSMIC mixture — and
+agree on the conclusion nonetheless. This addresses the principal limitation of the first arm, whose
+spectrum is estimated from the variants under test.
+
 ## 4. Discussion
 
 ### 4.1 Principal findings
@@ -286,6 +348,13 @@ had trained on, with the competitors given the experimental structure of the mea
 agrees with an independent abundance assay at 85 % of the agreement between two such assays, and
 separates ClinVar pathogenic from benign variants at p = 4.9 × 10⁻⁶ without having seen a clinical
 label.
+
+The same evaluation retracts one of our own previously reported results. A depletion of destabilising
+substitutions among observed cancer variants, which had been offered as consistent with weak
+purifying selection, does not survive a null matched to trinucleotide context and is attributable to
+the mutational process. The original report identified this limitation and named the test that would
+resolve it; performing that test is what withdrew the claim. We regard reporting it as no less a
+result than the four that were supported.
 
 ### 4.2 What the confident-call threshold is for
 
@@ -310,13 +379,14 @@ optional check.
 | Per-domain folding accuracy | median ρ 0.839 | **Supported** — re-derived exactly; competitive with two current predictors |
 | Exceeds zero-shot ESM-2 | 15/15 domains | **Supported**, and extended to supervised predictors |
 | Conformal calls | 410 of 6,884 (6.0 %) | **Supported, with sensitivity now quantified** at 4.8 % |
-| Cancer variants depleted of damage | 5.93 % vs 9.18 % (p = 0.001) | **Not independently tested** — the germline analysis was underpowered |
+| Cancer variants depleted of damage | 5.93 % vs 9.18 % (p = 0.001) | **Not supported** — under a trinucleotide-matched null the effect disappears (5.96 % vs 6.04 %, p = 0.40) |
 | Specificity axis | r = +0.288, not validated | **Independently confirmed as failed**, and attributed to the representation |
 
-No previously reported result was contradicted. One — the depletion of destabilising substitutions
-among observed cancer variants — remains supported only by the internal null model, because the
-germline test that would have corroborated it had insufficient power. Distinguishing selection from
-mutational bias requires a trinucleotide-context-aware null, which is the natural next step.
+One previously reported result was contradicted: the depletion of destabilising substitutions among
+observed cancer variants. The remaining four were supported. The depletion rested on a null that
+weighted every single-nucleotide-reachable substitution equally; matching the background to
+trinucleotide context removes it entirely, and two independently specified spectra agree. The
+original report named this limitation itself and identified the test that would resolve it.
 
 ### 4.5 Limitations
 
@@ -356,8 +426,9 @@ domains none had trained on, agrees with an independent abundance assay at close
 assay-to-assay agreement, and recovers clinical variant effects it was never trained on. Its
 conservative confident-call threshold has low sensitivity and should be reported as such. A
 specificity axis built alongside it fails independently, and a pre-registered control locates the
-failure in the representation. The one internal claim still lacking external support — depletion of
-destabilising substitutions among observed cancer variants — requires a mutation-context-aware null.
+failure in the representation. The one internal claim lacking external support — depletion of
+destabilising substitutions among observed cancer variants — was tested against a mutation-context-aware
+null and did not survive; it is withdrawn.
 
 ---
 

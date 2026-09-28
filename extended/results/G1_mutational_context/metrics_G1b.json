@@ -30,8 +30,8 @@
     "pool_size": 115742,
     "observed_rate": 0.05963444857496902,
     "null_median": 0.08596654275092937,
-    "null_mean": 0.08603859975216852,
-    "null_sd": 0.003471212781798502,
+    "null_mean": 0.08603859975216853,
+    "null_sd": 0.0034712127817985014,
     "null_ci95": [
       0.07930607187112763,
       0.0927819083023544
@@ -48,7 +48,7 @@
     "pool_size": 154708,
     "observed_rate": 0.05963444857496902,
     "null_median": 0.07884138785625774,
-    "null_mean": 0.07876827757125154,
+    "null_mean": 0.07876827757125156,
     "null_sd": 0.0033561052555009106,
     "null_ci95": [
       0.07233581164807931,
@@ -60,21 +60,6 @@
     "seed": 20260928
   },
   "b6_published_null": 0.09232,
-  "coverage": {
-    "b6_reachable": 150040,
-    "covered": 115742,
-    "uncovered": 34298,
-    "coverage_pct": 77.14,
-    "destabilising_covered": 0.08635,
-    "destabilising_uncovered": 0.11246,
-    "destabilising_all_reachable": 0.09232,
-    "domains_total": 310,
-    "domains_fully_absent": 0,
-    "domains_below_half": 3,
-    "domain_coverage_median": 0.7754,
-    "mean_pos_in_domain_covered": 31.75,
-    "mean_pos_in_domain_uncovered": 32.38
-  },
   "cosine_fit_to_observed": 0.6876628362058093,
   "counts": {
     "observed_in": 6456,
@@ -110,9 +95,9 @@
   },
   "exclusion_check": {
     "n_included": 6456,
-    "n_excluded": null,
-    "rate_included": null,
-    "rate_excluded": null
+    "n_excluded": 428,
+    "rate_included": 0.05963444857496902,
+    "rate_excluded": 0.05841121495327103
   },
   "spectrum_used": {
     "A[C>A]A": 0.006464035193254076,
