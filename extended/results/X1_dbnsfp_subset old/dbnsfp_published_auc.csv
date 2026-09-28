@@ -1,0 +1,51 @@
+Score,Score_Category,ClinVar_Year,Mode,Stratum,AUC,AUC_Low,AUC_High,pAUC_FPR_05,pAUC_FPR_05_Low,pAUC_FPR_05_High,pAUC_TPR_95,pAUC_TPR_95_Low,pAUC_TPR_95_High,Coverage,N_Path,N_Benign
+MetaRNN,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9882,0.9878,0.9886,0.8466,0.8422,0.8511,0.8669,0.8615,0.8725,88.26,52609,146045
+MutationTaster 2021,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9849,0.9844,0.9854,0.8142,0.8088,0.8195,0.8374,0.8309,0.8437,83.18,49831,137387
+BayesDel_addAF_v1,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.984,0.9835,0.9844,0.8013,0.7963,0.8062,0.8363,0.8305,0.8421,88.94,52765,147422
+ClinPred,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9838,0.9833,0.9843,0.7889,0.7837,0.7944,0.8408,0.8348,0.8469,87.26,52591,143822
+PHACTboost,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9813,0.9808,0.9819,0.7299,0.7234,0.737,0.8542,0.8489,0.8591,79.16,50311,127855
+MutScore,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9807,0.9801,0.9813,0.7967,0.7919,0.8018,0.779,0.7709,0.7873,85.89,52573,140738
+REVEL,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9756,0.9749,0.9763,0.7531,0.7477,0.7587,0.7406,0.7324,0.7488,83.66,51083,137223
+BayesDel_noAF_v1,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9724,0.9718,0.9731,0.7203,0.7151,0.7259,0.7363,0.7285,0.7438,88.94,52765,147422
+gMVP,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9722,0.9714,0.973,0.7181,0.712,0.7243,0.7219,0.712,0.7313,79.47,48212,130653
+VARITY_R,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9694,0.9687,0.9702,0.681,0.6748,0.6874,0.7283,0.7207,0.7353,77.05,48583,124851
+VEST4,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9678,0.967,0.9685,0.6529,0.6466,0.6591,0.7382,0.7312,0.7455,85.29,51230,140745
+VARITY_R_LOO,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9677,0.9669,0.9685,0.668,0.6622,0.6745,0.7167,0.7082,0.7254,77.05,48583,124851
+AVI (AlphaGenome),meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9652,0.9643,0.9659,0.6379,0.6309,0.6444,0.695,0.6872,0.7031,99.56,52992,171097
+VARITY_ER,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9644,0.9636,0.9653,0.6443,0.6378,0.6513,0.701,0.6933,0.709,77.05,48583,124851
+VARITY_ER_LOO,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9639,0.963,0.9647,0.6415,0.635,0.6485,0.6973,0.6896,0.7047,77.05,48583,124851
+AlphaMissense,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9638,0.963,0.9647,0.6529,0.6466,0.6585,0.675,0.6662,0.6843,88.51,52700,146519
+MutPred2,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9623,0.9615,0.9632,0.6105,0.6035,0.6173,0.7092,0.7021,0.717,84.8,52725,138152
+DEOGEN2,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9558,0.9549,0.9568,0.6369,0.6312,0.6429,0.6125,0.6035,0.6216,82.7,51606,134535
+MVP_v1.0,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9556,0.9546,0.9566,0.6077,0.6006,0.6147,0.6199,0.6117,0.6283,82.87,51740,134794
+MisFit_D_v1.5.1,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9463,0.9452,0.9474,0.5875,0.5807,0.5941,0.5306,0.5203,0.5413,82.93,52090,134573
+MetaSVM,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9455,0.9443,0.9468,0.5981,0.5915,0.6051,0.4584,0.4414,0.4737,87.73,52606,144862
+MetaLR,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9452,0.9442,0.9462,0.5844,0.5787,0.5902,0.586,0.5784,0.5938,87.73,52606,144862
+MutFormer_v1.0,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.945,0.944,0.9461,0.4822,0.4758,0.4885,0.6376,0.6311,0.6451,86.07,52487,141237
+CADD_v1.7,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9435,0.9425,0.9445,0.4126,0.405,0.4197,0.6772,0.6691,0.6848,99.56,52992,171097
+Eigen_v1.1,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9418,0.9409,0.9429,0.4806,0.4734,0.4879,0.6456,0.6381,0.6528,82.38,47137,138277
+M-CAP_v1.3,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.941,0.9399,0.942,0.4676,0.4597,0.4749,0.6107,0.6031,0.6186,75.34,52533,117032
+fathmm-XF_coding,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9403,0.9393,0.9413,0.4302,0.4237,0.4365,0.6864,0.6797,0.6928,88.03,46990,151154
+ESM1b,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9397,0.9384,0.9409,0.55,0.5435,0.5569,0.444,0.4311,0.4562,91.65,52932,153355
+GPN-MSA,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9331,0.9321,0.9342,0.3899,0.3841,0.3963,0.6471,0.6403,0.6541,99.56,52992,171097
+Eigen-PC_v1.1,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9307,0.9295,0.9318,0.4132,0.407,0.4197,0.6073,0.5995,0.6156,82.38,47137,138277
+PROVEAN_v1.1,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9294,0.9281,0.9306,0.4009,0.394,0.4088,0.5428,0.5336,0.5525,83.4,50787,136921
+Polyphen2_HVAR_v2.2.2,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9268,0.9256,0.9281,0.3933,0.3863,0.4004,0.5906,0.5832,0.598,79.94,50657,129281
+MutationAssessor_Release_3,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9238,0.9224,0.9251,0.5013,0.4946,0.5079,0.4641,0.4554,0.4734,76.78,50011,122805
+Polyphen2_HDIV_v2.2.2,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9074,0.906,0.9088,0.2346,0.2295,0.24,0.5371,0.5291,0.5456,79.94,50657,129281
+LIST-S2_v1.10,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9019,0.9007,0.9033,0.3331,0.327,0.3389,0.4976,0.4903,0.5055,87.81,51931,145722
+SIFT_Ensembl_66,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9019,0.9004,0.9033,0.222,0.2173,0.2268,0.4809,0.4718,0.4898,82.43,50250,135281
+SIFT4G_v2.4,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.9001,0.8986,0.9016,0.2186,0.2129,0.2247,0.4469,0.438,0.4571,82.59,50633,135250
+phyloP100way_vertebrate,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8995,0.8981,0.901,0.2794,0.2722,0.2859,0.419,0.4104,0.4273,100.0,53037,172040
+PrimateAI_v0.2,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8841,0.8825,0.8858,0.2501,0.2444,0.2564,0.478,0.47,0.4857,83.66,52158,136135
+DANN,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8782,0.8767,0.8795,0.1457,0.1415,0.1496,0.5605,0.5528,0.5681,99.18,52874,170364
+MisFit_S_v1.5.1,individual predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.877,0.875,0.8789,0.4893,0.484,0.4948,0.1677,0.1617,0.174,82.93,52090,134573
+phyloP470way_mammalian,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8716,0.8699,0.8732,0.1714,0.1662,0.1763,0.3852,0.3748,0.3955,91.86,49236,157522
+MPC_Release_1,meta-predictor,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.85,0.8478,0.8521,0.2894,0.2839,0.295,0.2282,0.2167,0.2398,73.06,46988,117458
+GERP++_RS,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8408,0.8391,0.8425,0.0896,0.0865,0.0924,0.3981,0.3895,0.4076,99.51,52908,171063
+phastCons100way_vertebrate,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8272,0.8257,0.8287,0.0787,0.0781,0.0794,0.4525,0.4446,0.4612,100.0,53037,172040
+GERP_92_mammals,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.827,0.8248,0.8296,0.0873,0.0835,0.0914,0.206,0.1943,0.2177,73.31,30956,134057
+phastCons470way_mammalian,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.8058,0.8044,0.8074,0.0684,0.068,0.0689,0.4227,0.4137,0.4328,99.84,53033,171678
+phyloP17way_primate,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.7514,0.7492,0.7534,0.0557,0.0538,0.0576,0.3555,0.3476,0.3635,100.0,53037,172033
+phastCons17way_primate,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.7336,0.7315,0.7358,0.068,0.0658,0.0702,0.2379,0.2335,0.2428,100.0,53037,172033
+bStatistic,conservation,2026,release,All genes / Star 1 Single + Star 2 and plus / Missense,0.5603,0.5576,0.5631,0.0284,0.0271,0.0297,0.0338,0.032,0.0357,98.08,52276,168478
