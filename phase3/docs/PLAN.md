@@ -124,8 +124,9 @@ hydrophobic-to-charged substitution is called destabilising by any method; an ex
 ```
 H1.0  leakage audit                              DONE 28 Sep. PDZ absent, but for the
                                                  wrong reason; main arm is now Myb/SANT
-H1.1  pre-registration                           ← start here, design is decided
-H1.2  the evaluation -- no retraining needed
+H1.1  pre-registration                           DONE 28 Sep, unsigned. docs/preregistration/H1.md
+H1.2  the evaluation -- no retraining needed     ← start here. Needs ESM-2 embeddings
+                                                 for 66 new domains, so a GPU
 H2    bench, in parallel and on someone else's clock
 ```
 

@@ -19,7 +19,14 @@ of rule would have been worth something.
 
 | | Program | State |
 |---|---|---|
-| — | H1 · a second domain family | **next.** The audit (H1.0) is done and the design is decided: a length-matched main arm (Myb/SANT) and PDZ as a secondary arm carrying the length confound |
+| [H1.md](H1.md) | H1 · a second domain family | **drafted 28 Sep, unsigned. Nothing run.** Main arm pools three length-matched held-out families (35 domains); PDZ is a secondary arm carrying the length confound; SH3 is the reproduction control |
+
+H1's power calculation is the part worth reading. Resampling SH3's own per-domain spread shows that
+**15 domains give a 95 % interval wider than the margin it would be compared against** — a guaranteed
+"inconclusive" whatever the data said. Pooling three length-matched families to 35 domains brings the
+interval to 0.148, tighter than SH3's own reference arm. That is a non-result avoided by doing the
+arithmetic before the experiment rather than after, which is the same failure E1 could only report in
+hindsight.
 
 The audit answered the question and changed the experiment. PDZ is absent from training, so no
 retraining is needed — but it is absent because MegaScale's assay caps constructs at 72 residues and
