@@ -1,0 +1,8 @@
+# Phase 3 inherits the repository rules; these are the ones worth restating locally.
+# Per-domain measurement tables and any per-variant output stay on the laptop.
+*.tsv
+*.tsv.gz
+*.parquet
+*.npz
+*.pt
+cache/
