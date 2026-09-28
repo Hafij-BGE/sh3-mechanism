@@ -1,0 +1,74 @@
+{
+  "prereg": "extended/docs/preregistration/H1.md",
+  "margin": -0.15,
+  "clip": 10,
+  "n_boot": 4000,
+  "min_variants_per_domain": 20,
+  "min_domains": 20,
+  "reproduction": {
+    "e2_published": 0.573,
+    "recomputed": 0.5659650946493051,
+    "variants": 768,
+    "domains": 20
+  },
+  "main": {
+    "arm": "MAIN length-matched",
+    "domains": 35,
+    "median_absrho": 0.4198734073403598,
+    "sh3_median_absrho": 0.6225918825298351,
+    "delta": -0.20271847518947528,
+    "ci95": [
+      -0.24885309500173872,
+      -0.1197222556003141
+    ],
+    "margin": -0.15,
+    "verdict": "inconclusive"
+  },
+  "pdz": {
+    "arm": "SECONDARY PDZ",
+    "domains": 31,
+    "median_absrho": 0.601591876560239,
+    "sh3_median_absrho": 0.6225918825298351,
+    "delta": -0.02100000596959606,
+    "ci95": [
+      -0.08168139169728973,
+      0.027325062607680844
+    ],
+    "margin": -0.15,
+    "verdict": "supported",
+    "verdict_carries_weight": false
+  },
+  "per_family": [
+    {
+      "pfam": "PF00018",
+      "domains": 36,
+      "median_absrho": 0.6226
+    },
+    {
+      "pfam": "PF00249",
+      "domains": 15,
+      "median_absrho": 0.5073
+    },
+    {
+      "pfam": "PF00595",
+      "domains": 31,
+      "median_absrho": 0.6016
+    },
+    {
+      "pfam": "PF00628",
+      "domains": 11,
+      "median_absrho": 0.376
+    },
+    {
+      "pfam": "PF00643",
+      "domains": 9,
+      "median_absrho": 0.3352
+    }
+  ],
+  "assay_snr_by_arm": {
+    "main": 1.863,
+    "pdz": 3.268,
+    "sh3": 2.199
+  },
+  "reading": "inconclusive"
+}
