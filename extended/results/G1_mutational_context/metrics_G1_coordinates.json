@@ -1,0 +1,19 @@
+{
+  "atlas_variants": 6884,
+  "dbnsfp_rows_scanned": 2120008,
+  "resolved": 6456,
+  "resolved_pct": 93.78,
+  "by_source": {
+    "uniprot_aligned": 6378,
+    "any_transcript_plus_cds": 78
+  },
+  "dropped": {
+    "ambiguous_coordinate": 314,
+    "not_in_dbnsfp": 114
+  },
+  "genome_check": {
+    "verified": 6456,
+    "mismatched": 0,
+    "unique_positions": 6063
+  }
+}
