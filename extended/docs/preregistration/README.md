@@ -37,9 +37,18 @@ Every program in this phase with a pass/fail verdict gets the same treatment.
 | [E1.md](E1.md) | ClinVar and gnomAD | **signed, run, reported.** Decisions in Part 6, amendment in Part 7; result in `results/E1_clinvar_gnomad/` |
 | [E4.md](E4.md) | independent test of C4's specificity axis | **run and reported.** Both verdicts no; the Part 6 control attributes the failure to the representation, not the model |
 | [E3.md](E3.md) | benchmark against current predictors | **decisions taken (Part 6), unsigned.** The pre-commit leakage check disqualified ThermoMPNN |
+| [G1.md](G1.md) | trinucleotide-aware null for the cancer depletion | **drafted 28 Sep, unsigned. Nothing run.** The only route to objection 2 |
 
-E1 is signed and its result is in. E3 has an empty `Signed off / Date / Commit` block; filling it is
-what makes a pre-registration binding.
+E1 is signed and its result is in. E3 and G1 have empty `Signed off / Date / Commit` blocks; filling
+them is what makes a pre-registration binding.
+
+G1 is the one that can cost the project a published claim. It re-tests the frozen run's 5.93 % vs
+9.18 % depletion against a null that knows the sequence context each mutation arose in — which is
+what B6 itself said was needed before calling the result selection. Part 4 fixes all three outcomes in
+advance, including the one where the claim is withdrawn, and Part 5 establishes that a null result
+would be informative rather than ambiguous: at n = 6,456 the test can see a gap a fifth the size of
+the one B6 reported. That matters because "underpowered" was the honest verdict on E1's attempt at the
+same objection, and it does not carry over.
 
 E4 is the one case where the pre-registration tests a pre-registration: C4's rule already returned
 `validated: false`, so E4's job was to make an *independent* failure interpretable — which is why its
