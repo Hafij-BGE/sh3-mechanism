@@ -125,9 +125,12 @@ hydrophobic-to-charged substitution is called destabilising by any method; an ex
 H1.0  leakage audit                              DONE 28 Sep. PDZ absent, but for the
                                                  wrong reason; main arm is now Myb/SANT
 H1.1  pre-registration                           DONE 28 Sep, unsigned. docs/preregistration/H1.md
-H1.2  the evaluation                             notebook BUILT 28 Sep, not run.
-                                                 phase3/notebooks/H1_generality.ipynb
-                                                 A100 40 GB, minutes. ← run this
+H1.2  the evaluation                             DONE 28 Sep. Reproduction passed
+                                                 (0.566 vs 0.573). MAIN inconclusive
+                                                 (delta -0.203, CI -0.249..-0.120);
+                                                 PDZ matches SH3 (0.602 vs 0.623), so
+                                                 LENGTH IS NOT THE LIMIT.
+                                                 results/H1_generality/
 H2    bench, in parallel and on someone else's clock
 ```
 

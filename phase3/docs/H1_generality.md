@@ -62,6 +62,24 @@ run.
 scan. Minutes. Embeddings cache to Drive, so a disconnected session resumes without repeating the
 GPU work.
 
+## What it found
+
+**Reproduction passed** — 0.5660 against E2's published 0.573, so the pipeline is the frozen one.
+
+| arm | domains | median \|ρ\| | Δ vs SH3 | 95 % CI | verdict |
+|---|---|---|---|---|---|
+| MAIN length-matched | 35 | 0.420 | −0.203 | [−0.249, −0.120] | **inconclusive** |
+| PDZ | 31 | 0.602 | −0.021 | [−0.082, +0.027] | *supported*, no verdict by design |
+
+**Length is not the barrier.** PDZ's median construct is 88 residues against a training maximum of
+72, in a family never seen, and it matches SH3. Part 6 anticipated the opposite cell.
+
+The main arm's difficulty is not resolved. The two worst families coordinate zinc — a risk Part 7
+named in advance — but Myb/SANT binds no metal and is also low, and assay quality runs in the same
+order as the result (PDZ 3.27, SH3 2.20, main 1.86). **The two explanations cannot be separated with
+this design**, and the new families have no second assay by construction.
+
 ## Status
 
-Notebook generated and checked; **not yet run.** The pre-registration is unsigned.
+Complete as pre-registered. Interpretation in `results/H1_generality/ANALYSIS_H1.md`. The
+pre-registration is unsigned.
