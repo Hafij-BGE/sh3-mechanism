@@ -143,14 +143,34 @@ def add_context(df: pd.DataFrame, flanks: dict[tuple, str]) -> pd.DataFrame:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
-                  b6: pd.DataFrame, fasta: Path) -> dict:
+                  b6: pd.DataFrame, domains: pd.DataFrame, fasta: Path) -> dict:
     """Everything both notebooks share.
 
     observed : atlas variants with one verified GRCh38 coordinate each
     pool     : every in-domain missense base change, from dbNSFP
     b6       : the frozen virtual DMS -- predictions, never re-fitted
+    domains  : the atlas, for dom_start (see below)
+
+    **B6's `pos` is the position WITHIN THE DOMAIN, not the protein position.**
+    B6 indexes its per-position arrays as `LO[domain_key][pos - 1]` and computes
+    `rel_pos = pos / dom_len`, so `pos` runs 1..dom_len. Joining it to a protein
+    position matches only where the domain happens to start at residue 1 -- 147 of
+    the 6,884 atlas variants -- and silently drops the rest. It is converted here:
+
+        pos_protein = dom_start + pos - 1
+
+    verified against the atlas's own `pos_in_domain` for all 6,884 rows.
     """
     b6 = b6.copy()
+    dom = (domains.drop_duplicates(['gene', 'uniprot', 'domain_idx'])
+                  [['gene', 'uniprot', 'domain_idx', 'dom_start']])
+    n_b6 = len(b6)
+    b6 = b6.merge(dom, on=['gene', 'uniprot', 'domain_idx'], how='inner',
+                  validate='m:1')
+    assert len(b6) >= 0.95 * n_b6, (
+        f'only {len(b6)} of {n_b6} B6 rows found a dom_start in the atlas; the '
+        'domain tables have diverged and every protein position below would be wrong')
+    b6['pos_protein'] = b6['dom_start'].astype(int) + b6['pos'].astype(int) - 1
     call = (b6[CALL] >= CALL_THRESHOLD).astype(np.int8)
     if 'destabilising' in b6:
         # B6 ships its own column. Recomputing it from fold_lo and checking the two
@@ -161,12 +181,32 @@ def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
             "`destabilising` column; this is not the frozen call B3 defined")
     b6['destabilising'] = call
     keys = ['gene', 'pos_protein', 'wt_aa', 'mut_aa']
-    b6k = b6.rename(columns={'pos': 'pos_protein'})[
-        keys + ['domain_key', 'destabilising', CALL]].drop_duplicates(keys)
+    # A residue can sit in two overlapping domain annotations of the same gene (X0
+    # found 3,856 such rows, from dual Pfam entries), and each gets its own B6
+    # prediction. Deduplicating keeps the first, so record how often that happens
+    # and whether the collapsed rows would have been called differently -- a silent
+    # pick between disagreeing predictions is the thing to catch, not the dedup.
+    g = b6.groupby(keys, sort=False)['destabilising']
+    dup_keys = int((g.size() > 1).sum())
+    dup_conflict = int((g.nunique() > 1).sum())
+    b6k = b6[keys + ['domain_key', 'destabilising', CALL]].drop_duplicates(keys)
 
     n_obs_in, n_pool_in = len(observed), len(pool)
     observed = observed.merge(b6k, on=keys, how='inner', validate='m:1')
     pool = pool.merge(b6k, on=keys, how='inner', validate='m:1')
+
+    # X0's lesson, restated: an inner merge that loses rows loses them silently, and
+    # a smaller table still looks plausible. B6 scored all 19 substitutions at every
+    # position of all 310 atlas domains, so every atlas variant MUST be in it -- and
+    # when the join key was wrong this retained 187 of 6,456 without complaint.
+    assert len(observed) >= 0.95 * n_obs_in, (
+        f'the B6 join kept only {len(observed)} of {n_obs_in} observed variants. B6 '
+        'covers every substitution in every atlas domain, so this cannot be a real '
+        'absence -- the join key is wrong. Check that B6\'s domain-relative `pos` was '
+        'converted to a protein position.')
+    assert len(pool) >= 10 * len(observed), (
+        f'the null pool holds {len(pool)} candidates for {len(observed)} observed '
+        'variants, too few for a domain-matched draw to have anything to choose from')
 
     pos = {}
     for d in (observed, pool):
@@ -196,6 +236,8 @@ def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
             'pool_substitutions': len(subs),
             'domains_observed': observed['domain_key'].nunique(),
             'domains_pool': pool['domain_key'].nunique(),
+            'b6_keys_in_two_domains': dup_keys,
+            'b6_keys_whose_domains_disagree': dup_conflict,
         },
         'multiplicity': {int(k): int(v) for k, v in mult.value_counts().items()},
         'opportunity': pool['channel'].value_counts().reindex(channels()).fillna(0)
