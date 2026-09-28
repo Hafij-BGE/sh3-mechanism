@@ -20,6 +20,8 @@ its SHA-256 asserted at run time, so "identical machinery" is checkable.
 
 Shares md()/code()/build() with nb_E.py.
 """
+import ast
+import builtins
 import hashlib
 import json
 import pathlib
@@ -95,13 +97,14 @@ ALPHA_CELL = code(
     "named = [l.split(MARK, 1)[1].strip() for l in text.splitlines() if MARK in l]",
     "PRIMARY = named[0] if named else None",
     "ALPHA = 0.025 if PRIMARY else 0.0125",
-    "IS_PRIMARY = (PRIMARY is None) or (PRIMARY.lower().startswith(NOTEBOOK_SPECTRUM))",
     "print(f'primary named in G1.md : {PRIMARY!r}')",
-    "print(f'this notebook          : {NOTEBOOK_SPECTRUM}')",
-    "print(f'role                   : '",
-    "      + ('co-primary (no primary named)' if PRIMARY is None else",
-    "         'PRIMARY' if IS_PRIMARY else 'sensitivity analysis -- no verdict'))",
     "print(f'alpha                  : {ALPHA}')",
+    "",
+    "# Which role THIS notebook plays needs its identity, and the identity lives in",
+    "# the spectrum cell -- the one cell that differs between G1a and G1b. Naming it",
+    "# here too would make two cells differ, and the comparison rests on exactly one",
+    "# differing. So IS_PRIMARY is resolved in section 8, once the spectrum is known.",
+    "print('role resolved in section 8, once the spectrum cell has named this notebook')",
 )
 
 
@@ -221,6 +224,15 @@ CONTROL_CELL = code(
 
 
 MAIN_CELL = code(
+    "# Now that the spectrum cell has named this notebook, section 2's threshold can",
+    "# be turned into a role. Still nothing chosen here: PRIMARY came from the",
+    "# committed pre-registration, not from anything computed below.",
+    "IS_PRIMARY = (PRIMARY is None) or PRIMARY.lower().startswith(NOTEBOOK_SPECTRUM)",
+    "print(f'this notebook : {NOTEBOOK_SPECTRUM}')",
+    "print('role          : '",
+    "      + ('co-primary (no primary named)' if PRIMARY is None else",
+    "         'PRIMARY' if IS_PRIMARY else 'sensitivity analysis -- no verdict'))",
+    "",
     "# ---- The arm that carries the verdict ----",
     "main = G.run_arm(ctx, name=ARM_NAME, unit='base_change', spectrum=spectrum)",
     "obs_spec = G.observed_spectrum(ctx)",
@@ -375,7 +387,13 @@ def cells(which: str):
            "it in advance. The notebook **reads the pre-registration** and takes "
            "α = 0.025 if a line `PRIMARY SPECTRUM: …` is there, or α = 0.0125 for both "
            "notebooks if it is not. Choosing after seeing a p-value is therefore not "
-           "possible — by then the file is already committed."),
+           "possible — by then the file is already committed.",
+           "",
+           "Which role *this* notebook plays needs its identity, and the identity is "
+           "set in the spectrum cell — the single cell that differs between G1a and "
+           "G1b. Naming it here as well would make two cells differ, and the whole "
+           "comparison rests on exactly one differing. So the threshold is read here "
+           "and the role is resolved in §8."),
         ALPHA_CELL,
         md("## 3 — The pinned inputs",
            "",
@@ -452,6 +470,48 @@ NOTEBOOKS = {
     'G1b_cosmic_spectrum': cells('cosmic'),
 }
 
+
+def check_cell_order(cs) -> None:
+    """Every name must be bound by an earlier cell, or by an earlier line in its own.
+
+    Cells run top to bottom, and a generator that assembles them out of fragments
+    makes it easy to read a name one cell before it is written -- which is exactly
+    what happened: the alpha cell used NOTEBOOK_SPECTRUM, which the spectrum cell
+    five cells later defines. Counting differing cells did not catch it, so this does.
+    """
+    def binds(tree) -> set:
+        out = set()
+        for n in ast.walk(tree):
+            if isinstance(n, ast.Name) and not isinstance(n.ctx, ast.Load):
+                out.add(n.id)
+            elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                out.add(n.name)
+            elif isinstance(n, ast.arg):
+                out.add(n.arg)
+            elif isinstance(n, (ast.Import, ast.ImportFrom)):
+                out.update((a.asname or a.name).split('.')[0] for a in n.names)
+            elif isinstance(n, ast.ExceptHandler) and n.name:
+                out.add(n.name)
+        return out
+
+    bound = set(dir(builtins)) | {'get_ipython', 'In', 'Out', '_'}
+    for i, c in enumerate(x for x in cs if x['cell_type'] == 'code'):
+        # `!cmd` is IPython, not Python; blank those lines before parsing.
+        src = '\n'.join('' if l.lstrip().startswith('!') else l
+                        for l in c['source'].splitlines())
+        tree = ast.parse(src)
+        # A name bound anywhere in this cell counts as available: within one cell a
+        # reader sees the order, and comprehension and loop targets would otherwise
+        # read as forward references. The cross-cell case is the one a generator
+        # creates by assembling fragments, and it is the one this catches.
+        here = bound | binds(tree)
+        for n in ast.walk(tree):
+            if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load):
+                assert n.id in here, (
+                    f'code cell {i} reads `{n.id}` (line {n.lineno}) but no earlier '
+                    'cell binds it; the notebook would raise NameError there')
+        bound = here
+
 if __name__ == '__main__':
     out = HERE.parent / 'notebooks'
     out.mkdir(parents=True, exist_ok=True)
@@ -469,6 +529,10 @@ if __name__ == '__main__':
         f'the notebooks differ in {len(diff)} code cells, expected exactly 1 '
         '(the spectrum); anything else breaks the comparison')
     print(f'verified: {len(a)} code cells each, differing in exactly one (#{diff[0]})')
+
+    for name, cs in NOTEBOOKS.items():
+        check_cell_order(cs)
+    print('verified: no cell reads a name an earlier cell has not bound')
 
     # The embedded core is a raw string literal, so verify it survives the round
     # trip -- otherwise the hash assertion fails on Colab rather than here.
