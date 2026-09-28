@@ -131,6 +131,13 @@ H1.2  the evaluation                             DONE 28 Sep. Reproduction passe
                                                  PDZ matches SH3 (0.602 vs 0.623), so
                                                  LENGTH IS NOT THE LIMIT.
                                                  results/H1_generality/
+H1.3  assay-quality follow-up                    DONE 28 Sep. Measurement quality does
+                                                 NOT explain the family gap (delta -0.203
+                                                 -> -0.187 when matched). Myb/SANT has
+                                                 BETTER data than SH3 and lower accuracy.
+                                                 Qualifies PDZ: matched delta -0.021 ->
+                                                 -0.077, CI still includes 0.
+                                                 results/H1_3_assay_quality/
 H2    bench, in parallel and on someone else's clock
 ```
 
