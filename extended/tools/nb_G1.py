@@ -363,8 +363,9 @@ WRITE_CELL = code(
     "# Part 7: the spectrum is published as normalised proportions, never raw counts,",
     "# and the per-variant tables stay on the laptop.",
     "lines = [f'# {NOTEBOOK} — machine-written results', '',",
-    "         f'Spectrum: **{NOTEBOOK_SPECTRUM}**. Role: "
-    "**{\"primary\" if IS_PRIMARY else \"sensitivity\"}**. alpha = {ALPHA}.', '',",
+    "         f'Spectrum: **{NOTEBOOK_SPECTRUM}**. Role: **' + ("
+    "             'co-primary' if PRIMARY is None else"
+    "             'primary' if IS_PRIMARY else 'sensitivity') + f'**. alpha = {ALPHA}.', '',",
     "         '| arm | unit | pool | null median | observed | gap (pp) | p |',",
     "         '|---|---|---|---|---|---|---|']",
     "for a in (a3a, a3b, main):",
