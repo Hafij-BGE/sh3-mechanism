@@ -8,8 +8,12 @@ beyond SH3 — and mixing the two would make it impossible to say which phase a 
 
 | | |
 |---|---|
-| `H1` | a second domain family (PDZ) |
-| `H2` | bench validation of the G4 panel |
+| `H1` | a second domain family — **done**: H1.0 audit, H1.1 pre-registration, H1.2 evaluation, H1.3 assay-quality follow-up |
+| `H2` | bench validation of the G4 panel — **not started**; needs a collaborator, not compute |
+
+**Phase 3 results are provisional and are not in the manuscript.** The promotion rule below is the
+reason: a finding moves into `extended/docs/` or the paper once it stands on its own, and H1's main
+arm is inconclusive.
 
 ## The isolation rule
 
