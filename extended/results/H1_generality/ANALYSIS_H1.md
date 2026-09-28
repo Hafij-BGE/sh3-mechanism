@@ -2,7 +2,7 @@
 
 Run 28 September 2026 on Colab, A100 40 GB. Machine numbers in `metrics_H1.json`, `RESULTS_H1.md`
 and `per_domain_H1.csv`; sources and methodology in `METHODS_H1.md`; the plan they were judged
-against is `phase3/docs/preregistration/H1.md`, committed before the notebook existed.
+against is `docs/preregistration/H1.md`, committed before the notebook existed.
 
 **Nothing was re-fitted.** The frozen head was applied unchanged to families it has never seen.
 

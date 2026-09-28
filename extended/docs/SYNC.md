@@ -36,7 +36,6 @@ Checked 27 September 2026, after E1.
 | `docs/` — the whole folder, `preregistration/` included; Drive's `docs/` is empty | `docs/` | small |
 | `README.md` | root | small |
 | `docs/METRICS_AND_FINDINGS.md` — **new**, the reader's guide to every metric and the findings | `docs/` | small |
-| `phase3/` — the whole tree: docs, preregistration, input, notebooks, results, tools | `sh3_repro/phase3/` | ~2 MB |
 
 Everything but the genome is under 20 MB, and the genome is needed only by G1, so it can wait.
 

@@ -3,8 +3,9 @@
 A reader's guide. It exists because the project reports several correlations that look comparable and
 are not, and because a metric quoted without its comparator is close to meaningless.
 
-Covers all three phases. **Phase 3 (H) results are marked provisional** — they have not been promoted
-into the manuscript.
+Covers all three phases. **The H programs were promoted into `extended/` on 28 September 2026**, once
+H1 entered the manuscript as Results §3.7; they are no longer provisional, though the main arm's
+verdict remains *inconclusive*.
 
 **For the complete per-program numeric record — all 28 programs — see
 [`METRICS_ALL_PROGRAMS.md`](METRICS_ALL_PROGRAMS.md).** This file explains what the numbers mean;
@@ -268,5 +269,6 @@ prediction", and the write-up should not drift toward that.
 
 ---
 
-*Phase 3 results are provisional and not in the manuscript. Everything else is in
-`extended/docs/OUTCOMES.md` and `extended/docs/MANUSCRIPT.md`.*
+*All three phases now live under `extended/`. The narrative record is in
+`extended/docs/OUTCOMES.md`, the paper in `extended/docs/MANUSCRIPT.md`, and the complete numeric
+record in [`METRICS_ALL_PROGRAMS.md`](METRICS_ALL_PROGRAMS.md).*

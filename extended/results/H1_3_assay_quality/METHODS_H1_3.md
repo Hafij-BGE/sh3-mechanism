@@ -2,8 +2,8 @@
 
 Companion to `ANALYSIS_H1_3.md`. **Declares what was read and what was done to it, and nothing else.**
 
-Run 28 September 2026, locally, CPU, seconds. Tool: `phase3/tools/h1_3_assay_quality.py`.
-Pre-registered in `phase3/docs/preregistration/H1_3_assay_quality.md`, committed before the join
+Run 28 September 2026, locally, CPU, seconds. Tool: `tools/h1_3_assay_quality.py`.
+Pre-registered in `docs/preregistration/H1_3_assay_quality.md`, committed before the join
 between accuracy and assay quality existed.
 
 ---
@@ -14,7 +14,7 @@ between accuracy and assay quality existed.
 
 | | |
 |---|---|
-| File | `phase3/results/H1_generality/per_domain_H1.csv` |
+| File | `results/H1_generality/per_domain_H1.csv` |
 | Rows | 102 domains — 35 main, 31 pdz, 36 sh3 |
 | Columns used | `domain_ID`, `pfam`, `arm`, `absrho` |
 | Origin | written by `H1_generality.ipynb` on Colab, 28 Sep 2026 |
@@ -131,10 +131,10 @@ correlation between per-domain |ρ| and per-domain assay quality across all 102 
 ## 4. Reproducing it
 
 ```bash
-python3 phase3/tools/h1_3_assay_quality.py \
-    --rho phase3/results/H1_generality/per_domain_H1.csv \
+python3 tools/h1_3_assay_quality.py \
+    --rho results/H1_generality/per_domain_H1.csv \
     --domainome extended/input/external/domainome/Extended_data_Table_2_fitness_scores_normalized_domainranks.txt \
-    --out phase3/results/H1_3_assay_quality
+    --out results/H1_3_assay_quality
 ```
 
 Seconds on CPU. Requires `pandas` and `scipy`. Deterministic apart from the bootstrap, which is

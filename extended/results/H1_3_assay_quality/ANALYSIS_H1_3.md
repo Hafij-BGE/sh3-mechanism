@@ -2,7 +2,7 @@
 
 Run 28 September 2026, locally, seconds on CPU. Machine numbers in `metrics_H1_3.json`; sources and
 methodology in `METHODS_H1_3.md`; the plan they were judged against is
-`phase3/docs/preregistration/H1_3_assay_quality.md`, committed before the join existed.
+`docs/preregistration/H1_3_assay_quality.md`, committed before the join existed.
 
 **Nothing was re-predicted.** H1's per-domain correlations are read as published.
 

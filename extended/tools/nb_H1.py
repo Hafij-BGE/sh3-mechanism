@@ -17,7 +17,7 @@ Target hardware: A100 40 GB. The only GPU work is ESM-2 650M over ~102 domains o
 the log-odds. Minutes, not hours; the 40 GB is far more than needed and the batch
 size is set for comfort rather than for the limit.
 
-Shares md()/code()/build() with the extended phase's nb_E.py.
+Shares md()/code()/build() with nb_E.py.
 """
 import hashlib
 import json
@@ -25,7 +25,7 @@ import pathlib
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent.parent / 'extended' / 'tools'))
+sys.path.insert(0, str(HERE))
 from nb_E import md, code, build
 
 
@@ -46,8 +46,7 @@ SETUP = code(
     "",
     "FROZEN  = pick('sh3_repro', what='frozen-run')            # READ ONLY",
     "EXT     = pick('sh3_repro/extended', what='extended phase')",
-    "PHASE3  = DRIVE / 'sh3_repro' / 'phase3'",
-    "OUT     = PHASE3 / 'results' / 'H1_generality'",
+    "OUT     = EXT / 'results' / 'H1_generality'",
     "OUT.mkdir(parents=True, exist_ok=True)",
     "",
     "# sh3_common.py is the frozen pipeline's own module: SCALARS, build_X, FoldHead,",
@@ -74,7 +73,7 @@ SETUP = code(
 PREREG_CELL = code(
     "# Part 4 and Part 9 are read from the committed pre-registration rather than",
     "# typed here, so the margin cannot drift between the file and the code.",
-    "prereg = PHASE3 / 'docs' / 'preregistration' / 'H1.md'",
+    "prereg = EXT / 'docs' / 'preregistration' / 'H1.md'",
     "assert prereg.exists(), f'{prereg} not found -- upload docs/ before running'",
     "# The pre-registration is prose, and prose uses typographic dashes: the margin is",
     "# written with U+2212 MINUS SIGN, not ASCII hyphen. Normalise before matching --",
@@ -114,7 +113,7 @@ DATA_CELL = code(
     "print(f'Domainome: {len(T2):,} rows -> {len(M):,} scored missense')",
     "",
     "# ---- the domain sequences ----",
-    "SEQ = pd.read_csv(PHASE3 / 'input' / 'domainome_domain_sequences.tsv', sep='\\t',",
+    "SEQ = pd.read_csv(EXT / 'input' / 'domainome_domain_sequences.tsv', sep='\\t',",
     "                  names=['domain_ID','wt_seq'])",
     "M = M.merge(SEQ, on='domain_ID', how='inner')",
     "print(f'with a domain sequence: {len(M):,}')",
@@ -375,7 +374,7 @@ READ_CELL = code(
 
 
 WRITE_CELL = code(
-    "payload = {'prereg': 'phase3/docs/preregistration/H1.md',",
+    "payload = {'prereg': 'extended/docs/preregistration/H1.md',",
     "           'margin': MARGIN, 'clip': CLIP, 'n_boot': N_BOOT,",
     "           'min_variants_per_domain': MIN_VARIANTS, 'min_domains': MIN_DOMAINS,",
     "           'reproduction': {'e2_published': E2_MEDIAN, 'recomputed': got,",
@@ -413,7 +412,7 @@ WRITE_CELL = code(
 CELLS = [
     md("# H1 — does the frozen model generalise beyond SH3?",
        "",
-       "**Pre-registered in `phase3/docs/preregistration/H1.md`, committed before this "
+       "**Pre-registered in `docs/preregistration/H1.md`, committed before this "
        "notebook was written.** Every threshold, every arm and the reading of the result "
        "come from that file, and the notebook reads it at run time rather than restating "
        "it.",

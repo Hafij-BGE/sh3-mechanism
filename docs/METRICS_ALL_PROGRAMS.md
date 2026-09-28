@@ -297,7 +297,7 @@ Pool: 121 destabilising non-hyper variants over 38 aligned positions.
 
 ---
 
-# Phase 3 — generality *(provisional)*
+# Phase 3 — generality *(merged into `extended/`, 28 Sep 2026)*
 
 ## H1.0 · leakage audit
 

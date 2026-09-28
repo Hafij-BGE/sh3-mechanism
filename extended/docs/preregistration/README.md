@@ -37,6 +37,8 @@ Every program in this phase with a pass/fail verdict gets the same treatment.
 | [E1.md](E1.md) | ClinVar and gnomAD | **signed, run, reported.** Decisions in Part 6, amendment in Part 7; result in `results/E1_clinvar_gnomad/` |
 | [E4.md](E4.md) | independent test of C4's specificity axis | **run and reported.** Both verdicts no; the Part 6 control attributes the failure to the representation, not the model |
 | [E3.md](E3.md) | benchmark against current predictors | **decisions taken (Part 6), unsigned.** The pre-commit leakage check disqualified ThermoMPNN |
+| [H1.md](H1.md) | a second domain family | **signed off pending; nothing further to run.** Its power calculation is the case worth reading — 15 domains would have returned "inconclusive" whatever the data said, so the arm was pooled to 35 before the model ran |
+| [H1_3_assay_quality.md](H1_3_assay_quality.md) | is H1's family gap measurement quality? | **pre-registered *because* it is post-hoc.** The question came from H1's result, so the rule was fixed before the join between accuracy and assay quality existed |
 | [G1.md](G1.md) | trinucleotide-aware null for the cancer depletion | **drafted 28 Sep, unsigned. Nothing run.** The only route to objection 2 |
 
 E1 is signed and its result is in. E3 and G1 have empty `Signed off / Date / Commit` blocks; filling
@@ -83,3 +85,17 @@ reported as a result.
 Finding these before signing is cheap. Finding them after a result exists would mean either changing
 the plan retrospectively — which destroys the guarantee — or reporting a comparison that cannot
 support its own conclusion.
+
+## What Phase 3 added to the practice
+
+Two things, both of which cost nothing and changed the experiment.
+
+**A power calculation before the design was fixed.** H1's original arm — one family, 15 domains —
+would have produced a confidence interval wider than the margin it was to be compared against, so the
+verdict would have been "inconclusive" regardless of what the model did. Pooling three length-matched
+families to 35 domains fixed it. That is a non-result avoided by arithmetic rather than discovered by
+running the experiment.
+
+**Pre-registering a follow-up precisely because it was post-hoc.** H1.3's question arose from H1's
+result. Registering the rule first is what separates "we checked whether measurement quality explained
+it" from "we looked until we found an explanation".

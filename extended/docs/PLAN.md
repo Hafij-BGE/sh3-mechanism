@@ -167,14 +167,47 @@ Each is reported *beside* the original, never replacing it.
 
 ## Phase 3 — generality
 
-**H1 · a second domain family (PDZ).** Two central claims rest on single domains: the ~80-position
-threshold on PSD95-PDZ3, every SH3 binding statement on GRB2-SH3. `src/sh3_common.py` is already
-family-agnostic; the family-specific logic is the UniProt domain table, the ≥ 50 % identity match to
-MegaScale, and the family-holdout split. Converts "we saw a threshold in one domain" into a law.
+**Merged into this tree on 28 September 2026.** It was developed in a separate `extended/` folder so
+that provisional results could not contaminate Phase 2; its own rule was that a finding moves here
+once it stands on its own. H1 is now Results §3.7 of the manuscript, so it has.
 
-**H2 · bench validation.** 30 constructs, DSF to screen, CD on anything discordant. Pre-register the
-success criterion. Pilot 3 domains first — domains excised from SPTA1, DLG5 and RIMBP2 may not fold in
-isolation. Needs G4 done and a collaborator.
+### H1 · a second domain family — **done**
+
+```
+H1.0  leakage audit      PDZ absent from training, but only because it exceeds the 72 aa
+                         ceiling of the proteolysis assay. Three families are absent AND
+                         length-matched: Myb/SANT, PHD, B-box.
+H1.1  pre-registration   docs/preregistration/H1.md, amended through Part 9, unsigned.
+                         The power calculation showed 15 domains would have returned
+                         "inconclusive" whatever the data said; the arm was pooled to 35.
+H1.2  evaluation         PDZ 0.602 vs SH3 0.623 (delta -0.021). Three length-matched
+                         families 0.420, INCONCLUSIVE at the -0.15 margin.
+                         Reproduction control passed: 0.5660 vs E2's 0.573.
+H1.3  assay quality      Measurement quality does NOT explain the gap: matched, delta
+                         moves only -0.203 -> -0.187. Myb/SANT has BETTER data than SH3
+                         and lower accuracy.
+```
+
+**Length is not the limit** — PDZ is 88 aa against a 72 aa training ceiling and still matches SH3.
+**Measurement quality is not the limit either.** What is, is not yet named.
+
+### H2 · bench validation — not started
+
+20 constructs from G4, DSF to screen and CD on anything discordant. **Pre-register the success
+criterion**, including what a partial result means. Pilot three domains first — domains excised from
+SPTA1 and RIMBP2 may not fold in isolation, and both are in the panel. Needs a collaborator and bench
+time; it is not a compute task.
+
+**The three exposed picks are the point** — `FYN R123G`, `NOXO1 R282P`, `SH3TC2 T224I`. A buried
+hydrophobic-to-charged substitution is called destabilising by any method; an exposed prediction at
+2–3 kcal/mol is the one that can fail.
+
+### What H1 still leaves open
+
+- A family that is length-matched, non-metal-binding **and** has assay quality near SH3's. PHD and
+  B-box coordinate zinc, which the model cannot represent; `H1_0_leakage_audit/family_audit.csv` is
+  the selection table and now needs a fourth criterion.
+- A second assay on any held-out family — the only thing that would supply a real noise ceiling.
 
 ---
 

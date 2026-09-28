@@ -4,7 +4,7 @@ Companion to `ANALYSIS_H1_0.md`, which carries the interpretation. **This file d
 read and what was done to it, and nothing else.** Every number in the analysis is reproducible from
 what is below.
 
-Run 28 September 2026, locally, CPU only. Tool: `phase3/tools/h1_leakage_audit.py`.
+Run 28 September 2026, locally, CPU only. Tool: `tools/h1_leakage_audit.py`.
 
 ---
 
@@ -53,7 +53,7 @@ returned zero PDZ domains, which is a false negative, not a finding.
 
 | | |
 |---|---|
-| File | `phase3/input/domainome_domain_sequences.tsv` |
+| File | `input/domainome_domain_sequences.tsv` |
 | Size | 75,174 bytes |
 | MD5 | `00c6fce13ba1fdf757480d9055b460c4` |
 | Rows | **1,022** — one per distinct Domainome domain |
@@ -79,7 +79,7 @@ absent. It is cited in the analysis only as the weaker evidence that prompted th
 ### 1.5 Not used
 
 No model was loaded, no prediction was computed, no network request was made, and no file outside
-`phase3/` was written. The frozen run was read only.
+`extended/` was written. The frozen run was read only.
 
 ---
 
@@ -166,10 +166,10 @@ The count floor of 15 is set against SH3's own evaluation, which used 15 held-ou
 ## 4. Reproducing it
 
 ```bash
-python3 phase3/tools/h1_leakage_audit.py \
+python3 tools/h1_leakage_audit.py \
     --root . \
-    --domainome phase3/input/domainome_domain_sequences.tsv \
-    --out phase3/results/H1_0_leakage_audit
+    --domainome input/domainome_domain_sequences.tsv \
+    --out results/H1_0_leakage_audit
 ```
 
 Minutes on CPU. Requires `pandas`. Deterministic — there is no sampling anywhere in this program.
