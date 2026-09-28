@@ -386,7 +386,8 @@ competitive claim is therefore specific to proteolysis-derived stability data of
 was trained on, and to the abundance assay evaluated in Section 3.2 within SH3.**
 
 **Across families.** The training data caps construct length at 72 residues, because the proteolysis
-assay does; all 412 training domains fall in 32–72 residues, median 51. SH3 (54–67) sits inside that
+assay does — the source describes domains of 40–72 amino acids [1], and all 412 domains used here
+fall in 32–72 residues, median 51. SH3 (54–67) sits inside that
 range and most human domain families do not, so length and family novelty are confounded for any
 second family that is longer.
 
@@ -563,34 +564,54 @@ derived analysis tables carrying no licensed identifiers are included.
 
 ## References
 
-*Identifiers below were confirmed during this work. Entries marked [verify] require full bibliographic
-details before submission.*
+*Verified against PubMed on 28 September 2026 unless marked otherwise; PMIDs and DOIs are as returned
+by that search.*
 
-1. Tsuboyama K, *et al.* Mega-scale experimental analysis of protein folding stability. **2023**.
-   Dataset: `Tsuboyama2023_Dataset2_Dataset3_20230416`. [verify full citation]
-2. Lin Z, *et al.* Language models of protein sequences. Model: `facebook/esm2_t33_650M_UR50D`.
-   [verify full citation]
-3. Cho Y, *et al.* Absolute protein stability prediction (SaProtΔG, ESM3ΔG). bioRxiv, PMC13228446.
+1. Tsuboyama K, Dauparas J, Chen J, Laine E, Mohseni Behbahani Y, Weinstein JJ, Mangan NM,
+   Ovchinnikov S, Rocklin GJ. Mega-scale experimental analysis of protein folding stability in biology
+   and design. *Nature* **2023**;620(7973):434–444. doi:10.1038/s41586-023-06328-6. PMID 37468638.
+   Dataset: `Tsuboyama2023_Dataset2_Dataset3_20230416`.
+2. Lin Z, Akin H, Rao R, Hie B, Zhu Z, Lu W, Smetanin N, Verkuil R, Kabeli O, Shmueli Y,
+   dos Santos Costa A, Fazel-Zarandi M, Sercu T, Candido S, Rives A. Evolutionary-scale prediction of
+   atomic-level protein structure with a language model. *Science* **2023**;379(6637):1123–1130.
+   doi:10.1126/science.ade2574. PMID 36927031. Model: `facebook/esm2_t33_650M_UR50D`.
+3. Cho Y, *et al.* Absolute protein stability prediction (SaProtΔG, ESM3ΔG). bioRxiv; PMC13228446.
    Weights: Hugging Face `Yehlin/absolute-stability`. Code:
-   `github.com/yehlincho/absolute-stability-predictor`. [verify full citation]
-4. Dieckhaus H, *et al.* Transfer learning to leverage larger datasets for improved prediction of
-   protein stability changes. *PNAS* **2024**. doi:10.1073/pnas.2314853121. Code:
-   `github.com/Kuhlman-Lab/ThermoMPNN`.
-5. Beltran A, *et al.* Human Domainome 1.0. *Nature* **2025**. doi:10.1038/s41586-024-08370-4.
-   Data: Zenodo v5, record 14356805; concept DOI 10.5281/zenodo.11043642.
-6. Kazemein Jasemi NS, *et al.* *Cells* **2024**;13(2):195. doi:10.3390/cells13020195.
-7. Liu X, *et al.* dbNSFP v5.4a. [verify full citation]
-8. Landrum MJ, *et al.* ClinVar. NCBI, `variant_summary.txt.gz`, retrieved 26 September 2026.
-   [verify full citation]
-9. gnomAD v4. Broad Institute GraphQL API. [verify full citation]
-10. Faure AJ, *et al.* ddPCA / MoCHI: separating folding and binding free energies. **2022**.
-    [verify full citation]
+   `github.com/yehlincho/absolute-stability-predictor`. **[not indexed in PubMed at the time of
+   checking — verify before submission]**
+4. Dieckhaus H, Brocidiacono M, Randolph NZ, Kuhlman B. Transfer learning to leverage larger datasets
+   for improved prediction of protein stability changes. *PNAS* **2024**;121(6):e2314853121.
+   doi:10.1073/pnas.2314853121. PMID 38285937. Code: `github.com/Kuhlman-Lab/ThermoMPNN`.
+5. Beltran A, Jiang X, Shen Y, Lehner B. **Site-saturation mutagenesis of 500 human protein domains.**
+   *Nature* **2025**;637(8047):885–894. doi:10.1038/s41586-024-08370-4. PMID 39779847.
+   Data (“Human Domainome 1.0”): Zenodo record 14356805 (v5); concept DOI 10.5281/zenodo.11043642.
+6. Kazemein Jasemi NS, Mehrabipour M, Magdalena Estirado E, Brunsveld L, Dvorsky R, Ahmadian MR.
+   Functional classification and interaction selectivity landscape of the human SH3 domain
+   superfamily. *Cells* **2024**;13(2):195. doi:10.3390/cells13020195. PMID 38275820.
+7. Liu X, Li C, Mou C, Dong Y, Tu Y. dbNSFP v4: a comprehensive database of transcript-specific
+   functional predictions and annotations for human nonsynonymous and splice-site SNVs.
+   *Genome Med* **2020**;12(1):103. doi:10.1186/s13073-020-00803-9. PMID 33261662.
+   **Release used here: v5.4a**, for which no separate publication is indexed.
+8. Landrum MJ, Chitipiralla S, Brown GR, *et al.* ClinVar: improvements to accessing data.
+   *Nucleic Acids Res* **2020**;48(D1):D835–D844. doi:10.1093/nar/gkz972. PMID 31777943.
+   File: `variant_summary.txt.gz`, retrieved 26 September 2026.
+9. Chen S, Francioli LC, Goodrich JK, *et al.* A genomic mutational constraint map using variation in
+   76,156 human genomes. *Nature* **2023**;625(7993):92–100. doi:10.1038/s41586-023-06045-0.
+   PMID 38057664. Author correction: *Nature* 2024;626(7997):E1, doi:10.1038/s41586-024-07050-7.
+   Accessed here through the gnomAD v4 GraphQL API.
+10. Faure AJ, Domingo J, Schmiedel JM, Hidalgo-Carcedo C, Diss G, Lehner B. Mapping the energetic and
+    allosteric landscapes of protein binding domains. *Nature* **2022**;604(7904):175–183.
+    doi:10.1038/s41586-022-04586-4. PMID 35388192. Source of the GRB2-SH3 and PSD95-PDZ3 ddPCA data.
 11. Ensembl. *Homo sapiens* GRCh38 primary assembly,
-    `Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz`, 881,964,081 bytes. [verify release number]
+    `Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz`, 881,964,081 bytes. **[database release; verify
+    release number before submission]**
 12. COSMIC Mutational Signatures v3.6, SBS, 96-context, GRCh38. Wellcome Sanger Institute.
-    [verify full citation]
-13. Notin P, *et al.* ProteinGym: large-scale benchmarks for protein fitness prediction and design.
-    v1.3. [verify full citation]
+    **[database release; verify citation form before submission]**
+13. Notin P, Kollasch AW, Ritter D, van Niekerk L, Paul S, Spinner H, Rollins N, Shaw A, Weitzman R,
+    Frazer J, Dias M, Franceschi D, Orenbuch R, Gal Y, Marks DS. ProteinGym: large-scale benchmarks
+    for protein design and fitness prediction. bioRxiv **2023**. doi:10.1101/2023.12.07.570727.
+    PMID 38106144. **Also published at NeurIPS 2023 Datasets and Benchmarks — verify which form the
+    target journal prefers.** v1.3 used here.
 
 ---
 
