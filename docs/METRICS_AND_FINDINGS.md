@@ -6,6 +6,10 @@ are not, and because a metric quoted without its comparator is close to meaningl
 Covers all three phases. **Phase 3 (H) results are marked provisional** — they have not been promoted
 into the manuscript.
 
+**For the complete per-program numeric record — all 28 programs — see
+[`METRICS_ALL_PROGRAMS.md`](METRICS_ALL_PROGRAMS.md).** This file explains what the numbers mean;
+that one lists every number.
+
 ---
 
 # Part 1 — The metrics
@@ -211,6 +215,23 @@ cached-failure bug in data acquisition, a join that silently lost 97 % of its ro
 that survives to publication when nobody asserts anything.
 
 ## 3.2 Where it is weak
+
+**It does not beat zero-shot ESM-2 outside MegaScale — and this is the most important limitation in
+the project.** B4 scored the head on ProteinGym in three blocks:
+
+| block | assays | head \|ρ\| | zero-shot ESM-2 | head wins |
+|---|---|---|---|---|
+| Sanity — MegaScale domains | 10 | **0.940** | 0.580 | 10 / 10 |
+| **Primary — external stability** | 3 | 0.361 | **0.406** | 2 / 3 |
+| **Secondary — abundance** | 15 | 0.400 | **0.491** | 6 / 15 |
+
+The head drops 2.27× more than ESM-2 on primary assays and 3.49× more on secondary. The 0.940 on the
+sanity block shows the pipeline is wired correctly and shows nothing else.
+
+So the honest scope is narrower than "a competitive stability predictor": it is **competitive on
+MegaScale-like proteolysis data, and on Domainome abundance within SH3, and not demonstrated beyond
+that.** E3's result holds — it is a MegaScale-derived benchmark and the competitors were measured on
+the same footing — but it does not generalise to arbitrary assays, and B4 says so directly.
 
 **One family, mostly.** Phases 1 and 2 are entirely SH3. H1 begins to address this and the answer is
 partial.
