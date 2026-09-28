@@ -222,7 +222,15 @@ ESM_CELL = code(
 
 FEAT_CELL = code(
     "# ---- the 12 scalars, formula for formula as A2 wrote them ----",
-    "from Bio.Align import substitution_matrices",
+    "# BLOSUM62 comes from Biopython because A2 took it from there. The matrix is",
+    "# standard and a hard-coded copy would almost certainly agree -- but 'almost'",
+    "# is how a silent mismatch with the frozen features would start, so use the",
+    "# same source rather than a reimplementation. Colab no longer ships it.",
+    "try:",
+    "    from Bio.Align import substitution_matrices",
+    "except ModuleNotFoundError:",
+    "    !pip install -q biopython",
+    "    from Bio.Align import substitution_matrices",
     "B62 = substitution_matrices.load('BLOSUM62')",
     "lo = np.stack([LO[k][p-1] for k, p in zip(M.domain_ID, M['pos'])])",
     "r = np.arange(len(M))",
