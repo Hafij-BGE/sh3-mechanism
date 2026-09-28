@@ -1,0 +1,39 @@
+{
+  "destabilising": {
+    "panel": "destabilising",
+    "n": 10,
+    "distinct_aligned_positions": 10,
+    "distinct_genes": 10,
+    "distinct_mut_aa": 7,
+    "to_proline": 1,
+    "buried": 6,
+    "exposed": 3,
+    "max_at_one_position": 1,
+    "max_one_mut_aa": 2
+  },
+  "control": {
+    "panel": "control",
+    "n": 10,
+    "distinct_aligned_positions": 8,
+    "distinct_genes": 10,
+    "distinct_mut_aa": 6,
+    "to_proline": 0,
+    "buried": 5,
+    "exposed": 4,
+    "max_at_one_position": 1,
+    "max_one_mut_aa": 4
+  },
+  "pool_sizes": {
+    "destabilising_nonhyper": 121,
+    "aligned_positions_available": 38,
+    "control": 2302
+  },
+  "constraints": {
+    "max_proline": 1,
+    "max_per_mut_aa": 2,
+    "min_exposed": 3,
+    "one_per_aligned_position": true,
+    "one_per_gene": true
+  },
+  "controls_in_picked_domains": 10
+}

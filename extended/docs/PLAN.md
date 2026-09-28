@@ -160,8 +160,8 @@ Each is reported *beside* the original, never replacing it.
 
 | | | Why |
 |---|---|---|
-| **G4** | Redesign the F1 panel: one pick per aligned position, one proline | 4 of 10 picks share aligned position 5; 8/10 buried; 4/10 to proline. "Proline in a β-barrel core destabilises" is not a finding. Minutes of compute — **do it before anyone synthesises anything.** |
-| **G1** | Signature-aware null for B5 and B6 | Decides whether the 5.9 % vs 9.2 % depletion is selection or mutational bias. GRCh38 is downloaded. Start with the *observed* trinucleotide spectrum; full signature decomposition is the interpretation layer, not a prerequisite. |
+| ~~**G4**~~ | ~~Redesign the F1 panel~~ | **Done, 28 Sep** — `extended/results/G4_panel/`. 10 distinct aligned positions (was 6, with 5 picks at one), 1 proline (was 4), 3 exposed picks and 5 buried controls, so the positive and negative sets no longer differ in burial as well as in predicted effect. Unblocks H2. |
+| ~~**G1**~~ | ~~Signature-aware null for B5 and B6~~ | **Done, 28 Sep — mutational bias.** The depletion does not survive: 5.96 % observed vs 6.04 % expected, p = 0.40, two spectra agreeing. The frozen claim is withdrawn. Originally: GRCh38 is downloaded. Start with the *observed* trinucleotide spectrum; full signature decomposition is the interpretation layer, not a prerequisite. |
 | **G2** | Per-domain (Mondrian) conformal intervals | Coverage runs 83.3 % (LYN) to 95.0 % (FYN). Report the new count beside the global 410. |
 | **G3** | AlphaFold fragment fix | Recovers 219 variants in nine large proteins, including TRIO Q2579R. Re-runs A2 and everything downstream (~2 h). |
 
@@ -183,9 +183,10 @@ isolation. Needs G4 done and a collaborator.
 ```
 Phase 1 is done: X0, E1, E2, E3, E4 all reported.   X1 adds dbNSFP.
 
-G1  ─ the only route left to objection 2            ← start here
-G4  ─ minutes, and do it before anyone synthesises anything
-G2, G3
+G1  ─ DONE 28 Sep. The depletion did not survive a context-matched null;
+      the frozen claim is withdrawn. See extended/results/G1_mutational_context/
+G4  ─ DONE 28 Sep. Panel rebuilt; H2 unblocked.
+G2, G3                                              ← start here
 H1, H2
 
 optional, all cached so each costs only its own work:
