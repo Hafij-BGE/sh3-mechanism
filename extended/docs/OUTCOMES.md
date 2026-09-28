@@ -248,5 +248,10 @@ down on mutational bias.
 | H1, H2 | generality beyond SH3, and bench validation |
 
 **Phase 1 plus rewriting the report as a paper is a credible submission.** G1 was the gap a reviewer
-would have found first; it is now closed, at the cost of a claim. G4 is the remaining item that must
-happen before anything is synthesised.
+would have found first; it is now closed, at the cost of a claim. G4 has rebuilt the bench panel, so
+H2 is unblocked and nothing stands between the current results and a submission except the writing.
+
+What remains divides cleanly. **G2** reports per-domain conformal coverage beside the global 410 and
+changes no claim. **G3** is the only outstanding item that touches frozen outputs — it recovers 219
+variants in nine large proteins and re-runs everything downstream — so it is a decision, not a task.
+**H1 and H2** are the generality and bench arms, and belong to a phase after this one.
