@@ -177,6 +177,28 @@ right trade when the purpose is to learn something from the answer.
 
 Four of F1's ten survive. Nothing upstream changed; H2 was blocked on this and is now unblocked.
 
+### G2 · per-domain conformal intervals — *the count holds, the per-variant claim does not*
+
+The frozen run's 89.9 % coverage is a **marginal** figure. Per domain it runs **83.3 % (LYN) to
+95.0 % (FYN)**, and the per-domain conformal quantile ranges 5.42 to 9.71 — a factor of **1.79**. One
+domain needs an interval nearly twice as wide as another for the same nominal confidence.
+
+Calibrating within each domain narrows the coverage spread from 11.8 pp to 6.3 pp, and the residual
+is close to sampling noise at ~500 calibration points, where the original spread was structural.
+
+| confident calls | |
+|---|---|
+| global q90 = 6.807 (published) | **410** |
+| per-domain where calibrated, global elsewhere | 409 |
+| **each domain drawn from the observed spread** | **400, 95 % interval 378–421** |
+
+**The aggregate count is robust; the per-variant claim is not.** A "90 % lower bound" on a LYN-like
+domain is really 83 %. Together with E1's 4.8 % sensitivity, the conclusion is the same from both
+directions: `fold_lo ≥ 1` is for ranking and triage, not for a per-variant confidence statement.
+
+G2 re-fits nothing and changes no published number. The global calibration is reproduced and asserted
+first — q90 6.8073 against 6.807, coverage 89.92 % against 89.9 %, 410 calls.
+
 ## Every comparable number, side by side
 
 | quantity | 2026-09-22 (frozen) | 26–27 Sep (extended) | source |
@@ -243,7 +265,7 @@ down on mutational bias.
 | | why it matters |
 |---|---|
 | X1's 63.8 % | blocks any dbNSFP-based follow-up to E1 — though G1 found the likely mechanism |
-| **G2, G3** | per-domain conformal coverage, and the AlphaFold fragment fix |
+| **G3** | the AlphaFold fragment fix — 219 variants in nine large proteins, and the only item that re-runs frozen outputs |
 | E3 Experiments 2–4, ThermoMPNN | sensitivity checks; cannot change Experiment 1's verdict |
 | H1, H2 | generality beyond SH3, and bench validation |
 
@@ -251,7 +273,8 @@ down on mutational bias.
 would have found first; it is now closed, at the cost of a claim. G4 has rebuilt the bench panel, so
 H2 is unblocked and nothing stands between the current results and a submission except the writing.
 
-What remains divides cleanly. **G2** reports per-domain conformal coverage beside the global 410 and
-changes no claim. **G3** is the only outstanding item that touches frozen outputs — it recovers 219
+What remains divides cleanly. **G2 is done** — the count holds at 410 within a band of 378–421, and
+the conditional-coverage caveat is now recorded. **G3** is the only outstanding item that touches
+frozen outputs — it recovers 219
 variants in nine large proteins and re-runs everything downstream — so it is a decision, not a task.
 **H1 and H2** are the generality and bench arms, and belong to a phase after this one.

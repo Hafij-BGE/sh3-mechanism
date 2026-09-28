@@ -1,0 +1,37 @@
+{
+  "global": {
+    "q90": 6.807301044464111,
+    "coverage": 0.8992388546574845,
+    "confident_calls": 410
+  },
+  "per_domain": {
+    "n_domains": 15,
+    "q90_min": 5.418842792510986,
+    "q90_max": 9.711912155151367,
+    "q90_median": 6.670078277587891,
+    "q90_ratio_max_over_min": 1.7922483687058683,
+    "coverage_spread_under_global": 0.11769736648087537,
+    "coverage_spread_under_mondrian": 0.06259261411511752,
+    "worst_gene_under_global": "LYN",
+    "worst_coverage_under_global": 0.8326771653543307
+  },
+  "atlas": {
+    "total_variants": 6884,
+    "confident_calls_global": 410,
+    "confident_calls_hybrid": 409,
+    "variants_in_a_calibrated_gene": 439,
+    "calls_if_every_domain_used_min_q90": 613,
+    "calls_if_every_domain_used_max_q90": 149,
+    "calls_if_every_domain_used_median_q90": 424,
+    "resampled_domain_q90": {
+      "draws": 2000,
+      "median": 400,
+      "ci95": [
+        378,
+        421
+      ],
+      "sd": 11.022580750132729,
+      "note": "each of the 310 atlas domains given a q90 drawn from the 15 observed per-domain values; the band the global quantile hides"
+    }
+  }
+}
