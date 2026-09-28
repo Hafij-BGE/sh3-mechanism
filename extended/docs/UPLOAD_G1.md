@@ -55,19 +55,30 @@ different assembly.
 
 ## 4. Run order
 
+**Step 1 — on Colab.** Either order; the notebooks do not read each other. Each takes one streaming
+pass over the genome, so budget a few minutes apiece. **CPU is fine — there is no model inference
+anywhere in G1.**
+
 ```
 G1a_observed_spectrum   →  metrics_G1a.json, RESULTS_G1a.md
 G1b_cosmic_spectrum     →  metrics_G1b.json, RESULTS_G1b.md
 ```
 
-Either order; they do not read each other. Each takes one streaming pass over the genome, so budget a
-few minutes apiece. **CPU is fine — there is no model inference anywhere in G1.**
+Both write to `MyDrive/sh3_repro/extended/results/G1_mutational_context/`.
 
-Then, on the laptop, once both metrics files are back:
+**Step 2 — bring the metrics back.** The notebooks write to Drive; `g1_compare.py` reads the laptop.
+Download both `metrics_G1a.json` and `metrics_G1b.json` (a few KB each) into
+`extended/results/G1_mutational_context/`.
+
+**Step 3 — compare, on the laptop.** This is the deliverable: not either notebook's verdict alone,
+but whether the conclusion depends on which spectrum is assumed.
 
 ```bash
 python3 extended/tools/g1_compare.py --results extended/results/G1_mutational_context --out extended/results/G1_mutational_context/RESULTS_G1_comparison.md
 ```
+
+Running step 3 before step 1 fails with a message saying so. That is the expected failure, not a
+defect.
 
 ## 5. What to expect, and what stops the run
 

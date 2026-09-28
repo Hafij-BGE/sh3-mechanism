@@ -32,7 +32,14 @@ OUTCOME = {
 
 
 def load(path: Path) -> dict:
-    assert path.exists(), f'{path} not found — run the notebook first'
+    assert path.exists(), (
+        f'{path} not found.\n\n'
+        'This is the last step, not the first. Both notebooks run on Colab and write '
+        'their metrics to Drive:\n\n'
+        '    MyDrive/sh3_repro/extended/results/G1_mutational_context/\n\n'
+        'Run G1a_observed_spectrum and G1b_cosmic_spectrum there, then download '
+        f'metrics_G1a.json and metrics_G1b.json into {path.parent}/ and run this '
+        'again.')
     return json.loads(path.read_text())
 
 
