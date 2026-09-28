@@ -242,6 +242,9 @@ COVERAGE_CELL = code(
     "# the atlas numbered against, so it is a subset -- this measures how much of one,",
     "# and whether what is missing is milder. If it is, the control cannot pass however",
     "# correct the code is, and the restriction is a limitation of G1, not a bug in it.",
+    "assert hasattr(G, 'coverage_report'), (",
+    "    'This runtime has a stale g1_core module. Restart the runtime, then run '",
+    "    'the notebook from the first cell so the embedded shared code is imported.')",
     "cov = G.coverage_report(ctx, b6, atlas)",
     "print(json.dumps(cov, indent=2))",
     "",
@@ -255,7 +258,22 @@ COVERAGE_CELL = code(
 
 
 CONTROL_CELL = code(
-    "# ---- Controls (Part 10). Neither carries a verdict. ----",
+    "# ---- Controls (Part 10, amended by Part 12). Neither carries a verdict. ----",
+    "#",
+    "# Part 12: the reproduction check sits on the POOL, not on a draw. Our handling of",
+    "# B6 must reproduce its published rate over B6's OWN reachable set -- that is what",
+    "# establishes that any difference below is the null's DEFINITION and not our",
+    "# arithmetic. Asserting it on a draw from a pool B6 never used cannot establish it,",
+    "# because a codon-aware pool sits below 9.2 % by construction.",
+    "B6_NULL = 0.09232           # RESULTS_B6.md, frac_destabilising_reachable",
+    "rep = cov['destabilising_all_reachable']",
+    "print(f'reproduction: {rep:.5f} vs B6 published {B6_NULL:.5f}')",
+    "assert abs(rep - B6_NULL) <= 5e-4, (",
+    "    f'we get {rep:.5f} over B6\\'s OWN reachable set where B6 published "
+    "{B6_NULL:.5f}. This is not the pool-restriction question -- it is the same set "
+    "B6 used, so the difference is in how we read B6. Stop and find it.')",
+    "print('reproduction passes -- our B6 handling is exact')",
+    "",
     "a3a = G.run_arm(ctx, name='3a uniform over substitutions', unit='substitution',",
     "                spectrum=None)",
     "a3b = G.run_arm(ctx, name='3b uniform over base changes', unit='base_change',",
@@ -264,27 +282,16 @@ CONTROL_CELL = code(
     "    print(f\"{a['arm']:34s} pool {a['pool_size']:7d}  null median \"",
     "          f\"{a['null_median']:.4f}  observed {a['observed_rate']:.4f}\")",
     "",
-    "# Part 3: this is the stop condition, and it attaches to 3a alone.",
-    "B6_NULL = 0.09177",
-    "off = abs(a3a['null_median'] - B6_NULL)",
-    "print(f'\\n3a vs B6 published null: {a3a[\"null_median\"]:.5f} vs {B6_NULL:.5f} "
-    "(off by {off:.5f})')",
-    "assert off <= 0.005, (",
-    "    f'3a gives {a3a[\"null_median\"]:.5f} where B6 published {B6_NULL:.5f}.\\n\\n'",
-    "    'Before treating this as a bug, read the coverage block above. B6\\'s '",
-    "    'snv_reachable is amino-acid-pair level -- reachable from SOME codon -- while '",
-    "    'this pool holds only substitutions reachable from the codon actually at that '",
-    "    'position. Measured on the release, the pairs that differ are more '",
-    "    'destabilising (0.112 vs 0.086), so a codon-aware pool sits BELOW 9.18 % by '",
-    "    'construction and no amount of correct code will move it up.\\n\\n'",
-    "    'If that is what the numbers above show, this is a limitation of B6\\'s null to '",
-    "    'be reported and pre-registered around -- not an implementation error. Part 3 '",
-    "    'says stop and investigate, and that investigation now needs a decision in '",
-    "    'G1.md, not a change here.')",
-    "print('control passes -- the spectrum arms mean what they claim')",
-    "",
-    "print(f'\\nreachability multiplicity alone moves the null by "
-    "{(a3b[\"null_median\"] - a3a[\"null_median\"])*100:+.2f} pp')",
+    "# Part 12's decomposition, with B6's over-permissive step now at the top.",
+    "codon = (a3a['null_median'] - B6_NULL) * 100",
+    "mult = (a3b['null_median'] - a3a['null_median']) * 100",
+    "print('')",
+    "print(f'B6 published   {B6_NULL:.4f}   amino-acid-pair reachability')",
+    "print(f'3a             {a3a[\"null_median\"]:.4f}   codon reachability          "
+    "({codon:+.2f} pp)')",
+    "print(f'3b             {a3b[\"null_median\"]:.4f}   + reachability multiplicity "
+    "({mult:+.2f} pp)')",
+    "print(f'observed       {a3a[\"observed_rate\"]:.4f}')",
 )
 
 
