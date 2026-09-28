@@ -246,6 +246,57 @@ def build_context(*, observed: pd.DataFrame, pool: pd.DataFrame,
     return ctx
 
 
+def coverage_report(ctx: dict, b6: pd.DataFrame, domains: pd.DataFrame) -> dict:
+    """Which of B6's reachable substitutions have a coordinate, and are they milder?
+
+    The 3a control compares a draw from OUR pool against B6's published 9.18 %, and
+    that only means something if the two pools are the same set.  They are not: a
+    substitution enters our pool only if dbNSFP carries it on the transcript the
+    atlas numbered against.  This measures the gap and, more importantly, whether
+    what is missing differs in predicted damage -- because if it does, the control
+    cannot pass however correct the code is, and the restriction is a limitation of
+    G1 rather than a bug in it.
+
+    Carries no verdict.  It is a diagnostic, run before the control.
+    """
+    b6 = b6.merge(domains.drop_duplicates(['gene', 'uniprot', 'domain_idx'])
+                         [['gene', 'uniprot', 'domain_idx', 'dom_start']],
+                  on=['gene', 'uniprot', 'domain_idx'], how='inner')
+    b6 = b6.copy()
+    b6['pos_protein'] = b6['dom_start'].astype(int) + b6['pos'].astype(int) - 1
+    b6['destabilising'] = (b6[CALL] >= CALL_THRESHOLD).astype(np.int8)
+    reach = b6[b6['snv_reachable']] if 'snv_reachable' in b6 else b6
+
+    keys = ['gene', 'pos_protein', 'wt_aa', 'mut_aa']
+    have = set(map(tuple, ctx['pool'][keys].drop_duplicates().to_numpy()))
+    covered = np.array([tuple(r) in have for r in reach[keys].to_numpy()])
+
+    out = {
+        'b6_reachable': int(len(reach)),
+        'covered': int(covered.sum()),
+        'uncovered': int((~covered).sum()),
+        'coverage_pct': round(100 * covered.mean(), 2),
+        'destabilising_covered': round(float(reach['destabilising'][covered].mean()), 5),
+        'destabilising_uncovered': round(
+            float(reach['destabilising'][~covered].mean()), 5),
+        'destabilising_all_reachable': round(float(reach['destabilising'].mean()), 5),
+    }
+
+    # Where does the shortfall sit -- whole domains, or positions inside them?
+    per = (reach.assign(covered=covered).groupby('domain_key')['covered']
+                .agg(['mean', 'size']))
+    out['domains_total'] = int(len(per))
+    out['domains_fully_absent'] = int((per['mean'] == 0).sum())
+    out['domains_below_half'] = int((per['mean'] < 0.5).sum())
+    out['domain_coverage_median'] = round(float(per['mean'].median()), 4)
+
+    # ...and are the uncovered ones at the domain edges?
+    edge = reach['pos'].astype(int)
+    out['mean_pos_in_domain_covered'] = round(float(edge[covered].mean()), 2)
+    out['mean_pos_in_domain_uncovered'] = round(float(edge[~covered].mean()), 2)
+    return out
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Spectra -- the only thing the two notebooks do differently
 # ─────────────────────────────────────────────────────────────────────────────

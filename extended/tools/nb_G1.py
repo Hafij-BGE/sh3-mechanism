@@ -209,6 +209,25 @@ CONTEXT_CELL = code(
 )
 
 
+COVERAGE_CELL = code(
+    "# Diagnostic, no verdict. The 3a control compares a draw from OUR pool against",
+    "# B6's published 9.18 %, which only means something if the two pools are the same",
+    "# set. A substitution enters our pool only if dbNSFP carries it on the transcript",
+    "# the atlas numbered against, so it is a subset -- this measures how much of one,",
+    "# and whether what is missing is milder. If it is, the control cannot pass however",
+    "# correct the code is, and the restriction is a limitation of G1, not a bug in it.",
+    "cov = G.coverage_report(ctx, b6, atlas)",
+    "print(json.dumps(cov, indent=2))",
+    "",
+    "d = cov['destabilising_uncovered'] - cov['destabilising_covered']",
+    "print(f\"\\nour pool covers {cov['coverage_pct']}% of B6's reachable substitutions\")",
+    "print(f\"destabilising: covered {cov['destabilising_covered']:.4f}  \"",
+    "      f\"uncovered {cov['destabilising_uncovered']:.4f}  ({d*100:+.2f} pp)\")",
+    "print(f\"B6 over all reachable: {cov['destabilising_all_reachable']:.4f} \"",
+    "      f\"(published 0.09232)\")",
+)
+
+
 CONTROL_CELL = code(
     "# ---- Controls (Part 10). Neither carries a verdict. ----",
     "a3a = G.run_arm(ctx, name='3a uniform over substitutions', unit='substitution',",
@@ -433,6 +452,19 @@ def cells(which: str):
            "asserts that the reference base agrees at every position — the one number "
            "this reduction does not control."),
         CONTEXT_CELL,
+        md("## 5b — Is our pool B6's pool?",
+           "",
+           "A diagnostic with no verdict, and it has to come before the control.",
+           "",
+           "A substitution enters our null pool only if dbNSFP carries it on the "
+           "transcript the atlas numbered its residues against. That makes the pool a "
+           "**subset** of the SNV-reachable substitutions B6 drew from, and the 3a "
+           "control compares a draw from *our* pool against *B6's* published 9.18 %.",
+           "",
+           "If the substitutions we lack are systematically milder, 3a cannot reproduce "
+           "9.18 % however correct the code is — and that is a limitation of G1 to be "
+           "reported, not a defect to be fixed. This cell measures it either way."),
+        COVERAGE_CELL,
         md("## 6 — The controls, which decide whether anything below is interpretable",
            "",
            "**3a must reproduce B6's 9.18 %.** If it does not, this implementation "
