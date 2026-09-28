@@ -31,8 +31,17 @@ beyond SH3 — and mixing the two would make it impossible to say which phase a 
 - **A leakage audit before any comparison**, not after. E3 disqualified ThermoMPNN by finding 13 of
   15 held-out domains inside its published training split — *before* running it. H1's first task is
   the same question about PDZ.
-- **Machine-written `RESULTS_*.md` and `metrics_*.json`**; the hand-written interpretation lives in
-  `ANALYSIS_*.md`.
+- **Three documents per program, and they do different jobs.** Mixing them is how a source becomes
+  unciteable and a method becomes folklore:
+
+  | file | contains | must not contain |
+  |---|---|---|
+  | `METHODS_<ID>.md` | **every source declared** — path, size, MD5, date, upstream citation and licence — and the methodology: each step, every threshold with its justification, the assertions, and how to re-run it | interpretation, or any claim about what the result means |
+  | `ANALYSIS_<ID>.md` | the interpretation: what the numbers mean, what is licensed as a claim, what is not, and the limitations | undeclared sources, or a parameter that appears nowhere in METHODS |
+  | `RESULTS_<ID>.md`, `metrics_<ID>.json` | machine-written, nothing typed by hand | anything a human edited |
+
+  A threshold that appears in `ANALYSIS` but not in `METHODS` is a threshold chosen after seeing the
+  result. Keeping them apart makes that visible.
 - **Assert what a join keeps.** Three defects in Phase 2 were inner merges that lost most of their
   rows silently.
 - **Per-variant tables stay out of git** — `*.tsv`, `*.parquet` and `*.gz` are already ignored.
