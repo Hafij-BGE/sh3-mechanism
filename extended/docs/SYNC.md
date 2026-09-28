@@ -23,6 +23,11 @@ Checked 27 September 2026, after E1.
 | `results/X0_external_data/ANALYSIS_X0.md` | same path | small |
 | `results/X1_dbnsfp_subset/ANALYSIS_X1.md` | same path | small |
 | `docs/OUTCOMES.md` | `docs/` | small |
+| `docs/X1_dbnsfp_subset.md`, `G1_mutational_context.md`, `G4_panel.md` — **new** | `docs/` | small |
+| `docs/preregistration/G1.md` — **amended through Part 13**, Drive's copy is stale | `docs/preregistration/` | 30 KB |
+| `results/G1_mutational_context/ANALYSIS_G1.md`, `RESULTS_G1_comparison.md` | same path | small |
+| `results/G4_panel/` — the whole folder | same path | small |
+| `tools/g1_core.py`, `g1_coordinates.py`, `g1_run.py`, `g1_compare.py`, `g4_panel.py`, `nb_G1.py` — **do NOT put g1_core.py beside the notebooks on Drive**, it is embedded in them and a stray copy could shadow it | `tools/` | small |
 | `notebooks/E3_sota_benchmark.ipynb` — new, ready to run | `code/` | 28 KB |
 | `notebooks/X1_dbnsfp_subset.ipynb` — new, ready to run | `code/` | 20 KB |
 | the 12 SaProtΔG/ESM3ΔG checkpoints — **optional but recommended**, see below | `input/external/models/absolute-stability-predictor/` | 213 MB |

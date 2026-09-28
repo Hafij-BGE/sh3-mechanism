@@ -151,6 +151,32 @@ consistent result: B6's `pos` is domain-relative, not a protein position; X1's i
 filtered on a different transcript; and matching the UniProt accession admits a different isoform.
 Two of the three were caught only because a control refused to reproduce a published number.
 
+### G4 · rebuild the experimental panel — *five assays would have measured one substitution*
+
+F1 selected the bench panel by confidence alone. Confidence is highest where the prediction is
+easiest, so **5 of 10 picks landed at domain position 8, all five replacing alanine** — `A98D`
+`A851P` `A297D` `A547P` `A1600P` — with 4 prolines and 4 aspartates.
+
+A second flaw went unnoticed: picks were 8/10 buried while controls sat at termini and exposed loops,
+so the positive and negative sets differed in **burial** as much as in predicted effect. That panel
+could not have separated *the model predicts stability* from *the model reports burial*.
+
+| | F1 | G4 |
+|---|---|---|
+| Distinct aligned positions | 6 | **10** |
+| Max picks at one position | 5 | **1** |
+| To proline | 4 | **1** |
+| Distinct mutant residues | 5 | **7** |
+| Exposed picks | 2 | **3** |
+| Buried controls | 0 | **5** |
+
+The three exposed picks are the point: `FYN R123G`, `NOXO1 R282P`, `SH3TC2 T224I`. **A buried
+hydrophobic-to-charged substitution is called destabilising by any method, including none at all.**
+Diversity costs confidence — the weakest pick's lower bound falls from 2.47 to 1.87 — which is the
+right trade when the purpose is to learn something from the answer.
+
+Four of F1's ten survive. Nothing upstream changed; H2 was blocked on this and is now unblocked.
+
 ## Every comparable number, side by side
 
 | quantity | 2026-09-22 (frozen) | 26–27 Sep (extended) | source |
@@ -216,8 +242,8 @@ down on mutational bias.
 
 | | why it matters |
 |---|---|
-| **G4** | the F1 panel has 4 of 10 picks at one aligned position and 4 prolines — fix before anything is synthesised |
-| X1's 63.8 % | blocks any dbNSFP-based follow-up to E1 |
+| X1's 63.8 % | blocks any dbNSFP-based follow-up to E1 — though G1 found the likely mechanism |
+| **G2, G3** | per-domain conformal coverage, and the AlphaFold fragment fix |
 | E3 Experiments 2–4, ThermoMPNN | sensitivity checks; cannot change Experiment 1's verdict |
 | H1, H2 | generality beyond SH3, and bench validation |
 

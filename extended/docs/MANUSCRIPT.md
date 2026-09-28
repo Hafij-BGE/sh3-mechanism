@@ -123,21 +123,36 @@ published per-domain correlations from them and asserts agreement before proceed
 | SaProtΔG, ESM3ΔG [3] | structure-conditioned ΔG predictors | §3.4 |
 | ThermoMPNN [4] | ΔΔG predictor (audited, then excluded) | §3.4 |
 | Kazemein Jasemi et al. [6] | 45 dissociation constants, 17 SH3 domains | §3.5 |
-| dbNSFP 5.4a [7] | ~50 precomputed pathogenicity predictors | future work |
+| dbNSFP 5.4a [7] | every possible in-domain missense SNV, with genomic coordinates | §3.6 (null pool); ~50 pathogenicity predictors reserved for future work |
+| GRCh38 primary assembly [11] | trinucleotide sequence context | §3.6 |
+| COSMIC SBS v3.6 [12] | 96-channel reference mutational signatures | §3.6 |
 
 Every input was verified by MD5 before use; where the publisher publishes a checksum, ours is compared
-against theirs rather than only against a locally recorded value.
+against theirs rather than only against a locally recorded value. External sources were acquired and
+reduced once, in two dedicated programs whose outputs every evaluation reads, so that no analysis
+re-downloads or re-filters: one for the clinical, population and abundance data, and one for dbNSFP.
+Both assert that joining external data onto the frozen predictions leaves the atlas row count
+unchanged at 6,884 — an assertion that caught three separate join defects, including 3,856 rows
+duplicated by dual Pfam annotation of the same domain.
+
+The dbNSFP reduction is reported with its coverage compared against the publisher's own published
+figures for each predictor. That external comparison is the only check available on a reduction with
+no ground truth of its own, and it caught a defect in which every predictor column was correctly
+populated but mislabelled, the file otherwise being complete and internally consistent.
 
 ### 2.3 Pre-registration
 
-Decision rules for the ClinVar/gnomAD, benchmark and specificity analyses were written as documents,
-committed to version control **before the corresponding analysis code existed**, and are reproduced in
-the supplement. Each states the main comparison, the significance threshold, the minimum group size,
+Decision rules for the ClinVar/gnomAD, benchmark, specificity and mutational-context analyses were
+written as documents, committed to version control **before the corresponding analysis code existed**,
+and are reproduced in the supplement. Each states the main comparison, the significance threshold, the minimum group size,
 and how the results table would be read. Group sizes were counted before sign-off; model predictions
 were not consulted.
 
 Significance thresholds were set per analysis by Bonferroni correction over the comparisons carrying a
-verdict within that analysis (α = 0.025 with two, 0.0167 with three).
+verdict within that analysis (α = 0.025 with two, 0.0167 with three, 0.0125 with two co-primary
+spectra in §3.6). For §3.6 the analysis code reads the committed pre-registration at run time to set
+its own threshold, so the choice between one primary arm and two co-primary arms could not be made
+after a *p*-value existed.
 
 ### 2.4 Statistical analysis
 
@@ -419,6 +434,28 @@ fails an independent test", when in fact the measured profile fails the same tes
 Both are cheap, and neither depends on the result. We suggest that computational evaluations with a
 pass/fail character adopt the practice.
 
+### 4.7 An experimental panel that can distinguish the model from its context
+
+Predictions of this kind are usually followed by a small bench panel, and the selection rule matters
+more than it appears. Ranking candidates by confidence alone concentrates them where the prediction
+is easiest: our first panel placed five of ten picks at a single aligned position, all five replacing
+alanine, with four substitutions to proline. Five assays would have measured one substitution, and a
+panel that repeats a position cannot separate a correct model from a model that has learned one rule.
+
+The same ranking also confounded the comparison. The destabilising picks were 8/10 buried while the
+tolerated controls sat at termini and exposed loops, so the two sets differed in burial as much as in
+predicted effect — an experiment unable to distinguish a stability prediction from a burial lookup.
+
+The panel was rebuilt under explicit constraints: one variant per aligned position, one per gene, at
+most one substitution to proline, and reserved places for **solvent-exposed** destabilising calls,
+with controls drawn preferentially from buried positions in the same domains. This yields ten
+distinct aligned positions and seven distinct substituted residues, with five buried controls.
+
+Exposed predictions are the informative ones. A buried hydrophobic-to-charged substitution is called
+destabilising by any method; a prediction of 2–3 kcal mol⁻¹ at an exposed position is a claim that can
+fail. Diversity costs confidence — the least confident pick has a lower 90 % bound of 1.87 rather than
+2.47 kcal mol⁻¹ — which is the correct trade when the purpose is to learn something from the result.
+
 ## 5. Conclusions
 
 A sequence-only ΔΔG model for SH3 domains is competitive with structure-conditioned predictors on
@@ -463,6 +500,10 @@ details before submission.*
    [verify full citation]
 9. gnomAD v4. Broad Institute GraphQL API. [verify full citation]
 10. Faure AJ, *et al.* ddPCA / MoCHI: separating folding and binding free energies. **2022**.
+    [verify full citation]
+11. Ensembl. *Homo sapiens* GRCh38 primary assembly,
+    `Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz`, 881,964,081 bytes. [verify release number]
+12. COSMIC Mutational Signatures v3.6, SBS, 96-context, GRCh38. Wellcome Sanger Institute.
     [verify full citation]
 
 ---
