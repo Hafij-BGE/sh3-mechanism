@@ -146,9 +146,11 @@ DATA_CELL = code(
 
 
 CHECK_CELL = code(
-    "# Part 9.5. Domainome's `position` is domain-relative, and three Phase 2 defects",
-    "# came from a position index that looked right and was not. Nothing proceeds until",
-    "# the residue at that index is the residue the row claims.",
+    "# Part 9.5. Nothing proceeds until the residue at the index is the residue the row",
+    "# claims, because every embedding lookup below depends on it and FOUR defects in",
+    "# this project have been exactly this: B6's domain-relative pos, dbNSFP's aapos on",
+    "# the wrong isoform twice, and this one.",
+    "#",
     "# Table 2's `position` is UNIPROT numbering, not domain-relative: domain",
     "# A1X283_PF00018_155 starts at residue 155 and its positions begin at 155. The",
     "# domain start is the third field of domain_ID, and the construct index is",
