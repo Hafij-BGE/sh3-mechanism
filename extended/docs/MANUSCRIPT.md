@@ -22,8 +22,9 @@ prediction. We then evaluated the frozen model, without re-fitting, against four
 abundance measurements from a second assay, ClinVar and gnomAD labels, two current
 structure-conditioned ΔG predictors, and an independent set of binding affinities. We additionally
 re-tested a previously reported depletion of destabilising substitutions among cancer variants
-against a null matched to trinucleotide sequence context. Decision rules for four of the five
-evaluations were pre-registered and committed to version control before the analysis code existed.
+against a null matched to trinucleotide sequence context, and evaluated the frozen model on four
+protein families absent from its training data. Decision rules for five of the six evaluations were
+pre-registered and committed to version control before the analysis code existed.
 
 **Results.** On 15 held-out domains the model reached a median per-domain Spearman ρ of 0.839. Against
 880 variants measured by an independent abundance assay, pooled |ρ| was 0.600; two independent assays
@@ -37,11 +38,18 @@ scored by every model and none dropped. A third predictor was disqualified befor
 our 15 held-out domains lie inside its published training split. A previously reported depletion of
 destabilising substitutions among cancer variants (5.93 % observed vs 9.18 % expected) did **not**
 survive a context-matched null: 5.96 % against 6.04 % expected, p = 0.40, with a second,
-independently specified mutational spectrum agreeing (p = 0.92).
+independently specified mutational spectrum agreeing (p = 0.92). Scope is bounded in two directions.
+On deep-mutational-scanning assays outside the training dataset the supervised head does **not**
+outperform zero-shot ESM-2 (median |ρ| 0.361 vs 0.406 on external stability assays; 0.400 vs 0.491 on
+abundance assays). Applied to families never seen in training, it matches SH3 on PDZ (0.602 vs 0.623)
+despite PDZ exceeding the 72-residue construct-length ceiling of the training assay, while three
+length-matched families remain inconclusive.
 
 **Conclusions.** A sequence-only stability model is competitive with structure-conditioned predictors
-on held-out domains and recovers a substantial part of the clinical signal without ever seeing a
-clinical label. Three negative results are reported with equal weight: the conservative
+on held-out domains **of the assay it was trained on**, and recovers a substantial part of the
+clinical signal without ever seeing a clinical label. Its competitiveness does not extend to other
+assay types, which bounds the claim rather than qualifying it. Three negative results are reported
+with equal weight: the conservative
 confident-call threshold has 4.8 % sensitivity for pathogenic variants and is not a clinical filter;
 an internal specificity axis failed a second, independent test, attributable to the representation
 rather than the model; and a previously reported depletion of destabilising cancer variants is
@@ -126,6 +134,8 @@ published per-domain correlations from them and asserts agreement before proceed
 | dbNSFP 5.4a [7] | every possible in-domain missense SNV, with genomic coordinates | §3.6 (null pool); ~50 pathogenicity predictors reserved for future work |
 | GRCh38 primary assembly [11] | trinucleotide sequence context | §3.6 |
 | COSMIC SBS v3.6 [12] | 96-channel reference mutational signatures | §3.6 |
+| ProteinGym v1.3 [13] | 28 deep-mutational-scanning assays, ≤ 1,500 variants each | §3.7 |
+| Human Domainome 1.0 [5] | 102 domains in five Pfam families, for the cross-family evaluation | §3.7 |
 
 Every input was verified by MD5 before use; where the publisher publishes a checksum, ours is compared
 against theirs rather than only against a locally recorded value. External sources were acquired and
@@ -353,6 +363,46 @@ CpG accounting for 19.3 % of the observed distribution against 47.2 % for the CO
 agree on the conclusion nonetheless. This addresses the principal limitation of the first arm, whose
 spectrum is estimated from the variants under test.
 
+### 3.7 Scope: where the model is competitive, and where it is not
+
+Two results bound the claim, and both are negative in part. They are reported here rather than in the
+limitations because they are findings, not caveats.
+
+**Across assays.** The model was scored on ProteinGym deep-mutational-scanning assays in three
+blocks (Table 6). On the ten assays drawn from the same proteolysis dataset used for training it
+reaches a median |ρ| of 0.940 against 0.580 for zero-shot ESM-2, winning all ten. On three external
+stability assays and fifteen abundance assays it does **not**: 0.361 against 0.406 and 0.400 against
+0.491 respectively, winning 2 of 3 and 6 of 15. Moving off the training assay costs the supervised
+head 2.27× more than it costs zero-shot ESM-2 on the primary block and 3.49× more on the secondary.
+
+| Block | Assays | Head, median \|ρ\| | Zero-shot ESM-2 | Head wins |
+|---|---|---|---|---|
+| Same assay as training | 10 | **0.940** | 0.580 | 10 / 10 |
+| External stability | 3 | 0.361 | **0.406** | 2 / 3 |
+| Abundance | 15 | 0.400 | **0.491** | 6 / 15 |
+
+The first row establishes that the pipeline is wired correctly and establishes nothing else. **The
+competitive claim is therefore specific to proteolysis-derived stability data of the kind the model
+was trained on, and to the abundance assay evaluated in Section 3.2 within SH3.**
+
+**Across families.** The training data caps construct length at 72 residues, because the proteolysis
+assay does; all 412 training domains fall in 32–72 residues, median 51. SH3 (54–67) sits inside that
+range and most human domain families do not, so length and family novelty are confounded for any
+second family that is longer.
+
+Applied unchanged to four families absent from training, the model reached a median per-domain |ρ| of
+0.602 on PDZ against 0.623 recomputed for SH3 on the same assay and pipeline (Δ = −0.021, 95 % CI
+−0.082 to +0.027) — **notwithstanding PDZ's median construct length of 88 residues, 16 beyond
+anything in training.** On three length-matched families it reached 0.420, and the comparison against
+SH3 is inconclusive at a pre-specified non-inferiority margin of −0.15 (Δ = −0.203, CI −0.249 to
+−0.120). Matching the arms on within-assay measurement quality moves that difference only to −0.187,
+and the family with the *best* measurements among the three (Myb/SANT, better than SH3's) is also
+below SH3 in accuracy — so the deficit is not explained by noise.
+
+**Construct length is therefore not the constraint it might have been, and measurement quality is not
+either.** What limits accuracy on those three families is not identified here.
+
+
 ## 4. Discussion
 
 ### 4.1 Principal findings
@@ -363,6 +413,13 @@ had trained on, with the competitors given the experimental structure of the mea
 agrees with an independent abundance assay at 85 % of the agreement between two such assays, and
 separates ClinVar pathogenic from benign variants at p = 4.9 × 10⁻⁶ without having seen a clinical
 label.
+
+Two boundaries limit that statement and are established here rather than assumed. The model's
+advantage over zero-shot ESM-2 does not survive a change of assay: on deep-mutational-scanning data
+outside the training dataset it is no better, and it degrades two to three times faster than the
+zero-shot baseline does. And the training data never contains a domain longer than 72 residues, a
+property of the proteolysis assay rather than a modelling choice — although a family well beyond that
+ceiling performs as well as SH3, so length is not the operative constraint.
 
 The same evaluation retracts one of our own previously reported results. A depletion of destabilising
 substitutions among observed cancer variants, which had been offered as consistent with weak
@@ -396,9 +453,13 @@ optional check.
 | Conformal calls | 410 of 6,884 (6.0 %) | **Supported, with sensitivity now quantified** at 4.8 % |
 | Cancer variants depleted of damage | 5.93 % vs 9.18 % (p = 0.001) | **Not supported** — under a trinucleotide-matched null the effect disappears (5.96 % vs 6.04 %, p = 0.40) |
 | Specificity axis | r = +0.288, not validated | **Independently confirmed as failed**, and attributed to the representation |
+| Exceeds zero-shot ESM-2 *on other assays* | not previously claimed | **Not supported** — off the training assay the head is no better (§3.7) |
+| Generality beyond SH3 | asserted from the training procedure | **Partially demonstrated** — one unseen family matches, three inconclusive (§3.7) |
 
 One previously reported result was contradicted: the depletion of destabilising substitutions among
-observed cancer variants. The remaining four were supported. The depletion rested on a null that
+observed cancer variants. The remaining four were supported, and two claims that had been implicit
+rather than reported are now bounded — the advantage over zero-shot ESM-2 is specific to the training
+assay, and generality beyond SH3 is partial. The depletion rested on a null that
 weighted every single-nucleotide-reachable substitution equally; matching the background to
 trinucleotide context removes it entirely, and two independently specified spectra agree. The
 original report named this limitation itself and identified the test that would resolve it.
@@ -407,29 +468,47 @@ original report named this limitation itself and identified the test that would 
 
 1. **Fifteen domains detect large differences only.** The benchmark cannot resolve a median gap of
    0.03; "no clear difference" is not equivalence.
-2. **One family.** All results concern SH3 domains. Generality to other families is asserted by the
-   family-agnostic training procedure, not demonstrated.
-3. **Small clinical groups.** 21 pathogenic and 101 benign variants support a large-effect comparison
+2. **One family for the primary results, and a partial answer beyond it.** Sections 3.2–3.6 concern
+   SH3 domains only. Section 3.7 extends to four unseen families: one matches SH3, three are
+   inconclusive, and the reason is unresolved.
+3. **A 72-residue ceiling on the training data.** The proteolysis assay used for training caps
+   construct length, so the model has never seen a domain longer than 72 residues. SH3 sits inside
+   that range; most human domain families do not. PDZ at 88 residues performs as well as SH3
+   (Section 3.7), which bounds the concern without removing it.
+4. **Competitiveness is assay-specific.** Off the training assay the head does not beat zero-shot
+   ESM-2 (Section 3.7). The benchmark in Section 3.4 is MegaScale-derived, and its result should not
+   be read as a general claim.
+5. **Small clinical groups.** 21 pathogenic and 101 benign variants support a large-effect comparison
    and nothing finer; the null in the rate analysis is ambiguous between absence of effect and absence
    of power.
-4. **Asymmetric inputs, in our favour to state.** Competitors received structures; if they had won,
+6. **Asymmetric inputs, in our favour to state.** Competitors received structures; if they had won,
    part of the reason might have been that extra information. They did not, which strengthens the
    conclusion but does not make the comparison symmetric.
-5. **The assay ceiling rests on four domains.** Seven were measured by both assays; two could not be
+7. **The assay ceiling rests on four domains.** Seven were measured by both assays; two could not be
    reconciled between the position-numbering schemes, which is a mapping defect rather than a property
    of those domains. The matched-subset comparisons use 19–39 variants and are indicative only.
-6. **The binding dataset is narrow.** Nine proline-rich peptides from a single protein give a narrow
+8. **The binding dataset is narrow.** Nine proline-rich peptides from a single protein give a narrow
    compositional range, which works against any compositional model.
-7. **Leakage audits establish absence from published splits**, not from the data the released weights
+9. **Leakage audits establish absence from published splits**, not from the data the released weights
    actually saw.
+10. **The confident-call interval is calibrated marginally, not conditionally.** Empirical coverage
+    is 89.9 % overall but ranges 83.3 % to 95.0 % across held-out domains, and the per-domain
+    conformal quantile varies by a factor of 1.79. Resampling per-domain quantiles places the count
+    of confident calls at 400 (95 % interval 378–421), so the aggregate figure is robust while a
+    per-variant 90 % claim is not.
 
 ### 4.6 Pre-registration in computational method evaluation
 
-Three analyses had their rules committed before the analysis code existed. This changed two outcomes.
+Five analyses had their rules committed before the analysis code existed. This changed three
+outcomes.
 The pre-commit leakage check disqualified a competitor that would otherwise have been benchmarked on
 its own training data. The pre-registered control in the specificity analysis prevented a correct
 number from supporting a wrong conclusion: without it, the natural report would have been "the axis
-fails an independent test", when in fact the measured profile fails the same test.
+fails an independent test", when in fact the measured profile fails the same test. And the power
+calculation required before the cross-family evaluation showed that the originally planned single
+family would have returned "inconclusive" whatever the data contained, because the confidence
+interval at that sample size is wider than the margin it would have been compared against; the arm
+was enlarged before any model was run.
 
 Both are cheap, and neither depends on the result. We suggest that computational evaluations with a
 pass/fail character adopt the practice.
@@ -466,6 +545,11 @@ specificity axis built alongside it fails independently, and a pre-registered co
 failure in the representation. The one internal claim lacking external support — depletion of
 destabilising substitutions among observed cancer variants — was tested against a mutation-context-aware
 null and did not survive; it is withdrawn.
+
+The scope within which these statements hold is narrower than the method's framing might suggest, and
+is stated rather than left to the reader: competitive on proteolysis-derived stability data and on an
+abundance assay within SH3, not demonstrated on other assay types, and partially demonstrated across
+protein families.
 
 ---
 
@@ -505,6 +589,8 @@ details before submission.*
     `Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz`, 881,964,081 bytes. [verify release number]
 12. COSMIC Mutational Signatures v3.6, SBS, 96-context, GRCh38. Wellcome Sanger Institute.
     [verify full citation]
+13. Notin P, *et al.* ProteinGym: large-scale benchmarks for protein fitness prediction and design.
+    v1.3. [verify full citation]
 
 ---
 
